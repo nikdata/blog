@@ -1,0 +1,67 @@
+# load base RStudio image
+FROM rocker/rstudio:4.2.2
+
+# custom tag
+LABEL maintainer="Nik Agarwal <gitnik@niks.me>"
+
+# adding user rstudio as admin
+ARG USERNAME=rstudio
+ARG USER_UID=1000
+ARG USER_GID=$USER_UID
+
+# Create the user
+RUN apt-get update \
+    && apt-get install -y sudo \
+    && echo $USERNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME \
+    && chmod 0440 /etc/sudoers.d/$USERNAME
+
+# [Optional] Set the default user. Omit if you want to keep the default as root.
+# USER $USERNAME
+
+# update Linux
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    libglpk40 \
+    htop \
+    jq \
+    libxtst6 \
+    libxt6 \
+    xdg-utils \
+    nano \
+    python3-pip \
+    && python3 -m pip --no-cache-dir install radian \
+    && ln -s /usr/local/lib/R/lib/libR.so /lib/x86_64-linux-gnu/libR.so
+
+# install some basic python data science libraries
+ RUN python3 -m pip --disable-pip-version-check --no-cache-dir install pylint \
+    && pip --disable-pip-version-check --no-cache-dir install jupyter \
+    && pip --disable-pip-version-check --no-cache-dir install datascience \
+    && pip --disable-pip-version-check --no-cache-dir install numpy \
+    && pip --disable-pip-version-check --no-cache-dir install pandas \
+    && pip --disable-pip-version-check --no-cache-dir install scipy \
+    && pip --disable-pip-version-check --no-cache-dir install matplotlib \
+    && pip --disable-pip-version-check --no-cache-dir install ipywidgets>=7.0.0 \
+    && pip --disable-pip-version-check --no-cache-dir install bqplot \
+    && pip --disable-pip-version-check --no-cache-dir install nbinteract>=0.0.12 \
+    && pip --disable-pip-version-check --no-cache-dir install scikit-learn
+
+# install wget
+RUN apt-get install -y --no-install-recommends \
+    wget
+
+# install quarto
+RUN wget -O /tmp/quarto.deb https://github.com/quarto-dev/quarto-cli/releases/download/v1.2.269/quarto-1.2.269-linux-amd64.deb \
+    && dpkg -i /tmp/quarto.deb \
+    && rm /tmp/quarto.deb
+
+# Install RENV
+ENV RENV_VERSION 0.16.0
+RUN R -e "install.packages('remotes', repos = c(CRAN = 'https://cloud.r-project.org'))"
+RUN R -e "remotes::install_github('rstudio/renv@${RENV_VERSION}')"
+
+# create renv cache folder
+RUN mkdir -p /renv/cache
+
+# expose the port for RStudio
+EXPOSE 8787
+
+CMD ["/init"]
