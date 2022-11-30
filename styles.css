@@ -1,5 +1,8 @@
 /* css styles */
 
+/* using custom font */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Quicksand:wght@300&family=Roboto+Mono:wght@300&display=swap');
+
 /* alter the code blocks
 - affects only code blocks that do not have defined languages
 */

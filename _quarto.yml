@@ -7,17 +7,24 @@ website:
   navbar:
     right:
       - href: index.qmd
-        text: about
+        text: hello
       - href: posts.qmd
         text: blog
       - icon: github
         href: https://github.com/nikdata
       - icon: mastodon
-        href: https://fostodon.org/@nikdata
+        href: https://fosstodon.org/@nikagarwal
   page-footer:
-    center: "2022 | Nikhil Agarwal"
+    center: 
+      - "Copyright 2018 - 2022, Nikhil Agarwal"
+    right:
+      - icon: github
+        href: https://github.com/nikdata
+      - icon: mastodon
+        href: https://fosstodon.org/@nikagarwal
 
 format:
   html:
     theme: slate
     css: styles.css
+    mainfont: Quicksand
