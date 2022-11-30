@@ -1,0 +1,23 @@
+project:
+  type: website
+
+website:
+  title: "{nik}"
+  page-navigation: false
+  navbar:
+    right:
+      - href: index.qmd
+        text: about
+      - href: posts.qmd
+        text: blog
+      - icon: github
+        href: https://github.com/nikdata
+      - icon: mastodon
+        href: https://fostodon.org/@nikdata
+  page-footer:
+    center: "2022 | Nikhil Agarwal"
+
+format:
+  html:
+    theme: slate
+    css: styles.css

@@ -1,0 +1,219 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "{nik}",
+    "section": "",
+    "text": "Currently, I work at MākuSafe where my work focuses on human activity recognition, modeling worker exertion, and developing automated analytic reports for stakeholders. I’m also an adjunct instructor for University of Wisconsin - Madsion leading their courses in the Data Science & Analytics bootcamp.\nPreviously, I worked at John Deere in various roles across multiple divisions & teams. My work there included process engineering/optimization, market basket analysis, developing models to predict machine failure, and modeling customer behavior.\nI have a Master’s in Data Science from Northwestern University and a Bachelor’s in Industrial Engineering from Northern Illinois University."
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "{nik}",
+    "section": "",
+    "text": "Post With Code\n\n\n\n\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\n\n\nNov 30, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDummy Post\n\n\n\n\n\nPost description\n\n\n\n\n\n\nNov 29, 2022\n\n\n\n\n\n\n  \n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 27, 2022\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "tempo/about.html",
+    "href": "tempo/about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this blog"
+  },
+  {
+    "objectID": "tempo/index.html",
+    "href": "tempo/index.html",
+    "title": "tempo",
+    "section": "",
+    "text": "news\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\n\n\nNov 30, 2022\n\n\nHarlow Malloc\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 27, 2022\n\n\nTristan O’Malley\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "tempo/posts/post-with-code/index.html",
+    "href": "tempo/posts/post-with-code/index.html",
+    "title": "Post With Code",
+    "section": "",
+    "text": "1 + 1\n\n[1] 2"
+  },
+  {
+    "objectID": "tempo/posts/welcome/index.html",
+    "href": "tempo/posts/welcome/index.html",
+    "title": "Welcome To My Blog",
+    "section": "",
+    "text": "Since this post doesn’t specify an explicit image, the first image in the post will be used in the listing page of posts."
+  },
+  {
+    "objectID": "posts/20221129_dummy-post/index.html",
+    "href": "posts/20221129_dummy-post/index.html",
+    "title": "Dummy Post",
+    "section": "",
+    "text": "Footnotes\n\n\nfootnote text here↩︎\n\nReusehttps://creativecommons.org/licenses/by/4.0/"
+  },
+  {
+    "objectID": "posts.html",
+    "href": "posts.html",
+    "title": "{nik}",
+    "section": "",
+    "text": "dummy\n\n\n\n\nPost description\n\n\n\n\n\n\n29 November 2022\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nData Science\n\n\n\n\nData Science is definitely doable on a Chromebook!\n\n\n\n\n\n\n30 December 2021\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nR\n\n\n\n\nI love avocados so I made an R package for them\n\n\n\n\n\n\n18 December 2020\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nR\n\n\n\n\nSay hello to my first R package!\n\n\n\n\n\n\n07 December 2020\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nR\n\n\n\n\nLearning to write a function in R\n\n\n\n\n\n\n01 January 2018\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "posts/20221129_dummy-post/index.html#heading-2",
+    "href": "posts/20221129_dummy-post/index.html#heading-2",
+    "title": "Dummy Post",
+    "section": "Heading 2",
+    "text": "Heading 2\n\nHeading 3\n\nHeading 4\n\nHeading 5\n\nHeading 6\nThis is some regular text.\n\nunordered list item 1\nunordered list item 2\n\nnested list item\n\n\n\nordered item 1\nordered item 2\n\nBlockquote below\n\nFirst Line\n\n\n\n\n\n\n\nNote\n\n\n\nThis is a callout\n\n\n\n\nRandom column margin text\nHere’s some random python code block (not run)\nimport pandas as pd\nimport numpy as np\nHere’s some random R code block (not run)\nlibrary(dplyr)\nprint(\"hello world!\")\nThe following R code is run.\n\nhist(mtcars$mpg)"
+  },
+  {
+    "objectID": "posts/20180101_8-ball-function/index.html",
+    "href": "posts/20180101_8-ball-function/index.html",
+    "title": "Magic 8 Ball Function",
+    "section": "",
+    "text": "In my PREDICT 454 class, one of the R challenges that our professor wanted us to undertake involved creating a simple function that acted’ like the Magic 8 Ball. So let’s get to it!"
+  },
+  {
+    "objectID": "posts/20180101_8-ball-function/index.html#acknowledgements",
+    "href": "posts/20180101_8-ball-function/index.html#acknowledgements",
+    "title": "Magic 8 Ball Function",
+    "section": "Acknowledgements",
+    "text": "Acknowledgements\n\nCover image by Markus Spiske"
+  },
+  {
+    "objectID": "posts/20180101_8-ball-function/index.html#requirements",
+    "href": "posts/20180101_8-ball-function/index.html#requirements",
+    "title": "Magic 8 Ball Function",
+    "section": "Requirements",
+    "text": "Requirements\n\nThe function must output one of the following texts:\n\n\nI dont see that happening.\nYou must be dreaming.\nChances are good.\nIf you work hard and stay focused, then this might happen.\nWhen the sun shines, it shines on your face.\nDefinitely going to happen!\nTake some time to think about it.\nThis is not a good idea!\nThis is a great idea!\nCannot be determined at this time. Try Again!\n\n\nAdd an option feature in which the user can include the seed number.\nThe function should be called magic.8ball() and if a seed is to be used, then the function should be run as magic.8ball()."
+  },
+  {
+    "objectID": "posts/20180101_8-ball-function/index.html#approach",
+    "href": "posts/20180101_8-ball-function/index.html#approach",
+    "title": "Magic 8 Ball Function",
+    "section": "Approach",
+    "text": "Approach\nLet’s start with defining our messages into a vector:\n\n# store the messages into a vector\nmessages <- c(\"I don't see that happening.\",\n              'You must be dreaming.',\n              'Chances are good.',\n              'If you work hard and stay focused, then this might happen.',\n              'When the sun shines, it shines on your face.',\n              'Definitely going to happen!',\n              'Take some time to think about it.',\n              'This is not a good idea!',\n              'This is a great idea!',\n              'Cannot be determined at this time.  Try Again!')\n\nKeep in mind that in R, you can call a specific ‘spot’ within a vector. For instance, if we wanted the third1 message (“Chances are good.”), we simply have to say messages[3]:\n\nmessages[3]\n\n[1] \"Chances are good.\"\n\n\nNow let’s write a function. In R, you have to ‘store’ the function in a variable name. That variable name becomes the name of the function.\nIf we want arguments (i.e., values that can be supplied by the user for the function to be used), we simply add a name for the value within the function() argument. Here, we’ll use the input value name (i.e., argument) of ‘seed_value’.\nI’ve commmented the code to help explain what it’s doing.\n\nmagic.8ball <- function(seed_value) {\n  # check to see if the argument is missing\n  # if argument is missing, the output will change every time the function is run\n  if(missing(seed_value)) {\n    x <- sample(1:10,1)\n  } else {\n    # if seed is provided, then the results are reproducible\n    set.seed(seed_value)\n    x <- sample(1:10,1)\n  }\n  \n  # store the message that has been 'selected'\n  out <- messages[x]\n  \n  # return the message to the console\n  return(out)\n}\n\nNow let’s call the function in 2 ways: without a seed and with a seed.\nWithout a seed:\n\nmagic.8ball()\n\n[1] \"This is not a good idea!\"\n\n\nWith a seed:\n\nmagic.8ball(seed_value = 123)\n\n[1] \"Chances are good.\"\n\n\nIf no seed_value is provided, then a random message will be generated."
+  },
+  {
+    "objectID": "posts/20180101_8-ball-function/index.html#some-takeaways",
+    "href": "posts/20180101_8-ball-function/index.html#some-takeaways",
+    "title": "Magic 8 Ball Function",
+    "section": "Some Takeaways",
+    "text": "Some Takeaways\nI highly recommend having some defensive coding practices when using functions. For instance, the missing() function (built-in to base R) is helpful when the user does not specify a specific argument. We could even take this a step further and check to make sure that the user enters an integer value (for example).\nFunctions are powerful in almost any language. They help to reduce “copying/pasting” code multiple times, help the code look cleaner, and far easier to work with when you have to make changes."
+  },
+  {
+    "objectID": "posts/20180101_8-ball-function/index.html#tldr",
+    "href": "posts/20180101_8-ball-function/index.html#tldr",
+    "title": "Magic 8 Ball Function",
+    "section": "TL;DR",
+    "text": "TL;DR\nHere’s the final code:\n\nmagic.8ball <- function(seed_value) {\n  # check to see if the argument is missing\n  # if argument is missing, the output will change every time the function is run\n  if(missing(seed_value)) {\n    x <- sample(1:10,1)\n  } else {\n    # if seed is provided, then the results are reproducible\n    set.seed(seed_value)\n    x <- sample(1:10,1)\n  }\n  \n  # store the message that has been 'selected'\n  out <- messages[x]\n  \n  # return the message to the console\n  return(out)\n}"
+  },
+  {
+    "objectID": "posts/20211230_Data-Science-Chromebook/index.html",
+    "href": "posts/20211230_Data-Science-Chromebook/index.html",
+    "title": "Data Science on a Chromebook",
+    "section": "",
+    "text": "In one of the Introduction to Data Science classes I taught earlier this year, a student asked if a Chromebook could be used for the duration of the bootcamp. For background, students are expected to own a Mac or a PC running Windows. However, I always felt that was not an inclusive perspective since Linux is also supported by many of the popular Data Science tools. Furthermore, it’s becoming easier to do data science through the cloud using free services (e.g., Google CoLab, GitHub Codespaces, etc.)."
+  },
+  {
+    "objectID": "posts/20211230_Data-Science-Chromebook/index.html#so-can-chromebooks-be-used-for-data-science",
+    "href": "posts/20211230_Data-Science-Chromebook/index.html#so-can-chromebooks-be-used-for-data-science",
+    "title": "Data Science on a Chromebook",
+    "section": "So can Chromebooks be used for Data Science?",
+    "text": "So can Chromebooks be used for Data Science?\nThe short answer is yes, but it also depends. If you can setup Linux on your Chromebook, then it’s easier to do local development. If not, you may have to use a web browser."
+  },
+  {
+    "objectID": "posts/20211230_Data-Science-Chromebook/index.html#what-the-heck-is-a-chromebook",
+    "href": "posts/20211230_Data-Science-Chromebook/index.html#what-the-heck-is-a-chromebook",
+    "title": "Data Science on a Chromebook",
+    "section": "What the heck is a Chromebook?",
+    "text": "What the heck is a Chromebook?\nChromebooks are computers that are powered by ChromeOS. ChromeOS is an operating system (similar to macOS or Windows) that is built around the Chrome browser and Linux. When Chromebooks were first released, they were underpowered and quite affordable. Today, there are diverse models of Chromebooks that range from affordable to “oh my gosh it’s more than a Mac”. In fact, some Chromebook models are powerful enough to run Windows comfortably and can easily run Linux."
+  },
+  {
+    "objectID": "posts/20211230_Data-Science-Chromebook/index.html#linux-on-my-chromebook",
+    "href": "posts/20211230_Data-Science-Chromebook/index.html#linux-on-my-chromebook",
+    "title": "Data Science on a Chromebook",
+    "section": "Linux on my Chromebook",
+    "text": "Linux on my Chromebook\nThink about the common tools a data scientist may want to use:\n\nVisual Studio Code\nRStudio\nJupyter\n\nAll of these can easily be installed on a Chromebook. Here’s what my dock looks like on my Chromebook:\n\nAnd here’s what RStudio says about the system: \nLike any other computer, the specs of a Chromebook matter. The more RAM you have, the more things you can do in-memory (and faster). The more disk space you have, the larger the filesizes."
+  },
+  {
+    "objectID": "posts/20211230_Data-Science-Chromebook/index.html#there-has-to-be-a-catch",
+    "href": "posts/20211230_Data-Science-Chromebook/index.html#there-has-to-be-a-catch",
+    "title": "Data Science on a Chromebook",
+    "section": "There has to be a catch!",
+    "text": "There has to be a catch!\nYes! There are some limitations you have to keep in mind. Are you familiar with Docker and containers? Linux on a Chromebook is running in a virtual environment/container. What that means is that many of the things within this container are isolated from the rest of your Chromebook. For instance, as of this writing, cameras are not supported. Many USB devices are also not supported.\nWhen you set up Linux on a Chromebook, you also have to configure the total disk space it will utilize. If it’s too small, then you may run into issues installing software. Some software may not even work!\nHere are the data science focused applications I have installed successfully on my Chromebook:\n\nVSCode\nRStudio\nR\nJupyterLab\nDataSpell"
+  },
+  {
+    "objectID": "posts/20211230_Data-Science-Chromebook/index.html#heres-a-cheatsheet",
+    "href": "posts/20211230_Data-Science-Chromebook/index.html#heres-a-cheatsheet",
+    "title": "Data Science on a Chromebook",
+    "section": "Here’s a ‘cheatsheet’",
+    "text": "Here’s a ‘cheatsheet’\nI’m not sure if this will help everyone, but I did keep track of all the software I installed and the workarounds I had to employ."
+  },
+  {
+    "objectID": "posts/20201207_ialiquor/index.html",
+    "href": "posts/20201207_ialiquor/index.html",
+    "title": "The {ialiquor} R Package",
+    "section": "",
+    "text": "I’m pleased to say that I have my first R package, {ialiquor}, published on CRAN (version 0.1.0 as of this writing). Here are a few links to the package repo & vignettes:\nI’ve tried to document as much as I could on the repo and the package website - so I’ll try not to repeat myself in this post."
+  },
+  {
+    "objectID": "posts/20201207_ialiquor/index.html#about-ialiquor",
+    "href": "posts/20201207_ialiquor/index.html#about-ialiquor",
+    "title": "The {ialiquor} R Package",
+    "section": "About {ialiquor}",
+    "text": "About {ialiquor}\nThe {ialiquor} package conveniently summarizes by month the Class E liquor sales in the state of Iowa. Class E liquor, as defined by the state, is:\n\nFor grocery, liquor and convenience stores, etc. Allows for the sale of alcoholic liquor for off-premises consumption in original unopened containers. No sales by the drink. Sunday sales are included. Also allows wholesale sales to on-premises Class A, B, C and D liquor licensees but must have a TTB Federal Wholesale Basic Permit.\n\nIn plain English, this means that Class E is talking about hard liquor (excluding wine and beer)."
+  },
+  {
+    "objectID": "posts/20201207_ialiquor/index.html#purpose",
+    "href": "posts/20201207_ialiquor/index.html#purpose",
+    "title": "The {ialiquor} R Package",
+    "section": "Purpose",
+    "text": "Purpose\nI really had two goals with this package:\n\nlearn how to create a dataset only package\ntry to publish on CRAN\n\nNeedless to say, as I was developing this package, I was able to learn more about the different nuances to be aware of if the goal is to publish a package on CRAN."
+  },
+  {
+    "objectID": "posts/20211218_avocado/index.html",
+    "href": "posts/20211218_avocado/index.html",
+    "title": "The {avocado} R Package",
+    "section": "",
+    "text": "I’m pleased to share that my second package, {avocado} - version 0.1.0 - is now on CRAN. The {avocado} package consists of three different datasets that describe the weekly Hass Avocado sales in the contiguous US.\nAs you may have guessed, this is a dataset only package. While I do think it’s helpful to build packages that have useful functions, I also think it’s especially important to have packages that consist of interesting datasets that can easily be used for a variety of purposes. Furthermore, if dataset packages continue to be updated, they can provide meaningful value for the long run. In my opinion, however, there’s nothing wrong with having datasets hosted on websites such as Kaggle or UCI Machine Learning Repository. Often, those websites - for example - consist of more real-world like data (e.g., missing values, not ‘tidy’, extremely large datasets, etc.). Dataset packages in R are usually smaller (they have to be less than 5 MB total) and already ‘tidied’ for easier/faster usage.\nWith that said, I had two motivations while constructing this package:"
+  },
+  {
+    "objectID": "posts/20211218_avocado/index.html#behind-the-avocados",
+    "href": "posts/20211218_avocado/index.html#behind-the-avocados",
+    "title": "The {avocado} R Package",
+    "section": "Behind the Avocados",
+    "text": "Behind the Avocados\nI first became familiar with the avocado dataset on Kaggle a couple years ago. If you click on that link, you’ll see a pretty decent explanation of the dataset. At first glance, you’ll think that the sales data represents units sold. However, when you look at the preview of the data, you’ll see how there are decimal values for variables such as Total Volume or 4046(see image below). How can you sell a fractional unit of an avocado at retail?\n\nFor a while, I had accepted it, but it always bothered me. And for that time, I was lazy and busy with other things to really worry about it. After I published my first R package on CRAN, I thought about revisiting the avocado data and first see if anyone had created something similar on CRAN. In my quick search, I couldn’t find anything - other than a variety of folks using the Kaggle avocado dataset. So I set about digging into the origins of the dataset and try to determine the context.\nFirst, I had to register with the Hass Avocado Board - which was free, thankfully. Surprisingly, their website is very informative and they have LOTS of data on avocados. If anyone is interested in growing or marketing avocados, this organization has done an exemplary job of avocado research and all the information is free after registering.\nHere’s where I learned some nuances of the data they have. The HAB has CSV data that anyone can download. However, within that dataset, there are weekly sales totals for the contiguous US, totals for specific regions within the contiguous US, and totals for specific cities/sub-regions within regions. Furthermore, the ‘volume’ or ‘units’ used in the dataset are in US pounds - aka weight. Why? This isn’t explained very well, but from my own experience in crop production, weight is a very simple way to describe how much crop is available rather than units. While retailers may purchase and sell by the unit or piece, describing how much has been sold by weight is a ‘simpler’ approach that preserves any competitive or proprietary information that grower may want to retain.\nWhile I was studying this dataset and its nuances, I came to the conclusion that there are actually three datasets within the original data provided by the Hass Avocado Board. I don’t think the original author on Kaggle mentioned this, but I thought it would be useful to have it documented and presented in a way that preserves most of what the HAB provides.\nI did make some changes to the data in terms of excluding variables that described totals. I felt that these could be recreated by users as part of their feature engineering exercise - should they choose.\nIn the end, I feel pretty good about documenting the dataset and providing the context needed for further analysis."
+  },
+  {
+    "objectID": "posts/20211218_avocado/index.html#continuous-integration",
+    "href": "posts/20211218_avocado/index.html#continuous-integration",
+    "title": "The {avocado} R Package",
+    "section": "Continuous Integration",
+    "text": "Continuous Integration\nPerhaps the biggest benefit of CI platforms is the ability to have code tests run ‘in the background’ - especially when pull requests are made. The goal here is to ensure that potential bugs are found - enabling developer(s) to fix the issue prior to merging the code into production. While Hadley & Jenny’s book talks about Travis CI, there are alternatives - such as GitHub Actions. All this was new to me (and still is) and I wanted to learn more about it. So I chose to go with GitHub Actions and proceeded to find out how I can leverage it with R.\nI chose not to go forward with Travis CI due to a MAJOR change in their pricing policy. Effectively, they will only give free accounts up to 10,000 credits - which expire after one year. Once all the credits are used up (or expired), the user has to sign up for a paid account1. As a hobbyist, I don’t want to spend more money than I have to. I was pleasantly surprised to see that GitHub offers 2,000 minutes of GitHub Actions free for private repositories and unlimited minutes for public repositories.\nDefinitely a no brainer and time to move forward with GitHub Actions. And GitHub Actions works with R!\nThe highly versatile {usethis} package has a great function, use_github_action_check_standard() that quickly & easily implements the necessary files to initiate & use GitHub Actions.\nWhat this does, in terms of R package development, is enables GitHub to fire up some virtual machines in the cloud, run R-CMD-CHECK on your package, and provide a ‘summary’ of the results. This is a great way to check if your package will work on platforms other than the one you are developing on. In my case, I develop R packages on a Mac - so if it works on my Mac, I can safely assume it’ll work on other similar Mac’s. However, I don’t have access to a Windows or a Linux machine to test my package - and that’s where GitHub Actions steps in.\nI’ve ran (at the time of this writing) 17 GitHub Actions instances. You can click on that link and then click on any of the links to see the reports. You’ll also notice that I used GitHub Actions for my {pkgdown} site for the package.\nHere’s a quick peek at the results from the Windows release:\n\nNote how the last line in the output basically shows no errors, warnings, or notes. Checking all three (Windows & both Ubuntus) is how I confirmed if my package would work on those platforms. I definitely could have instructed GitHub Actions to test on a Mac platform, but I felt that was redundant and not necessary.\nI know I’ve just unlocked the tip of the iceberg here. As I develop packages for my own job, I can easily see myself using GitHub Actions as a way to ensure minimal bugs in addition to using {testthat}."
+  },
+  {
+    "objectID": "posts/20211218_avocado/index.html#tldr",
+    "href": "posts/20211218_avocado/index.html#tldr",
+    "title": "The {avocado} R Package",
+    "section": "TL;DR",
+    "text": "TL;DR\nTo recap:\n\nI wanted to provide context on the avocado dataset used widely on Kaggle and I did that by documenting what I found and creating an R package\nI used GitHub Actions to do CI as a way to learn more about it and practice\n\nIf you do use this package and find any bugs, or have any comments/questions, please feel free to open an issue! Thanks!"
+  },
+  {
+    "objectID": "posts/20201207_ialiquor/index.html#dataset-only",
+    "href": "posts/20201207_ialiquor/index.html#dataset-only",
+    "title": "The {ialiquor} R Package",
+    "section": "Dataset only?",
+    "text": "Dataset only?\nIt will help to know that the dataset (found here) is actually a daily snapshot of the sales of Class E liquor (updated monthly). What’s really peculiar is how the State of Iowa manages the sales. For instance, retailers cannot buy Class E liquor directly from vendors/manufacturers. Rather, the state purchases the product and then allows the retailers within the state (that have the appropriate purchasing license - known as Class E) to purchase the product. Loosely put, the State of Iowa has a monopoly and can easily generate profit from the sales (but I digress).\nOverall, the data are over several gigabytes and date back to January 1, 2012. This is an extremely large dataset and CRAN would never approve a package with such a large dataset. Keep in mind that CRAN only allows packages up to 5 MB (larger ones could be approved, but highly unlikely)1. For the purposes I set out to achieve, it made sense to aggregate to a monthly level. However, the dataset was still too large and that’s where I decided to trim it to no earlier than 2015.\nIn order to create the dataset, I simply had to create a query using SODA. This format essentially allows you to construct a query onto the URL of the dataset. Although the {RSocrata} package exists, I found it to be pretty poor2 in helping construct a query (unlike the sodapy library for Python).\nWith all that said, it did not make sense to me to add any functions per se for further analysis. Part of my intention was to make the liquor data from the State of Iowa a bit more manageable. And I think the {ialiquor} package does just that."
+  },
+  {
+    "objectID": "posts/20201207_ialiquor/index.html#publishing-on-cran",
+    "href": "posts/20201207_ialiquor/index.html#publishing-on-cran",
+    "title": "The {ialiquor} R Package",
+    "section": "Publishing on CRAN",
+    "text": "Publishing on CRAN\nI’ve attended several RStudio conferences over years and one common theme I’ve heard from many folks is the daunting process of getting a package approved by CRAN. In my experience, the ‘daunting’ part was the wait time from when I submitted the package to when I received an email saying it “was on its way to CRAN”. Two things really helped me become a bit more comfortable with the process:\n\nHadley Wickham’s (and Jenny Bryan’s) book “R Packages”\nRami Krispin offering a quick step-by-step approach\n\nTo summarize my approach, here’s what I did:\n\nUse the ‘check’ function in RStudio IDE (under the Build tab) frequently\nMake sure there are 0 errors, 0 warnings/caution, 0 notes\nComplete all vignettes, documentation, build pkgdown site, comments as needed, updated Readme on git repo\nuse the check_win_devel() and check_win_release() functions from {devtools}\nMake sure the log outputs from both of those function calls also has 0 errors, warnings, notes\nIf notes do come up and cannot be resolved or are not important, document it under file called cran-comments.md\nuse devtools::submit_cran() to submit\n\nMany of those steps are in Hadley’s book. Step 4 was something that Rami had mentioned to me (and super useful). Since I’m on a Mac, I knew that my package worked without issue. However, the functions in Step 4 ensured that my package could work on Windows. Furthermore, after I did submit, CRAN’s auto-checks showed a note about a problematic URL address. I didn’t update my comments, but it was pretty clear that it was a valid URL - just not a URL that CRAN’s auto check could access. I don’t know for certain, but I am of the belief that my documentation probably helped the CRAN reviewer.\nOne last note I’d like to make is that documentation took 80% of my time. Is this any surprise to a data scientist?\nIf you do use the {ialiquor} package, I’d love to hear more about it. If you find issues, please open an issue on the repo."
+  },
+  {
+    "objectID": "posts/20210401_RClimacell/index.html",
+    "href": "posts/20210401_RClimacell/index.html",
+    "title": "The {RClimacell} R Package",
+    "section": "",
+    "text": "Climacell isn’t necessarily the most friendly towards developers, in my opinion. Over the last few weeks, I’ve seen their pricing become a bit more stingy and not very friendly. For example, in late 2020, they offered up to 1000 API calls per day, now it’s around 500. While that sounds great, it’s also hampered by the fact that you can only make 25 calls per hour. Debugging erroneous code is not fun if you hit that threshold. But I digress.\nPackage website\nI think the package website is really good at highlighting what can be done with this package. The key limitation is that it only leverages the Timelines Interface from Climacell as its the only way to get most of the data for free.\nSince the package makes extensive use the tidyverse lingo, it’s quite fun to use as well!\n\ndf_temp <- RClimacell::climacell_core(\n  api_key = Sys.getenv('CLIMACELL_API'),\n  lat = 41.8789,\n  long = 87.6359,\n  timestep = '1m',\n  start_time = lubridate::now(),\n  end_time = lubridate::now() + lubridate::hours(6)\n)\n\n\nlibrary(ggplot2)\nlibrary(dplyr)\nlibrary(extrafont)\n\ndf_temp %>%\n  select(start_time, temp_c, temp_feel_c) %>%\n  tidyr::pivot_longer(cols = temp_c:temp_feel_c) %>%\n  ggplot(aes(x = start_time, y = value, color = name)) +\n  geom_line() +\n  labs(x = 'Time (UTC)',\n       y = 'Temperature (Celsius)',\n       color = 'Type',\n       title = \"Predicted Temperature by Time\",\n       caption = 'Timestep of 1 minute'\n  ) +\n  scale_color_discrete(labels = c('Predicted Temperature','Feels Like Temperature')) +\n  theme(plot.title = element_text(family = \"Bahnschrift\", color = 'grey100'),\n        plot.caption = element_text(family = \"Bahnschrift\", color = 'grey60'),\n        axis.title = element_text(family = 'Bahnschrift', color = 'grey100'),\n        axis.text.x = element_text(family = \"Bahnschrift\", color = 'grey70'),\n        axis.text.y = element_text(family = \"Bahnschrift\", color = 'grey70'),\n        plot.background = element_rect(fill = 'grey10'),\n        panel.background = element_blank(),\n        panel.grid.major = element_line(color = 'grey30', size = 0.2),\n        panel.grid.minor = element_line(color = 'grey30', size = 0.2),\n        legend.background =  element_rect(fill = 'grey20'),\n        legend.key = element_blank(),\n        legend.title = element_text(family = 'Bahnschrift', color = 'grey80'),\n        legend.text = element_text(family = \"Bahnschrift\", color = 'grey90'),\n        legend.position = c(0.87, 0.2)\n  )\n\n\n\n\n\n\n\nReusehttps://creativecommons.org/licenses/by/4.0/"
+  }
+]

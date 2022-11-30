@@ -1,0 +1,68 @@
+---
+title: "Dummy Post"
+description: "Post description"
+date: "2022 November 29"
+draft: false
+toc-depth: 4
+categories:
+  - dummy
+image: "dummy.png"
+---
+
+# Heading 1
+
+## Heading 2
+
+### Heading 3
+
+#### Heading 4
+
+##### Heading 5
+
+###### Heading 6
+
+This is some regular text.
+
+Here's a line of text with a footnote^[footnote text here].
+
+
+- unordered list item 1
+- unordered list item 2
+  - nested list item
+
+1. ordered item 1
+2. ordered item 2
+
+**Blockquote below**
+
+> First Line 
+
+:::{.callout-note}
+This is a callout
+:::
+
+:::{.column-margin}
+Random column margin text
+:::
+
+
+Here's some random python code block (not run)
+
+``` py
+import pandas as pd
+import numpy as np
+```
+
+Here's some random R code block (not run)
+
+``` r
+library(dplyr)
+print("hello world!")
+```
+
+The following R code is run.
+
+```{r}
+hist(mtcars$mpg)
+```
+

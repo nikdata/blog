@@ -1,0 +1,68 @@
+---
+title: The {ialiquor} R Package
+description: "Say hello to my first R package!"
+date: "2020 December 07"
+draft: false
+toc-depth: 4
+categories:
+  - R
+image: "img/ialiquor.png"
+---
+
+I'm pleased to say that I have my first R package, {ialiquor}, published on CRAN (version 0.1.0 as of this writing). Here are a few links to the package repo & vignettes:
+
+- Package Repo: [https://github.com/nikdata/ialiquor](https://github.com/nikdata/ialiquor)
+- Package Webpage: [https://nikdata.github.io/ialiquor/index.html](https://nikdata.github.io/ialiquor/index.html)
+- Vignettes: [https://nikdata.github.io/ialiquor/articles/](https://nikdata.github.io/ialiquor/articles/)
+
+I've tried to document as much as I could on the repo and the package website - so I'll try not to repeat myself in this post.
+
+## About {ialiquor}
+
+The {ialiquor} package conveniently summarizes by month the Class E liquor sales in the state of Iowa. Class E liquor, as defined by the state, is:
+
+> For grocery, liquor and convenience stores, etc. Allows for the sale of alcoholic liquor for off-premises consumption in original unopened containers. No sales by the drink. Sunday sales are included. Also allows wholesale sales to on-premises Class A, B, C and D liquor licensees but must have a TTB Federal Wholesale Basic Permit.
+
+In plain English, this means that Class E is talking about hard liquor (excluding wine and beer).
+
+## Purpose
+
+I really had two goals with this package:
+
+- learn how to create a dataset only package
+- try to publish on CRAN
+
+Needless to say, as I was developing this package, I was able to learn more about the different nuances to be aware of if the goal is to publish a package on CRAN.
+
+## Dataset only?
+
+It will help to know that the dataset (found [here](https://data.iowa.gov/Sales-Distribution/Iowa-Liquor-Sales/m3tr-qhgy)) is actually a daily snapshot of the sales of Class E liquor (updated monthly). What's really peculiar is how the State of Iowa manages the sales. For instance, retailers cannot buy Class E liquor directly from vendors/manufacturers. Rather, the state purchases the product and then allows the retailers within the state (that have the appropriate purchasing license - known as Class E) to purchase the product. Loosely put, the State of Iowa has a monopoly and can easily generate profit from the sales (but I digress).
+
+Overall, the data are over several gigabytes and date back to January 1, 2012. This is an extremely large dataset and CRAN would never approve a package with such a large dataset. Keep in mind that CRAN only allows packages up to 5 MB (larger ones could be approved, but highly unlikely)^[the first nuance I learned]. For the purposes I set out to achieve, it made sense to aggregate to a monthly level. However, the dataset was still too large and that's where I decided to trim it to no earlier than 2015.
+
+In order to create the dataset, I simply had to create a query using [SODA](https://dev.socrata.com/docs/queries/). This format essentially allows you to construct a query onto the URL of the dataset. Although the [{RSocrata}](https://github.com/Chicago/RSocrata) package exists, I found it to be pretty poor^[I'm not really 'bashing' on this package, but I feel it's not very 'friendly' to users who are not as familiar with SODA SQL] in helping construct a query (unlike the sodapy library for Python).
+
+With all that said, it did not make sense to me to add any functions per se for further analysis. Part of my intention was to make the liquor data from the State of Iowa a bit more manageable. And I think the {ialiquor} package does just that.
+
+## Publishing on CRAN
+
+I've attended several RStudio conferences over years and one common theme I've heard from many folks is the daunting process of getting a package approved by CRAN. In my experience, the 'daunting' part was the wait time from when I submitted the package to when I received an email saying it "was on its way to CRAN". Two things really helped me become a bit more comfortable with the process:
+
+- Hadley Wickham's (and Jenny Bryan's) book "[R Packages](https://r-pkgs.org)"
+- [Rami Krispin](https://ramikrispin.github.io) offering a quick step-by-step approach
+
+To summarize my approach, here's what I did:
+
+1. Use the 'check' function in RStudio IDE (under the Build tab) frequently
+2. Make sure there are 0 errors, 0 warnings/caution, 0 notes
+3. Complete all vignettes, documentation, build pkgdown site, comments as needed, updated Readme on git repo
+4. use the `check_win_devel()` and `check_win_release()` functions from {devtools}
+5. Make sure the log outputs from both of those function calls also has 0 errors, warnings, notes
+6. If notes do come up and cannot be resolved or are not important, document it under file called `cran-comments.md`
+7. use `devtools::submit_cran()` to submit
+
+Many of those steps are in Hadley's book. Step 4 was something that Rami had mentioned to me (and super useful). Since I'm on a Mac, I knew that my package worked without issue. However, the functions in Step 4 ensured that my package could work on Windows. Furthermore, after I did submit, CRAN's auto-checks showed a note about a problematic URL address. I didn't update my comments, but it was pretty clear that it was a valid URL - just not a URL that CRAN's auto check could access. I don't know for certain, but I am of the belief that my documentation probably helped the CRAN reviewer.
+
+One last note I'd like to make is that documentation took 80% of my time. Is this any surprise to a data scientist?
+
+If you do use the {ialiquor} package, I'd love to hear more about it. If you find issues, please open an issue on the repo.

@@ -1,0 +1,29 @@
+/* css styles */
+
+/* alter the code blocks
+- affects only code blocks that do not have defined languages
+*/
+pre {
+  background-color: rgb(230,230,230);
+  color: rgb(0,0,0);
+}
+
+/* code blocks have a better background color
+.sourceCode {
+  background-color: rgb(0,0,0);
+  padding-left: 10px;
+}
+
+.cell-code {
+  background-color: rgb(0,0,0);
+}
+
+.sourceCode.cell-code{
+  background-color: rgb(0,0,0);
+}
+*/
+
+/* H2 has a more visible bottom border */
+h2 {
+  border-bottom: 1px solid rgb(200,200,200);
+}

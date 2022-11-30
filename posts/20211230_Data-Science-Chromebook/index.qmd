@@ -1,0 +1,55 @@
+---
+title: Data Science on a Chromebook
+description: "Data Science is definitely doable on a Chromebook!"
+date: "2021 December 30"
+draft: false
+toc-depth: 4
+categories:
+  - Data Science
+image: "chromebook-logo.png"
+---
+
+In one of the Introduction to Data Science classes I taught earlier this year, a student asked if a Chromebook could be used for the duration of the bootcamp. For background, students are expected to own a Mac or a PC running Windows. However, I always felt that was not an inclusive perspective since Linux is also supported by many of the popular Data Science tools. Furthermore, it's becoming easier to do data science through the cloud using free services (e.g., [Google CoLab](https://colab.research.google.com), [GitHub Codespaces](https://github.com/codespaces), etc.).
+
+## So can Chromebooks be used for Data Science?
+
+The short answer is yes, but it also depends. If you can setup [Linux](https://support.google.com/chromebook/answer/9145439?hl=en) on your Chromebook, then it's easier to do local development. If not, you may have to use a web browser.
+
+## What the heck is a Chromebook?
+
+[Chromebooks](https://support.google.com/chromebook/answer/3265094?hl=en#zippy=%2Cwhy-are-chromebooks-cheaper-than-traditional-computers) are computers that are powered by ChromeOS. ChromeOS is an operating system (similar to macOS or Windows) that is built around the Chrome browser and Linux. When Chromebooks were first released, they were underpowered and quite affordable. Today, there are diverse models of Chromebooks that range from affordable to "oh my gosh it's more than a Mac". In fact, some Chromebook models are powerful enough to run Windows comfortably and can easily run Linux.
+
+## Linux on my Chromebook
+
+Think about the common tools a data scientist may want to use:
+
+- Visual Studio Code
+- RStudio
+- Jupyter
+
+All of these can easily be installed on a Chromebook. Here's what my dock looks like on my Chromebook:
+
+![](img/chromeos-dock.png)
+
+And here's what RStudio says about the system:
+![](img/r-sysinfo.png)
+
+Like any other computer, the specs of a Chromebook matter. The more RAM you have, the more things you can do in-memory (and faster). The more disk space you have, the larger the filesizes.
+
+## There has to be a catch!
+
+Yes! There are some limitations you have to keep in mind. Are you familiar with Docker and [containers](https://code.visualstudio.com/docs/remote/remote-overview)? Linux on a Chromebook is running in a virtual environment/container. What that means is that many of the things within this container are isolated from the rest of your Chromebook. For instance, as of this writing, cameras are not supported. Many USB devices are also not supported.
+
+When you set up Linux on a Chromebook, you also have to configure the total disk space it will utilize. If it's too small, then you may run into issues installing software. Some software may not even work!
+
+Here are the data science focused applications I have installed successfully on my Chromebook:
+
+- VSCode
+- RStudio
+- R
+- JupyterLab
+- DataSpell
+
+## Here's a 'cheatsheet'
+
+I'm not sure if this will help everyone, but I did [keep track](https://gist.github.com/nikdata/cee0fb536446e469929927f29afc59a8) of all the software I installed and the workarounds I had to employ.
