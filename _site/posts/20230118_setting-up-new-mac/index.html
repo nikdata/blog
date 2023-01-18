@@ -7,10 +7,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Nik">
-<meta name="dcterms.date" content="2020-12-18">
-<meta name="description" content="I love avocados so I made an R package for them">
+<meta name="dcterms.date" content="2023-01-18">
+<meta name="description" content="Up and running with a new Mac">
 
-<title>{nik} - The {avocado} R Package</title>
+<title>{nik} - Setting Up a New Mac for Data Science</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -114,9 +114,16 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#behind-the-avocados" id="toc-behind-the-avocados" class="nav-link active" data-scroll-target="#behind-the-avocados">Behind the Avocados</a></li>
-  <li><a href="#continuous-integration" id="toc-continuous-integration" class="nav-link" data-scroll-target="#continuous-integration">Continuous Integration</a></li>
-  <li><a href="#tldr" id="toc-tldr" class="nav-link" data-scroll-target="#tldr">TL;DR</a></li>
+  <li><a href="#making-the-terminal-work-for-me" id="toc-making-the-terminal-work-for-me" class="nav-link active" data-scroll-target="#making-the-terminal-work-for-me">Making the Terminal Work For Me</a>
+  <ul>
+  <li><a href="#package-manager---brew" id="toc-package-manager---brew" class="nav-link" data-scroll-target="#package-manager---brew">Package Manager - Brew</a></li>
+  <li><a href="#a-better-terminal---iterm2" id="toc-a-better-terminal---iterm2" class="nav-link" data-scroll-target="#a-better-terminal---iterm2">A better terminal - iTerm2</a></li>
+  <li><a href="#update-git-zsh" id="toc-update-git-zsh" class="nav-link" data-scroll-target="#update-git-zsh">Update git &amp; ZSH</a></li>
+  <li><a href="#making-zsh-even-more-powerful---ohmyzsh" id="toc-making-zsh-even-more-powerful---ohmyzsh" class="nav-link" data-scroll-target="#making-zsh-even-more-powerful---ohmyzsh">Making ZSH even more powerful - OhMyZSH</a></li>
+  <li><a href="#and-lets-make-zsh-pretty" id="toc-and-lets-make-zsh-pretty" class="nav-link" data-scroll-target="#and-lets-make-zsh-pretty">And let’s make ZSH pretty</a></li>
+  </ul></li>
+  <li><a href="#now-we-need-python" id="toc-now-we-need-python" class="nav-link" data-scroll-target="#now-we-need-python">Now we need Python</a></li>
+  <li><a href="#the-usual-apps" id="toc-the-usual-apps" class="nav-link" data-scroll-target="#the-usual-apps">The Usual Apps</a></li>
   </ul>
 </nav>
 </nav>
@@ -128,15 +135,15 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">The {avocado} R Package</h1>
+<h1 class="title">Setting Up a New Mac for Data Science</h1>
   <div class="quarto-categories">
-    <div class="quarto-category">R</div>
+    <div class="quarto-category">Data Science</div>
   </div>
   </div>
 
 <div>
   <div class="description">
-    I love avocados so I made an R package for them
+    Up and running with a new Mac
   </div>
 </div>
 
@@ -153,7 +160,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">18 December 2020</p>
+      <p class="date">18 January 2023</p>
     </div>
   </div>
   
@@ -163,51 +170,136 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>I’m pleased to share that my second package, {avocado} - version 0.1.0 - is now on CRAN. The {avocado} package consists of three different datasets that describe the weekly Hass Avocado sales in the contiguous US.</p>
+<p>I recently bought a new MacBook Air<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> and I was ecstatic to set it up from scratch. My previous computer (or current since I still use it) was last setup back in 2018 and I kept installing/updating software to it that I forgot all the cool things. In fact, in the last 4 years, macOS had switch from Bash to ZSH as its default shell and I can’t even remember using Bash anymore.</p>
+<p>In this post, I wanted to share with you how I went about setting up my new MacBook Air<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>.</p>
+<p>So here’s the kicker. My new MacBook Air runs on the M2 processor (aka Apple Silicon), which is based on the ARM architecture. I found this website that summarizes the <a href="https://www.educba.com/arm-vs-x86/">difference</a> between the x86/amd64 architecture versus ARM.</p>
+<p>To put it succinctly, ARM requires different software builds than the previous Intel Macs. In many cases, developers have released “Universal” builds of their software that can work on both Intel Macs and Apple Silicon Macs. Some software, however, has not been updated and you’ll be prompted to install <a href="https://support.apple.com/en-us/HT211861">Rosetta2</a>:</p>
+<p><img src="img/install-rosetta2-prompt.png" class="img-fluid"></p>
+<p>The really cool thing about Rosetta 2 is its ability to run x86/amd64 software on Apple Silicon and the performance is very good. However, I don’t want to run any software that’s not optimized for Apple Silicon, so I have only installed software that is optimized for Apple Silicon.</p>
+<p>As you can tell from the image above, I haven’t installed <a href="https://quarto.org">Quarto</a>. Quarto is - in my view - the better replacement for RMarkdown since it works with Python and Julia in addition to R. I’m betting that the Quarto dev team is working on an ARM optimized version (hopefully it’ll be in version 1.3).</p>
+<p>Steps:</p>
 <ul>
-<li><a href="https://nikdata.github.io/avocado/">Package Website</a></li>
-<li><a href="https://nikdata.github.io/avocado/articles/">Vignettes</a></li>
-<li><a href="https://github.com/nikdata/avocado">Package Repo</a></li>
-<li>Data Source: <a href="https://hassavocadoboard.com">Hass Avocado Board</a></li>
+<li>Making the terminal work for me
+<ul>
+<li>Brew</li>
+<li>iTerm2</li>
+<li>Git</li>
+<li>ZSH</li>
+<li>OhMyZSH</li>
+<li>PowerLevel10k</li>
+</ul></li>
+<li>Python
+<ul>
+<li>Mambaforge</li>
+</ul></li>
+<li>The Usual Apps
+<ul>
+<li>RStudio</li>
+<li>VSCode</li>
+<li>Docker</li>
+</ul></li>
 </ul>
-<p>As you may have guessed, this is a dataset only package. While I do think it’s helpful to build packages that have useful functions, I also think it’s especially important to have packages that consist of interesting datasets that can easily be used for a variety of purposes. Furthermore, if dataset packages continue to be updated, they can provide meaningful value for the long run. In my opinion, however, there’s nothing wrong with having datasets hosted on websites such as <a href="https://www.kaggle.com">Kaggle</a> or <a href="http://archive.ics.uci.edu/ml/index.php">UCI Machine Learning Repository</a>. Often, those websites - for example - consist of more real-world like data (e.g., missing values, not ‘tidy’, extremely large datasets, etc.). Dataset packages in R are usually smaller (they have to be less than 5 MB total) and already ‘tidied’ for easier/faster usage.</p>
-<p>With that said, I had two motivations while constructing this package:</p>
+<section id="making-the-terminal-work-for-me" class="level2">
+<h2 class="anchored" data-anchor-id="making-the-terminal-work-for-me">Making the Terminal Work For Me</h2>
+<p>I use the Terminal quite a bit. It’s the easiest and most efficient way to work with git. The stock Terminal app on the Mac is good, like really good. And it does the job. BUT, it can be better.</p>
+<p><img src="img/terminal-better.jpg" class="img-fluid" alt="Meme about how the terminal can be better."></p>
+<section id="package-manager---brew" class="level3">
+<h3 class="anchored" data-anchor-id="package-manager---brew">Package Manager - Brew</h3>
+<p>First off, I highly recommend the use of <a href="https://brew.sh">Brew</a>. Brew is a package manager and is one of the easiest ways to install free and open-source (FOSS) software. And they’re super easy to uninstall!</p>
+<p>To install Brew, simple copy, paste, and execute the following command the stock Terminal app:</p>
+<pre><code>/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"</code></pre>
+<p>Within moments, Brew will begin the installation:</p>
+<p><img src="img/brew-install.png" class="img-fluid" alt="Brew installation in progress."></p>
+<p>After a few moments, Brew will have completed and will let you know that you should run 3 extra lines (by copying and pasting them at the Terminal prompt):</p>
+<p><img src="img/brew-complete.png" class="img-fluid" alt="Brew installation complete. Don't forget to run the 3 lines."></p>
+<p>Line 1:</p>
+<pre><code>echo '# Set PATH, MANPATH, etc., for Homebrew.' &gt;&gt; /Users/nikhil/.zprofile</code></pre>
+<p>Line 2:</p>
+<pre><code>echo 'eval "$(/opt/homebrew/bin/brew shellenv)" ' &gt; /Users /nikhil/.zprofile</code></pre>
+<p>Line 3:</p>
+<pre><code>eval "$(/opt/homebrew/bin/brew shellenv)"</code></pre>
+</section>
+<section id="a-better-terminal---iterm2" class="level3">
+<h3 class="anchored" data-anchor-id="a-better-terminal---iterm2">A better terminal - iTerm2</h3>
+<p>Remember how I said there’s a better Terminal? It’s called iTerm2. A totally optional software, but I think it offers far more flexibility than the stock Terminal app.</p>
+<p>Let’s install it with Brew. Open up the stock Terminal app and run the following command:</p>
+<pre><code>brew install --cask iterm2</code></pre>
+<p><img src="img/iterm-install.png" class="img-fluid"></p>
+<p>From now on, we’ll assume that the default Terminal app is iTerm2.</p>
+</section>
+<section id="update-git-zsh" class="level3">
+<h3 class="anchored" data-anchor-id="update-git-zsh">Update git &amp; ZSH</h3>
+<p>Let’s kick things off and try to check the version of git that comes with macOS.</p>
+<p>Type the following into iTerm:</p>
+<pre><code>git --version</code></pre>
+<p>A prompt like this may show up:</p>
+<p><img src="img/git-prompt.png" class="img-fluid"></p>
+<p>So apparently git is not installed. Clicking on INSTALL and then going through the various prompts, you should have git installed. However, the git version that gets installed may not be the latest; Apple typically updates git with every macOS update.</p>
+<p>So we’re going to supplant the ‘default’ git with git from Brew!</p>
+<pre><code>brew install git</code></pre>
+<p>A few years ago, macOS transitioned away from Bash to ZSH. ZSH is more modern and also fun to work with - just like Bash (but better, I guess).</p>
+<p>Just like git, we should update ZSH using Brew and have the latest/greatest version.</p>
+<pre><code>brew install zsh</code></pre>
+<p>And now we have a much better Terminal app (iTerm2) and with awesome git &amp; ZSH versions.</p>
+</section>
+<section id="making-zsh-even-more-powerful---ohmyzsh" class="level3">
+<h3 class="anchored" data-anchor-id="making-zsh-even-more-powerful---ohmyzsh">Making ZSH even more powerful - OhMyZSH</h3>
+<p><a href="https://ohmyz.sh/">OhMyZSH</a>) is a framework that can really make the Terminal app (and iTerm2) extremely powerful and flexible. For instance, you can theme the heck out of the Terminal app and make it look very snazzy</p>
+<p>Installing OhMyZSH is super simple. Open up iTerm2 and run the following command:</p>
+<pre><code>sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"</code></pre>
+<p><img src="img/ohmyzsh-install.png" class="img-fluid"></p>
+<p>Let’s make OhMyZSH snazzy by adding a feature that allows for syntax highlighting:</p>
+<pre><code>brew install zsh-syntax-highlighting</code></pre>
+<p>Syntax highlighting can be especially when working with git or other commands in the Terminal (i.e., iTerm):</p>
+<p><img src="img/syntax-hilite.png" class="img-fluid"></p>
+</section>
+<section id="and-lets-make-zsh-pretty" class="level3">
+<h3 class="anchored" data-anchor-id="and-lets-make-zsh-pretty">And let’s make ZSH pretty</h3>
+<p>** I recommend this step only if you’re using iTerm**</p>
+<p>OhMyZSH also enables themes so the Terminal (iTerm) can look stunning. My favorite theme is <a href="https://github.com/romkatv/powerlevel10k">Powerlevel10k</a>.</p>
+<p>Theme installation can be a bit tricky, but straight-forward.</p>
 <ol type="1">
-<li><p>The avocado data that I’m using is commonly found and used on Kaggle. What I found lacking was the context around the different variables found within the dataset. For instance, the Hass Avocado Board (HAB) measures avocado sales in terms of weight - not units. While some users mention it, many don’t. I think having this context is important. I wanted to learn more about where the data came from and its context.</p></li>
-<li><p>In the book, <em>R Packages</em> by Hadley Wickham &amp; Jenny Bryan, there is a chapter about <a href="https://r-pkgs.org/r-cmd-check.html">Automated Checking</a> using the <a href="https://r-pkgs.org/r-cmd-check.html?q=travis#travis">Travis CI</a> service. I have seen many developers use a CI (continuous integration) service and <a href="https://travis-ci.com">Travis CI</a> seems to be quite popular. So I wanted to learn more about continuous integration and how I can use it for package development.</p></li>
+<li>Go to your home directory (using iTerm, not Finder)</li>
 </ol>
-<section id="behind-the-avocados" class="level2">
-<h2 class="anchored" data-anchor-id="behind-the-avocados">Behind the Avocados</h2>
-<p>I first became familiar with the <a href="https://www.kaggle.com/neuromusic/avocado-prices">avocado dataset</a> on Kaggle a couple years ago. If you click on that link, you’ll see a pretty decent explanation of the dataset. At first glance, you’ll think that the sales data represents units sold. However, when you look at the preview of the data, you’ll see how there are decimal values for variables such as <code>Total Volume</code> or <code>4046</code>(see image below). How can you sell a fractional unit of an avocado at retail?</p>
-<p><img src="img/kaggle1.png" width="400"></p>
-<p>For a while, I had accepted it, but it always bothered me. And for that time, I was lazy and busy with other things to really worry about it. After I published my first R package on CRAN, I thought about revisiting the avocado data and first see if anyone had created something similar on CRAN. In my quick search, I couldn’t find anything - other than a variety of folks using the Kaggle avocado dataset. So I set about digging into the origins of the dataset and try to determine the context.</p>
-<p>First, I had to register with the Hass Avocado Board - which was free, thankfully. Surprisingly, their website is very informative and they have LOTS of data on avocados. If anyone is interested in growing or marketing avocados, this organization has done an exemplary job of avocado research and all the information is free after registering.</p>
-<p>Here’s where I learned some nuances of the data they have. The HAB has CSV data that anyone can download. However, within that dataset, there are weekly sales totals for the contiguous US, totals for specific regions within the contiguous US, and totals for specific cities/sub-regions within regions. Furthermore, the ‘volume’ or ‘units’ used in the dataset are in US pounds - aka weight. Why? This isn’t explained very well, but from my own experience in crop production, weight is a very simple way to describe how much crop is available rather than units. While retailers may purchase and sell by the unit or piece, describing how much has been sold by weight is a ‘simpler’ approach that preserves any competitive or proprietary information that grower may want to retain.</p>
-<p>While I was studying this dataset and its nuances, I came to the conclusion that there are actually three datasets within the original data provided by the Hass Avocado Board. I don’t think the original author on Kaggle mentioned this, but I thought it would be useful to have it documented and presented in a way that preserves most of what the HAB provides.</p>
-<p>I did make some changes to the data in terms of excluding variables that described totals. I felt that these could be recreated by users as part of their feature engineering exercise - should they choose.</p>
-<p>In the end, I feel pretty good about documenting the dataset and providing the context needed for further analysis.</p>
+<pre><code>cd ~/</code></pre>
+<ol start="2" type="1">
+<li>Clone the repo</li>
+</ol>
+<pre><code>git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k</code></pre>
+<ol start="3" type="1">
+<li>Add the theme to your ZSH configuration file (.zshrc)</li>
+</ol>
+<pre><code>echo 'source ~/powerlevel10k/powerlevel10k.zsh-theme' &gt;&gt;~/.zshrc</code></pre>
+<ol start="4" type="1">
+<li><p>Completely exit out of iTerm (⌘+q)</p></li>
+<li><p>Relaunch iTerm and the configuration for Powerlevel10k should initiate</p></li>
+</ol>
+<p><img src="img/powerlevel-setup.png" class="img-fluid"></p>
+<p>If it does not show up, you can type the following:</p>
+<pre><code>p10k configure</code></pre>
+<p>Powerlevel10k has quite a few setup steps that it will walk you through. On one of the steps, it will ask you if you want to use Unicode or ASCII. Choose Unicode so that the iconography in iTerm will render correctly.</p>
+<p>And that should have our beautiful Terminal setup for success!</p>
 </section>
-<section id="continuous-integration" class="level2">
-<h2 class="anchored" data-anchor-id="continuous-integration">Continuous Integration</h2>
-<p>Perhaps the biggest benefit of CI platforms is the ability to have code tests run ‘in the background’ - especially when pull requests are made. The goal here is to ensure that potential bugs are found - enabling developer(s) to fix the issue prior to merging the code into production. While Hadley &amp; Jenny’s book talks about Travis CI, there are alternatives - such as GitHub Actions. All this was new to me (and still is) and I wanted to learn more about it. So I chose to go with GitHub Actions and proceeded to find out how I can leverage it with R.</p>
-<p>I chose not to go forward with Travis CI due to a <strong>MAJOR</strong> <a href="https://blog.travis-ci.com/2020-11-02-travis-ci-new-billing">change</a> in their pricing policy. Effectively, they will only give free accounts up to 10,000 credits - which expire after one year. Once all the credits are used up (or expired), the user has to sign up for a paid account<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. As a hobbyist, I don’t want to spend more money than I have to. I was pleasantly surprised to see that GitHub offers 2,000 minutes of GitHub Actions free for private repositories and unlimited minutes for public repositories.</p>
-<p>Definitely a no brainer and time to move forward with GitHub Actions. And GitHub Actions <a href="https://ropenscilabs.github.io/actions_sandbox/">works with R</a>!</p>
-<p>The highly versatile {usethis} package has a great function, <code>use_github_action_check_standard()</code> that quickly &amp; easily implements the necessary files to initiate &amp; use GitHub Actions.</p>
-<p>What this does, in terms of R package development, is enables GitHub to fire up some virtual machines in the cloud, run R-CMD-CHECK on your package, and provide a ‘summary’ of the results. This is a great way to check if your package will work on platforms other than the one you are developing on. In my case, I develop R packages on a Mac - so if it works on my Mac, I can safely assume it’ll work on other similar Mac’s. However, I don’t have access to a Windows or a Linux machine to test my package - and that’s where GitHub Actions steps in.</p>
-<p>I’ve ran (at the time of this writing) <a href="https://github.com/nikdata/avocado/actions">17 GitHub Actions</a> instances. You can click on that link and then click on any of the links to see the reports. You’ll also notice that I used GitHub Actions for my {pkgdown} site for the package.</p>
-<p>Here’s a quick peek at the results from the Windows release:</p>
-<p><img src="img/ga-windows.png" width="800"></p>
-<p>Note how the last line in the output basically shows no errors, warnings, or notes. Checking all three (Windows &amp; both Ubuntus) is how I confirmed if my package would work on those platforms. I definitely could have instructed GitHub Actions to test on a Mac platform, but I felt that was redundant and not necessary.</p>
-<p>I know I’ve just unlocked the tip of the iceberg here. As I develop packages for my own job, I can easily see myself using GitHub Actions as a way to ensure minimal bugs in addition to using {testthat}.</p>
 </section>
-<section id="tldr" class="level2">
-<h2 class="anchored" data-anchor-id="tldr">TL;DR</h2>
-<p>To recap:</p>
+<section id="now-we-need-python" class="level2">
+<h2 class="anchored" data-anchor-id="now-we-need-python">Now we need Python</h2>
+<p>By default, Python is available in macOS. However, I highly recommend installing a framework that enables a way to manage environments, packages, and even versions of Python.</p>
+<p>One of the most popular frameworks that is used is Anaconda. I don’t use it.</p>
+<p>Anaconda is great, but in my opinion it’s bloatware. It comes with an enormous amount of software that it can easily eat up 10 GB or more. One alternative is miniconda and it is very good since it is quite lean and only has the bare minimum. I don’t use that one either. Think of it as personal preference.</p>
+<p>I recently discovered <a href="https://mamba.readthedocs.io/en/latest/">mamba</a> and by extension <a href="https://github.com/conda-forge/miniforge">mambaforge</a>. Mamba is fast and works quite well.</p>
+<p>Installing mambaforge is easy. Download the script and open up iTerm. Navigate to the folder where the shell script was downloaded and execute the following (assuming the shell script was downloaded to the Downloads folder):</p>
+<pre><code>sh ~/Downloads/Mambaforge-MacOSX-arm64.sh</code></pre>
+<p>And now Python with Mambaforge is installed!</p>
+</section>
+<section id="the-usual-apps" class="level2">
+<h2 class="anchored" data-anchor-id="the-usual-apps">The Usual Apps</h2>
+<p>I use three main applications for my data science work (both professionally and personal use):</p>
 <ul>
-<li><p>I wanted to provide context on the avocado dataset used widely on Kaggle and I did that by documenting what I found and creating an R package</p></li>
-<li><p>I used GitHub Actions to do CI as a way to learn more about it and practice</p></li>
+<li><a href="https://posit.co/download/rstudio-desktop/">RStudio</a></li>
+<li><a href="https://code.visualstudio.com">Visual Studio Code (VSCode)</a></li>
+<li><a href="https://docker.com">Docker</a></li>
 </ul>
-<p>If you do use this package and find any bugs, or have any comments/questions, please feel free to open an issue! Thanks!</p>
+<p>All three of these apps I download from their respective websites and not from Brew. This is more of a personal preference.</p>
 
 
 </section>
@@ -216,7 +308,8 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
 
 <ol>
-<li id="fn1"><p>While I understand why they’re making the change, I also feel that their change is not very accommodating to hobbyists. Alas, this is a much larger discussion and I, for one, am not qualified or well-versed in discussing it.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1"><p>M2 8 core CPU with 8 core GPU, 16 GB RAM, and 512 GB SSD for those who want to know the specs<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>And I’ll explain why I chose a MacBook Air over a MacBook Pro in a later post.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div quarto-reuse="quarto-reuse" class="quarto-appendix-contents"><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</a></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

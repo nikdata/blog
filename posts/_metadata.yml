@@ -30,5 +30,5 @@ date-format: "DD MMMM YYYY"
 code-copy: true
 code-fold: false
 code-line-numbers: true
-freeze: auto
+# freeze: auto
 # code-overflow: wrap
