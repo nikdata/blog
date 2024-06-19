@@ -1,0 +1,10 @@
+wheel
+pandas
+plotly
+plotly-express
+ipywidgets
+jupyterlab
+polars
+seaborn
+numpy
+matplotlib
