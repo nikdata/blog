@@ -2,10 +2,10 @@
     "name": "${localEnv:PROJECT_A_NAME:nikblog}",
     // "image": "python:3.10",
     "build": {
-        "dockerfile": "Dockerfile",
+        "dockerfile": "dockerfile",
         "args": {
             "ENV_NAME": "${localEnv:PROJECT_A_NAME:nikblog}",
-            "PYTHON_VER": "${localEnv:PYTHON_VER:3.11}",
+            "PYTHON_VER": "${localEnv:PYTHON_VER:3.12}",
             "QUARTO_VER": "${localEnv:QUARTO_VER:1.4.555}"
         }
     },
@@ -32,6 +32,10 @@
             ]
         }
     },
+    "runArgs": [
+        "--name", "${localEnv:USER}_blogcontainer"
+    ]
+
     // Optional, mount local volume:
     // "mounts": [
     //     "source=${localEnv:HOME},target=/home,type=bind,consistency=cache"

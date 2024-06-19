@@ -8,4 +8,5 @@
     wget \
     gdebi \
     xdg-utils \
+    git \
     && rm -rf /var/lib/apt/lists/*

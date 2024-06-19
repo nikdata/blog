@@ -1,13 +1,13 @@
 # define arg variable for python version
-ARG PYTHON_VER="3.11"
+ARG PYTHON_VER="3.12"
 
 # define base image
-FROM python:$PYTHON_VER
+FROM python:$PYTHON_VER-slim-bookworm
 
 # at this point the arg variable PYTHON_VER is null since it has been used up
 
-# define arg varables again
-ARG PYTHON_VER="3.11"
+# define arg varables for quarto version & environment name
+ARG PYTHON_VER="3.12"
 ARG QUARTO_VER="1.4.555"
 ARG ENV_NAME="quarto-nik"
 
