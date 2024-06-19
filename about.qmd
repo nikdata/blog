@@ -1,0 +1,24 @@
+---
+title: "Nik Agarwal"
+image: profile-pic.jpg
+about:
+  template: jolla
+  links:
+    - icon: github
+      text: GitHub
+      href: https://github.com/nikdata
+    - icon: linkedin
+      text: LinkedIn
+      href: https://linkedin.com/in/nikagarwal
+    - icon: mastodon
+      text: Mastodon
+      href: https://fosstodon.org/@nikdata
+    - icon: reddit
+      text: Reddit
+      href: https://www.reddit.com/user/cmdrmac/
+---
+
+I'm a data scientist and I like to talk about data science and road cycling.
+
+Thanks for visiting!
+

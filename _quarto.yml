@@ -1,0 +1,29 @@
+project:
+  type: website
+
+website:
+  title: "{nik}"
+  search: false
+  navbar:
+    right:
+      - href: about.qmd
+        text: About Me
+      - icon: github
+        href: https://github.com/nikdata
+      - icon: linkedin
+        href: https://linkedin.com/in/nikagarwal
+      - icon: mastodon
+        href: https://fosstodon.org/@nikdata
+      - icon: reddit
+        href: https://www.reddit.com/user/cmdrmac/
+  page-footer: 
+    center:
+      - text: copyright 2024
+    border: true
+format:
+  html:
+    theme: cyborg
+    css: styles.css
+
+
+

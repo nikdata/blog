@@ -1,0 +1,44 @@
+[
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "Nik Agarwal",
+    "section": "",
+    "text": "I’m a data scientist and I like to talk about data science and road cycling.\nThanks for visiting!"
+  },
+  {
+    "objectID": "posts/welcome/index.html",
+    "href": "posts/welcome/index.html",
+    "title": "Welcome To My Blog",
+    "section": "",
+    "text": "This is the first post in a Quarto blog. Welcome!\n\nSince this post doesn’t specify an explicit image, the first image in the post will be used in the listing page of posts."
+  },
+  {
+    "objectID": "posts/20240618_mdtext/index.html",
+    "href": "posts/20240618_mdtext/index.html",
+    "title": "Example Markdown Post",
+    "section": "",
+    "text": "This is normal text.\nThis is bold text\nThis is italic text\nUnordered List\nOrdered List"
+  },
+  {
+    "objectID": "posts/20240618_mdtext/index.html#heading-2",
+    "href": "posts/20240618_mdtext/index.html#heading-2",
+    "title": "Example Markdown Post",
+    "section": "Heading 2",
+    "text": "Heading 2\n\nHeading 3\n\nHeading 4\n\nHeading 5\n\nHeading 6"
+  },
+  {
+    "objectID": "posts/post-with-code/index.html",
+    "href": "posts/post-with-code/index.html",
+    "title": "Post With Code",
+    "section": "",
+    "text": "This is a post with executable code."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "{nik}",
+    "section": "",
+    "text": "Post With Code\n\n\n\n\n\n\n\n\n\n\n\n19-June-2024\n\n\nHarlow Malloc\n\n\n\n\n\n\n\n\n\n\n\n\nExample Markdown Post\n\n\n\n\n\n\n\n\n\n\n\n18-June-2024\n\n\nNik Agarwal\n\n\n\n\n\n\n\n\n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\n\n\n\n\n\n16-June-2024\n\n\nTristan O’Malley\n\n\n\n\n\n\nNo matching items"
+  }
+]
