@@ -4,14 +4,42 @@
     "href": "about.html",
     "title": "Nik Agarwal",
     "section": "",
-    "text": "I’m a data scientist and I like to talk about data science and road cycling.\nThanks for visiting!"
+    "text": "I’m a data scientist and I enjoy writing about data science and road cycling.\nThanks for visiting!"
   },
   {
-    "objectID": "posts/welcome/index.html",
-    "href": "posts/welcome/index.html",
-    "title": "Welcome To My Blog",
+    "objectID": "posts/20230118_settingupmba/index.html",
+    "href": "posts/20230118_settingupmba/index.html",
+    "title": "How I Set Up My New MacBook Air",
     "section": "",
-    "text": "This is the first post in a Quarto blog. Welcome!\n\nSince this post doesn’t specify an explicit image, the first image in the post will be used in the listing page of posts."
+    "text": "I recently bought a new MacBook Air1 and I was ecstatic to set it up from scratch. My previous computer (or current since I still use it) was last setup back in 2018 and I kept installing/updating software to it that I forgot all the cool things. In fact, in the last 4 years, macOS had switch from Bash to ZSH as its default shell and I can’t even remember using Bash anymore.\nIn this post, I wanted to share with you how I went about setting up my new MacBook Air2.\nSo here’s the kicker. My new MacBook Air runs on the M2 processor (aka Apple Silicon), which is based on the ARM architecture. I found this website that summarizes the difference between the x86/amd64 architecture versus ARM.\nTo put it succinctly, ARM requires different software builds than the previous Intel Macs. In many cases, developers have released “Universal” builds of their software that can work on both Intel Macs and Apple Silicon Macs. Some software, however, has not been updated and you’ll be prompted to install Rosetta2:\nThe really cool thing about Rosetta 2 is its ability to run x86/amd64 software on Apple Silicon and the performance is very good. However, I don’t want to run any software that’s not optimized for Apple Silicon, so I have only installed software that is optimized for Apple Silicon.\nAs you can tell from the image above, I haven’t installed Quarto. Quarto is - in my view - the better replacement for RMarkdown since it works with Python and Julia in addition to R. I’m betting that the Quarto dev team is working on an ARM optimized version (hopefully it’ll be in version 1.3).\nSteps:"
+  },
+  {
+    "objectID": "posts/20230118_settingupmba/index.html#making-the-terminal-work-for-me",
+    "href": "posts/20230118_settingupmba/index.html#making-the-terminal-work-for-me",
+    "title": "How I Set Up My New MacBook Air",
+    "section": "Making the Terminal Work For Me",
+    "text": "Making the Terminal Work For Me\nI use the Terminal quite a bit. It’s the easiest and most efficient way to work with git. The stock Terminal app on the Mac is good, like really good. And it does the job. BUT, it can be better.\n\n\n\n\n\n\nPackage Manager - Brew\nFirst off, I highly recommend the use of Brew. Brew is a package manager and is one of the easiest ways to install free and open-source (FOSS) software. And they’re super easy to uninstall!\nTo install Brew, simple copy, paste, and execute the following command the stock Terminal app:\n/bin/bash -c \"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)\"\nWithin moments, Brew will begin the installation:\n\n\n\n\n\nAfter a few moments, Brew will have completed and will let you know that you should run 3 extra lines (by copying and pasting them at the Terminal prompt):\n\n\n\n\n\nLine 1:\necho '# Set PATH, MANPATH, etc., for Homebrew.' &gt;&gt; /Users/nikhil/.zprofile\nLine 2:\necho 'eval \"$(/opt/homebrew/bin/brew shellenv)\" ' &gt; /Users /nikhil/.zprofile\nLine 3:\neval \"$(/opt/homebrew/bin/brew shellenv)\"\n\n\nA better terminal - iTerm2\nRemember how I said there’s a better Terminal? It’s called iTerm2. A totally optional software, but I think it offers far more flexibility than the stock Terminal app.\nLet’s install it with Brew. Open up the stock Terminal app and run the following command:\nbrew install --cask iterm2\n\n\n\n\n\nFrom now on, we’ll assume that the default Terminal app is iTerm2.\n\n\nUpdate git & ZSH\nLet’s kick things off and try to check the version of git that comes with macOS.\nType the following into iTerm:\ngit --version\nA prompt like this may show up:\n\n\n\n\n\nSo apparently git is not installed. Clicking on INSTALL and then going through the various prompts, you should have git installed. However, the git version that gets installed may not be the latest; Apple typically updates git with every macOS update.\nSo we’re going to supplant the ‘default’ git with git from Brew!\nbrew install git\nA few years ago, macOS transitioned away from Bash to ZSH. ZSH is more modern and also fun to work with - just like Bash (but better, I guess).\nJust like git, we should update ZSH using Brew and have the latest/greatest version.\nbrew install zsh\nAnd now we have a much better Terminal app (iTerm2) and with awesome git & ZSH versions.\n\n\nMaking ZSH even more powerful - OhMyZSH\nOhMyZSH) is a framework that can really make the Terminal app (and iTerm2) extremely powerful and flexible. For instance, you can theme the heck out of the Terminal app and make it look very snazzy\nInstalling OhMyZSH is super simple. Open up iTerm2 and run the following command:\nsh -c \"$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)\"\n\n\n\n\n\nLet’s make OhMyZSH snazzy by adding a feature that allows for syntax highlighting:\nbrew install zsh-syntax-highlighting\nSyntax highlighting can be especially when working with git or other commands in the Terminal (i.e., iTerm):\n\n\n\n\n\n\n\nAnd let’s make ZSH pretty\n** I recommend this step only if you’re using iTerm**\nOhMyZSH also enables themes so the Terminal (iTerm) can look stunning. My favorite theme is Powerlevel10k.\nTheme installation can be a bit tricky, but straight-forward.\n\nGo to your home directory (using iTerm, not Finder)\n\ncd ~/\n\nClone the repo\n\ngit clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k\n\nAdd the theme to your ZSH configuration file (.zshrc)\n\necho 'source ~/powerlevel10k/powerlevel10k.zsh-theme' &gt;&gt;~/.zshrc\n\nCompletely exit out of iTerm (⌘+q)\nRelaunch iTerm and the configuration for Powerlevel10k should initiate\n\n\n\n\n\n\nIf it does not show up, you can type the following:\np10k configure\nPowerlevel10k has quite a few setup steps that it will walk you through. On one of the steps, it will ask you if you want to use Unicode or ASCII. Choose Unicode so that the iconography in iTerm will render correctly.\nAnd that should have our beautiful Terminal setup for success!"
+  },
+  {
+    "objectID": "posts/20230118_settingupmba/index.html#now-we-need-python",
+    "href": "posts/20230118_settingupmba/index.html#now-we-need-python",
+    "title": "How I Set Up My New MacBook Air",
+    "section": "Now we need Python",
+    "text": "Now we need Python\nBy default, Python is available in macOS. However, I highly recommend installing a framework that enables a way to manage environments, packages, and even versions of Python.\nOne of the most popular frameworks that is used is Anaconda. I don’t use it.\nAnaconda is great, but in my opinion it’s bloatware. It comes with an enormous amount of software that it can easily eat up 10 GB or more. One alternative is miniconda and it is very good since it is quite lean and only has the bare minimum. I don’t use that one either. Think of it as personal preference.\nI recently discovered mamba and by extension mambaforge. Mamba is fast and works quite well.\nInstalling mambaforge is easy. Download the script and open up iTerm. Navigate to the folder where the shell script was downloaded and execute the following (assuming the shell script was downloaded to the Downloads folder):\nsh ~/Downloads/Mambaforge-MacOSX-arm64.sh\nAnd now Python with Mambaforge is installed!"
+  },
+  {
+    "objectID": "posts/20230118_settingupmba/index.html#the-usual-apps",
+    "href": "posts/20230118_settingupmba/index.html#the-usual-apps",
+    "title": "How I Set Up My New MacBook Air",
+    "section": "The Usual Apps",
+    "text": "The Usual Apps\nI use three main applications for my data science work (both professionally and personal use):\n\nRStudio\nVisual Studio Code (VSCode)\nDocker\n\nAll three of these apps I download from their respective websites and not from Brew. This is more of a personal preference."
+  },
+  {
+    "objectID": "posts/20230118_settingupmba/index.html#footnotes",
+    "href": "posts/20230118_settingupmba/index.html#footnotes",
+    "title": "How I Set Up My New MacBook Air",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nM2 8 core CPU with 8 core GPU, 16 GB RAM, and 512 GB SSD for those who want to know the specs↩︎\nAnd I’ll explain why I chose a MacBook Air over a MacBook Pro in a later post.↩︎"
   },
   {
     "objectID": "posts/20240618_mdtext/index.html",
@@ -28,17 +56,52 @@
     "text": "Heading 2\n\nHeading 3\n\nHeading 4\n\nHeading 5\n\nHeading 6"
   },
   {
-    "objectID": "posts/post-with-code/index.html",
-    "href": "posts/post-with-code/index.html",
-    "title": "Post With Code",
+    "objectID": "posts/20180101_magic8ballfunction/index.html",
+    "href": "posts/20180101_magic8ballfunction/index.html",
+    "title": "Magic 8 Ball Function",
     "section": "",
-    "text": "This is a post with executable code."
+    "text": "In my PREDICT 454 class, one of the R challenges that our professor wanted us to undertake involved creating a simple function that acted’ like the Magic 8 Ball. So let’s get to it!"
+  },
+  {
+    "objectID": "posts/20180101_magic8ballfunction/index.html#requirements",
+    "href": "posts/20180101_magic8ballfunction/index.html#requirements",
+    "title": "Magic 8 Ball Function",
+    "section": "Requirements",
+    "text": "Requirements\n\nThe function must output one of the following texts:\n\nI dont see that happening.\nYou must be dreaming.\nChances are good.\nIf you work hard and stay focused, then this might happen.\nWhen the sun shines, it shines on your face.\nDefinitely going to happen!\nTake some time to think about it.\nThis is not a good idea!\nThis is a great idea!\nCannot be determined at this time. Try Again!\n\nAdd an option feature in which the user can include the seed number.\nThe function should be called magic.8ball() and if a seed is to be used, then the function should be run as magic.8ball()."
+  },
+  {
+    "objectID": "posts/20180101_magic8ballfunction/index.html#approach",
+    "href": "posts/20180101_magic8ballfunction/index.html#approach",
+    "title": "Magic 8 Ball Function",
+    "section": "Approach",
+    "text": "Approach\nLet’s start with defining our messages into a vector:\n# store the messages into a vector\nmessages &lt;- c(\"I don't see that happening.\",\n              'You must be dreaming.',\n              'Chances are good.',\n              'If you work hard and stay focused, then this might happen.',\n              'When the sun shines, it shines on your face.',\n              'Definitely going to happen!',\n              'Take some time to think about it.',\n              'This is not a good idea!',\n              'This is a great idea!',\n              'Cannot be determined at this time.  Try Again!')\nKeep in mind that in R, you can call a specific ‘spot’ within a vector. For instance, if we wanted the third1 message (“Chances are good.”), we simply have to say messages[3]:\n[1] \"This is a great idea!\"\nNow let’s write a function. In R, you have to ‘store’ the function in a variable name. That variable name becomes the name of the function.\nIf we want arguments (i.e., values that can be supplied by the user for the function to be used), we simply add a name for the value within the function() argument. Here, we’ll use the input value name (i.e., argument) of ‘seed_value’.\nI’ve commmented the code to help explain what it’s doing.\nmagic.8ball &lt;- function(seed_value) {\n  # check to see if seed_value argument is missing\n  # if missing, output will change every time function is run\n  if(missing(seed_value)) {\n    x &lt;- sample(1:10,1)\n  } else {\n    # if seed is provided, then the results are reproducible\n    set.seed(seed_value)\n    x &lt;- sample(1:10,1)\n  }\n  \n  # store the message that has been 'selected'\n  out &lt;- messages[x]\n  \n  # return the message to the console\n  return(out)\n}\nNow let’s call the function in 2 ways: without a seed and with a seed.\nWithout a seed:\n[1] \"Take some time to think about it.\"\nWith a seed:\n[1] \"Chances are good.\"\nIf no seed_value is provided, then a random message will be generated."
+  },
+  {
+    "objectID": "posts/20180101_magic8ballfunction/index.html#some-takeaways",
+    "href": "posts/20180101_magic8ballfunction/index.html#some-takeaways",
+    "title": "Magic 8 Ball Function",
+    "section": "Some Takeaways",
+    "text": "Some Takeaways\nI highly recommend having some defensive coding practices when using functions. For instance, the missing() function (built-in to base R) is helpful when the user does not specify a specific argument. We could even take this a step further and check to make sure that the user enters an integer value (for example).\nFunctions are powerful in almost any language. They help to reduce “copying/pasting” code multiple times, help the code look cleaner, and far easier to work with when you have to make changes."
+  },
+  {
+    "objectID": "posts/20180101_magic8ballfunction/index.html#tldr",
+    "href": "posts/20180101_magic8ballfunction/index.html#tldr",
+    "title": "Magic 8 Ball Function",
+    "section": "TL;DR",
+    "text": "TL;DR\nHere’s the final code:\nmagic.8ball &lt;- function(seed_value) {\n  # check to see if the argument is missing\n  # if argument is missing, the output will change every time the function is run\n  if(missing(seed_value)) {\n    x &lt;- sample(1:10,1)\n  } else {\n    # if seed is provided, then the results are reproducible\n    set.seed(seed_value)\n    x &lt;- sample(1:10,1)\n  }\n  \n  # store the message that has been 'selected'\n  out &lt;- messages[x]\n  \n  # return the message to the console\n  return(out)\n}"
+  },
+  {
+    "objectID": "posts/20180101_magic8ballfunction/index.html#footnotes",
+    "href": "posts/20180101_magic8ballfunction/index.html#footnotes",
+    "title": "Magic 8 Ball Function",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nUnlike Python, R is not 0 indexed. This means that initial spots or values start at position 1 not 0.↩︎"
   },
   {
     "objectID": "index.html",
     "href": "index.html",
     "title": "{nik}",
     "section": "",
-    "text": "Post With Code\n\n\n\n\n\n\n\n\n\n\n\n19-June-2024\n\n\nHarlow Malloc\n\n\n\n\n\n\n\n\n\n\n\n\nExample Markdown Post\n\n\n\n\n\n\n\n\n\n\n\n18-June-2024\n\n\nNik Agarwal\n\n\n\n\n\n\n\n\n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\n\n\n\n\n\n16-June-2024\n\n\nTristan O’Malley\n\n\n\n\n\n\nNo matching items"
+    "text": "Example Markdown Post\n\n\n\n\n\n\n\n\n\n\n\n18-Jun-2024\n\n\nNik Agarwal, Nik Agarwal\n\n\n\n\n\n\n\n\n\n\n\n\nHow I Set Up My New MacBook Air\n\n\n\n\n\nUp and running with a new Mac\n\n\n\n\n\n18-Jan-2023\n\n\nNik Agarwal\n\n\n\n\n\n\n\n\n\n\n\n\nMagic 8 Ball Function\n\n\n\n\n\nLearning to write a function in R\n\n\n\n\n\n01-Jan-2018\n\n\nNik Agarwal\n\n\n\n\n\n\nNo matching items"
   }
 ]

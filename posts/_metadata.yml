@@ -5,4 +5,22 @@
 freeze: true
 
 # Enable banner style title blocks
-title-block-banner: true
+title-block-banner: false
+
+# use specific layout for all posts
+page-layout: article
+
+# Author name of all blog posts
+author: 
+  - name: 'Nik Agarwal'
+    url: https://nik.netlify.app
+    orcid: 0000-0003-1470-7472
+
+# Date format
+date-format: DD-MMM-YYYY
+
+# code view
+code-copy: true
+code-fold: false
+code-line-numbers: true
+code-overflow: wrap

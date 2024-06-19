@@ -7,7 +7,7 @@ website:
   navbar:
     right:
       - href: about.qmd
-        text: About Me
+        text: About
       - icon: github
         href: https://github.com/nikdata
       - icon: linkedin
@@ -16,6 +16,8 @@ website:
         href: https://fosstodon.org/@nikdata
       - icon: reddit
         href: https://www.reddit.com/user/cmdrmac/
+      - icon: strava
+        href: https://www.strava.com/athletes/8185543
   page-footer: 
     center:
       - text: copyright 2024

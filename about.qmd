@@ -18,7 +18,7 @@ about:
       href: https://www.reddit.com/user/cmdrmac/
 ---
 
-I'm a data scientist and I like to talk about data science and road cycling.
+I'm a data scientist and I enjoy writing about data science and road cycling.
 
 Thanks for visiting!
 

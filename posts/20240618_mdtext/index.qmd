@@ -3,6 +3,7 @@ title: "Example Markdown Post"
 author: "Nik Agarwal"
 date: "2024-06-18"
 draft: false
+image: "practice.jpg"
 ---
 
 This is normal text.
