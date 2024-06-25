@@ -20,7 +20,7 @@ website:
         href: https://www.strava.com/athletes/8185543
   page-footer: 
     center:
-      - text: copyright 2024
+      - text: © 2018 - 2024 | Nik Agarwal
     border: true
 format:
   html:

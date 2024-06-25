@@ -8,3 +8,8 @@ pre {
     background-color: rgb(50, 50, 50);
     color: rgb(225,225,225);
 }
+
+figcaption {
+    margin: auto;
+    text-align: center;
+}
