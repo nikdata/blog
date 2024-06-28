@@ -33,7 +33,8 @@
         }
     },
     "runArgs": [
-        "--name", "${localEnv:USER}_blogcontainer"
+        // "--name", "${localEnv:USER}_blogcontainer"
+        "--name", "nik_blog_container"
     ]
 
     // Optional, mount local volume:
