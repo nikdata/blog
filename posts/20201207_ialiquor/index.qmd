@@ -4,8 +4,6 @@ description: "Say hello to my first R package!"
 date: "2020 December 07"
 draft: false
 toc-depth: 4
-categories:
-  - R
 image: "img/ialiquor.png"
 ---
 

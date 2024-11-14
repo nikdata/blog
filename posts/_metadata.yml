@@ -1,34 +1,30 @@
-# Options specified here will apply to all posts in this folder
+# options specified here will apply to all posts in this folder
 
 # freeze computational output
-freeze: auto
+# (see https://quarto.org/docs/projects/code-execution.html#freeze)
+freeze: true
 
 # Enable banner style title blocks
 title-block-banner: false
 
-# Author name of all blog posts
-author: 
-  - name: 'Nik'
-    url: https://nik.netlify.app
-    orcid: 0000-0003-1470-7472
-
-# Enable CC licence appendix
-license: "CC BY"
-appendix-style: default
-
-# Table of content settings
-toc: true
-toc-depth: 3
-toc-location: left
-
+# use specific layout for all posts
 page-layout: article
 
-# date format
-date-format: "DD MMMM YYYY"
+# Author name of all blog posts
+author: 
+  - name: 
+      given: Nikhil
+      family: Agarwal
+      literal: Nik Agarwal
+    url: https://nik.netlify.app
+    orcid: 0000-0003-1470-7472
+    email: nikagarwal@niks.me
+
+# Date format
+date-format: DD MMM YY
 
 # code view
 code-copy: true
 code-fold: false
 code-line-numbers: true
-# freeze: auto
-# code-overflow: wrap
+code-overflow: wrap

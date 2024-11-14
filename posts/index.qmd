@@ -1,0 +1,21 @@
+---
+listing:
+  contents: 
+  - '*.qmd'
+  sort: "date desc"
+  type: default
+  categories: false
+  sort-ui: false
+  filter-ui: false
+  date-format: DD MMM YYYY
+  image-placeholder: default-image.jpg
+  image-height: 150px
+  fields: 
+    - date
+    - title
+    - description
+    - image
+page-layout: full
+title: ""
+title-block-banner: false
+---

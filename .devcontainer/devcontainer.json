@@ -1,49 +1,52 @@
 {
-	"name": "Personal Blog Container",
-	"build": {
-		"dockerfile": "dockerfile",
+    "name": "${localEnv:PROJECT_NAME:nikblog}",
+    // "image": "python:3.10",
+    "build": {
+        "dockerfile": "dockerfile",
+        "args": {
+            "ENV_NAME": "${localEnv:PROJECT_NAME:nikblog}",
+            "PYTHON_VER": "${localEnv:PYTHON_VER:3.12}",
+            "QUARTO_VER": "${localEnv:QUARTO_VER:1.6.33}"
+        }
+    },
+    "customizations": {
+        "settings": {
+            "python.defaultInterpreterPath": "/opt/conda/envs/${localEnv:PROJECT_NAME:nikblog}/bin/python3",
+            "python.selectInterpreter": "/opt/conda/envs/${localEnv:PROJECT_NAME:nikblog}/bin/python3"
+        },
+        "vscode": {
+            "extensions": [
+                // Documentation Extensions
+                "quarto.quarto",
+                "purocean.drawio-preview",
+                "redhat.vscode-yaml",
+                "yzhang.markdown-all-in-one",
+                // Docker Supporting Extensions
+                "ms-azuretools.vscode-docker",
+                "ms-vscode-remote.remote-containers",
+                // Python Extensions
+                "ms-python.python",
+                "ms-toolsai.jupyter",
+                // Github Actions
+                "github.vscode-github-actions"
+            ]
+        }
+    },
+    "runArgs": [
+        // "--name", "${localEnv:USER}_blogcontainer"
+        "--name", "nik_blog_container"
+    ]
 
-	},
-
-	// Set *default* container specific settings.json values on container create.
-	"settings": {
-		"r.rterm.linux": "/usr/local/bin/radian",
-		"r.bracketedPaste": true,
-		"r.plot.useHttpgd": true,
-		"[r]": {
-			"editor.wordSeparators": "`~!@#%$^&*()-=+[{]}\\|;:'\",<>/?"
-		}
-	},
-
-	// Add the IDs of extensions you want installed when the container is created.
-	"extensions": [
-		// Add Jupyter, R and Python vscode extensions
-		"REditorSupport.r",
-		"rdebugger.r-debugger",
-		"ms-toolsai.jupyter",
-		"ms-toolsai.jupyter-renderers",
-		"ms-python.python",
-		"ms-python.vscode-pylance",
-		"vsls-contrib.codetour"
-	],
-
-	// Forward Jupyter and RStudio ports
-	"forwardPorts": [8787],
-	"portsAttributes": {
-		"8787": {
-			"label": "Rstudio",
-			"requireLocalPort": true,
-			"onAutoForward": "ignore"
-		}
-	},
-
-	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": "sudo rstudio-server start",
-	// "postCreateCommand": "pip3 install -r requirements.txt",
-
-	// Use 'postStartCommand' to run commands after a container has started.
-	"postStartCommand": "sudo service rstudio-server restart",
-
-	// Comment out to connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
-	"remoteUser": "rstudio"
+    // Optional, mount local volume:
+    // "mounts": [
+    //     "source=${localEnv:HOME},target=/home,type=bind,consistency=cache"
+    // ]
+    // "remoteEnv": {
+    //     "MY_VAR": "${localEnv:MY_VAR:test_var}"
+    // },
+    // "runArgs": [
+    //     "--env-file",
+    //     ".devcontainer/devcontainer.env"
+    // ],
+    // "postCreateCommand": "python3 tests/test1.py"
 }

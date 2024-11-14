@@ -3,28 +3,32 @@ project:
 
 website:
   title: "{nik}"
-  page-navigation: false
+  description: "Nik's personal blog."
+  search: false
   navbar:
     right:
-      - href: index.qmd
-        text: hello
-      - href: posts.qmd
-        text: blog
+      - text: blog
+        href: posts
       - icon: github
         href: https://github.com/nikdata
+      - icon: linkedin
+        href: https://linkedin.com/in/nikagarwal
       - icon: mastodon
-        href: https://fosstodon.org/@nikagarwal
-  page-footer:
-    center: 
-      - "Copyright 2018 - 2022, Nikhil Agarwal"
-    right:
-      - icon: github
-        href: https://github.com/nikdata
-      - icon: mastodon
-        href: https://fosstodon.org/@nikagarwal
-
+        href: https://fosstodon.org/@nikdata
+      - icon: reddit
+        href: https://www.reddit.com/user/cmdrmac/
+      - text: "{{< iconify fa6-brands bluesky >}}"
+        href: https://bsky.app/profile/nikhilagarwal.bsky.social
+      - icon: strava
+        href: https://www.strava.com/athletes/8185543
+  page-footer: 
+    center:
+      - text: © 2018 - 2024 | Nik Agarwal
+    border: true
 format:
   html:
-    theme: slate
+    theme: cyborg
     css: styles.css
-    mainfont: Quicksand
+
+
+

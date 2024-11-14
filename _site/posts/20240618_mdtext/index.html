@@ -7,9 +7,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Nik Agarwal">
-<meta name="description" content="Say hello to my first R package!">
 
-<title>The {ialiquor} R Package – {nik}</title>
+<title>Example Markdown Post – {nik}</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -53,6 +52,7 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<meta name="quarto:status" content="draft">
 
 
 <link rel="stylesheet" href="../../styles.css">
@@ -61,7 +61,7 @@ ul.task-list li input[type="checkbox"] {
 <body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
+  <header id="quarto-header" class="headroom fixed-top"><div id="quarto-draft-alert" class="alert alert-warning"><i class="bi bi-pencil-square"></i>Draft</div>
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
@@ -124,14 +124,9 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">The {ialiquor} R Package</h1>
+<h1 class="title">Example Markdown Post</h1>
 </div>
 
-<div>
-  <div class="description">
-    Say hello to my first R package!
-  </div>
-</div>
 
 
 <div class="quarto-title-meta">
@@ -146,7 +141,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">07 Dec 20</p>
+      <p class="date">18 Jun 24</p>
     </div>
   </div>
   
@@ -158,69 +153,50 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>I’m pleased to say that I have my first R package, {ialiquor}, published on CRAN (version 0.1.0 as of this writing). Here are a few links to the package repo &amp; vignettes:</p>
+<p>This is normal text.</p>
+<p>This is <strong>bold</strong> text</p>
+<p>This is <em>italic</em> text</p>
+<p>Unordered List</p>
 <ul>
-<li>Package Repo: <a href="https://github.com/nikdata/ialiquor">https://github.com/nikdata/ialiquor</a></li>
-<li>Package Webpage: <a href="https://nikdata.github.io/ialiquor/index.html">https://nikdata.github.io/ialiquor/index.html</a></li>
-<li>Vignettes: <a href="https://nikdata.github.io/ialiquor/articles/">https://nikdata.github.io/ialiquor/articles/</a></li>
-</ul>
-<p>I’ve tried to document as much as I could on the repo and the package website - so I’ll try not to repeat myself in this post.</p>
-<section id="about-ialiquor" class="level2">
-<h2 class="anchored" data-anchor-id="about-ialiquor">About {ialiquor}</h2>
-<p>The {ialiquor} package conveniently summarizes by month the Class E liquor sales in the state of Iowa. Class E liquor, as defined by the state, is:</p>
-<blockquote class="blockquote">
-<p>For grocery, liquor and convenience stores, etc. Allows for the sale of alcoholic liquor for off-premises consumption in original unopened containers. No sales by the drink. Sunday sales are included. Also allows wholesale sales to on-premises Class A, B, C and D liquor licensees but must have a TTB Federal Wholesale Basic Permit.</p>
-</blockquote>
-<p>In plain English, this means that Class E is talking about hard liquor (excluding wine and beer).</p>
-</section>
-<section id="purpose" class="level2">
-<h2 class="anchored" data-anchor-id="purpose">Purpose</h2>
-<p>I really had two goals with this package:</p>
+<li>item 1</li>
+<li>item 2</li>
+<li>item 3
 <ul>
-<li>learn how to create a dataset only package</li>
-<li>try to publish on CRAN</li>
+<li>sub-item 1</li>
+<li>sub-item 2</li>
+</ul></li>
 </ul>
-<p>Needless to say, as I was developing this package, I was able to learn more about the different nuances to be aware of if the goal is to publish a package on CRAN.</p>
-</section>
-<section id="dataset-only" class="level2">
-<h2 class="anchored" data-anchor-id="dataset-only">Dataset only?</h2>
-<p>It will help to know that the dataset (found <a href="https://data.iowa.gov/Sales-Distribution/Iowa-Liquor-Sales/m3tr-qhgy">here</a>) is actually a daily snapshot of the sales of Class E liquor (updated monthly). What’s really peculiar is how the State of Iowa manages the sales. For instance, retailers cannot buy Class E liquor directly from vendors/manufacturers. Rather, the state purchases the product and then allows the retailers within the state (that have the appropriate purchasing license - known as Class E) to purchase the product. Loosely put, the State of Iowa has a monopoly and can easily generate profit from the sales (but I digress).</p>
-<p>Overall, the data are over several gigabytes and date back to January 1, 2012. This is an extremely large dataset and CRAN would never approve a package with such a large dataset. Keep in mind that CRAN only allows packages up to 5 MB (larger ones could be approved, but highly unlikely)<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. For the purposes I set out to achieve, it made sense to aggregate to a monthly level. However, the dataset was still too large and that’s where I decided to trim it to no earlier than 2015.</p>
-<p>In order to create the dataset, I simply had to create a query using <a href="https://dev.socrata.com/docs/queries/">SODA</a>. This format essentially allows you to construct a query onto the URL of the dataset. Although the <a href="https://github.com/Chicago/RSocrata">{RSocrata}</a> package exists, I found it to be pretty poor<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> in helping construct a query (unlike the sodapy library for Python).</p>
-<p>With all that said, it did not make sense to me to add any functions per se for further analysis. Part of my intention was to make the liquor data from the State of Iowa a bit more manageable. And I think the {ialiquor} package does just that.</p>
-</section>
-<section id="publishing-on-cran" class="level2">
-<h2 class="anchored" data-anchor-id="publishing-on-cran">Publishing on CRAN</h2>
-<p>I’ve attended several RStudio conferences over years and one common theme I’ve heard from many folks is the daunting process of getting a package approved by CRAN. In my experience, the ‘daunting’ part was the wait time from when I submitted the package to when I received an email saying it “was on its way to CRAN”. Two things really helped me become a bit more comfortable with the process:</p>
-<ul>
-<li>Hadley Wickham’s (and Jenny Bryan’s) book “<a href="https://r-pkgs.org">R Packages</a>”</li>
-<li><a href="https://ramikrispin.github.io">Rami Krispin</a> offering a quick step-by-step approach</li>
-</ul>
-<p>To summarize my approach, here’s what I did:</p>
+<p>Ordered List</p>
 <ol type="1">
-<li>Use the ‘check’ function in RStudio IDE (under the Build tab) frequently</li>
-<li>Make sure there are 0 errors, 0 warnings/caution, 0 notes</li>
-<li>Complete all vignettes, documentation, build pkgdown site, comments as needed, updated Readme on git repo</li>
-<li>use the <code>check_win_devel()</code> and <code>check_win_release()</code> functions from {devtools}</li>
-<li>Make sure the log outputs from both of those function calls also has 0 errors, warnings, notes</li>
-<li>If notes do come up and cannot be resolved or are not important, document it under file called <code>cran-comments.md</code></li>
-<li>use <code>devtools::submit_cran()</code> to submit</li>
+<li>first</li>
+<li>second</li>
+<li>third
+<ul>
+<li>sub-item 1</li>
+</ul></li>
 </ol>
-<p>Many of those steps are in Hadley’s book. Step 4 was something that Rami had mentioned to me (and super useful). Since I’m on a Mac, I knew that my package worked without issue. However, the functions in Step 4 ensured that my package could work on Windows. Furthermore, after I did submit, CRAN’s auto-checks showed a note about a problematic URL address. I didn’t update my comments, but it was pretty clear that it was a valid URL - just not a URL that CRAN’s auto check could access. I don’t know for certain, but I am of the belief that my documentation probably helped the CRAN reviewer.</p>
-<p>One last note I’d like to make is that documentation took 80% of my time. Is this any surprise to a data scientist?</p>
-<p>If you do use the {ialiquor} package, I’d love to hear more about it. If you find issues, please open an issue on the repo.</p>
+<section id="heading-1" class="level1">
+<h1>Heading 1</h1>
+<section id="heading-2" class="level2">
+<h2 class="anchored" data-anchor-id="heading-2">Heading 2</h2>
+<section id="heading-3" class="level3">
+<h3 class="anchored" data-anchor-id="heading-3">Heading 3</h3>
+<section id="heading-4" class="level4">
+<h4 class="anchored" data-anchor-id="heading-4">Heading 4</h4>
+<section id="heading-5" class="level5">
+<h5 class="anchored" data-anchor-id="heading-5">Heading 5</h5>
+<section id="heading-6" class="level6">
+<h6 class="anchored" data-anchor-id="heading-6">Heading 6</h6>
 
 
 </section>
+</section>
+</section>
+</section>
+</section>
+</section>
 
-
-<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
-
-<ol>
-<li id="fn1"><p>the first nuance I learned<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>I’m not really ‘bashing’ on this package, but I feel it’s not very ‘friendly’ to users who are not as familiar with SODA SQL<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
-</section></div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
