@@ -3,11 +3,12 @@ project:
 
 website:
   title: "{nik}"
+  description: "Nik's personal blog."
   search: false
   navbar:
     right:
-      - href: about.qmd
-        text: About
+      - text: blog
+        href: posts
       - icon: github
         href: https://github.com/nikdata
       - icon: linkedin
@@ -16,6 +17,8 @@ website:
         href: https://fosstodon.org/@nikdata
       - icon: reddit
         href: https://www.reddit.com/user/cmdrmac/
+      - text: "{{< iconify fa6-brands bluesky >}}"
+        href: https://bsky.app/profile/nikhilagarwal.bsky.social
       - icon: strava
         href: https://www.strava.com/athletes/8185543
   page-footer: 

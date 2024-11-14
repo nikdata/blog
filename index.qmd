@@ -1,15 +1,38 @@
 ---
-title: ""
-listing:
-  contents: posts
-  sort: "date desc"
-  type: default
-  categories: false
-  sort-ui: false
-  filter-ui: false
-  date-format: DD-MMM-YYYY
-page-layout: full
-title-block-banner: false
+title: "{nik}"
+image: profile-pic.jpg
+about:
+  template: jolla
+  links:
+    - text: "{{< iconify fa6-brands github height=25px >}} GitHub"
+      href: https://github.com/nikdata
+    - text: "{{< iconify fa6-brands linkedin height=25px >}} LinkedIn"
+      href: https://linkedin.com/in/nikagarwal
+    - text: "{{< iconify fa6-brands mastodon height=25px >}} Mastodon"
+      href: https://fosstodon.org/@nikdata
+    - text: "{{< iconify fa6-brands reddit-alien height=25px >}} Reddit"
+      href: https://www.reddit.com/user/cmdrmac/
+    - text: "{{< iconify fa6-brands bluesky height=25px >}} BlueSky"
+      href: https://bsky.app/profile/nikhilagarwal.bsky.social
+    - text: "{{< iconify fa6-brands strava height=25px >}} Strava"
+      href: https://www.strava.com/athletes/8185543
 ---
+
+Hi! My name is Nik and this is my personal blog.
+
+I'm a data scientist and currently am Director of Data Science at [MākuSafe](https://www.makusafe.com) where I work on developing the overall data strategy and products and an Adjunct Instructor at [Southern New Hampshire University](https://www.snhu.edu).
+
+I have a Master's in Data Science from Northwestern University.
+
+In my free time (which is scarce), I enjoy **cycling** (I'm actually serious about this), learning to **cook**, and playing **board games** with the family.
+
+---
+::: {.disclaimer}
+Opinions expressed on this website are my own in my personal capacity. They do not reflect the views of my current employers, previous employers, or of any organisation, company or board I am or have been associated with.
+:::
+
+<!-- Source for Iconify: https://github.com/mcanouil/quarto-iconify -->
+<!-- More icons https://icon-sets.iconify.design -->
+
 
 

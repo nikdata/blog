@@ -1,5 +1,10 @@
 wheel
-pandas
+polars
+scipy
+scikit-learn
+xgboost
+pyarrow
+db-dtypes
 plotly
 plotly-express
 ipywidgets
@@ -8,3 +13,4 @@ polars
 seaborn
 numpy
 matplotlib
+pandas

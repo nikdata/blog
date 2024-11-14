@@ -13,3 +13,7 @@ figcaption {
     margin: auto;
     text-align: center;
 }
+
+.disclaimer {
+    font-size: 0.6em;
+}

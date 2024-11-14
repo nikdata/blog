@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.555">
+<meta name="generator" content="quarto-1.6.33">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>{nik} -</title>
+<title>{nik}</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -25,18 +25,16 @@ ul.task-list li input[type="checkbox"] {
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-8b864f0777c60eecff11d75b6b2e1175.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-d7d2fe507f1acaa4e7f8dda68f631830.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
+<script src="site_libs/quarto-contrib/iconify-2.1.0/iconify-icon.min.js"></script>
 <script id="quarto-search-options" type="application/json">{
   "language": {
     "search-no-results-text": "No results",
@@ -52,70 +50,12 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="nav-fixed">
+<body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -126,14 +66,14 @@ window.Quarto = {
     <span class="navbar-title">{nik}</span>
     </a>
   </div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./about.html"> 
-<span class="menu-text">About</span></a>
+    <a class="nav-link" href="./posts"> 
+<span class="menu-text">blog</span></a>
   </li>  
   <li class="nav-item compact">
     <a class="nav-link" href="https://github.com/nikdata"> <i class="bi bi-github" role="img">
@@ -155,6 +95,10 @@ window.Quarto = {
 </i> 
 <span class="menu-text"></span></a>
   </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://bsky.app/profile/nikhilagarwal.bsky.social"> 
+<span class="menu-text"><iconify-icon role="img" inline="" icon="fa6-brands:bluesky" aria-label="Icon bluesky from fa6-brands Iconify.design set." title="Icon bluesky from fa6-brands Iconify.design set."></iconify-icon></span></a>
+  </li>  
   <li class="nav-item compact">
     <a class="nav-link" href="https://www.strava.com/athletes/8185543"> <i class="bi bi-strava" role="img">
 </i> 
@@ -162,117 +106,63 @@ window.Quarto = {
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
-          <div class="quarto-navbar-tools">
+            <div class="quarto-navbar-tools">
 </div>
       </div> <!-- /container-fluid -->
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content column-page" id="quarto-document-content">
+<div class="quarto-about-jolla">
+  <img src="profile-pic.jpg" class="about-image
+  round " style="height: 15em; width: 15em;">
+ <header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">{nik}</h1>
+</div>
+<div class="quarto-title-meta">
+  </div>
+</header><main class="content" id="quarto-document-content">
+<p>Hi! My name is Nik and this is my personal blog.</p>
+<p>I’m a data scientist and currently am Director of Data Science at <a href="https://www.makusafe.com">MākuSafe</a> where I work on developing the overall data strategy and products and an Adjunct Instructor at <a href="https://www.snhu.edu">Southern New Hampshire University</a>.</p>
+<p>I have a Master’s in Data Science from Northwestern University.</p>
+<p>In my free time (which is scarce), I enjoy <strong>cycling</strong> (I’m actually serious about this), learning to <strong>cook</strong>, and playing <strong>board games</strong> with the family.</p>
+<hr>
+<div class="disclaimer">
+<p>Opinions expressed on this website are my own in my personal capacity. They do not reflect the views of my current employers, previous employers, or of any organisation, company or board I am or have been associated with.</p>
+</div>
+<!-- Source for Iconify: https://github.com/mcanouil/quarto-iconify -->
+<!-- More icons https://icon-sets.iconify.design -->
 
 
-
-
-
-
-
-
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-listing-date-sort="1718668800000" data-listing-file-modified-sort="1718817361177" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="49">
-<div class="thumbnail">
-<p><a href="./posts/20240618_mdtext/index.html" class="no-external"></a></p><a href="./posts/20240618_mdtext/index.html" class="no-external">
-<p><img src="./posts/20240618_mdtext/practice.jpg" class="thumbnail-image"></p>
-</a><p><a href="./posts/20240618_mdtext/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/20240618_mdtext/index.html" class="no-external">Example Markdown Post</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/20240618_mdtext/index.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./posts/20240618_mdtext/index.html" class="no-external">This is normal text.</a>
+</main> 
+  <hr class="about-sep">
+   <div class="about-links">
+  <a href="https://github.com/nikdata" class="about-link" rel="" target="">
+     <span class="about-link-text"><iconify-icon role="img" inline="" icon="fa6-brands:github" aria-label="Icon github from fa6-brands Iconify.design set." title="Icon github from fa6-brands Iconify.design set." height="25px"></iconify-icon> GitHub</span>
+  </a>
+  <a href="https://linkedin.com/in/nikagarwal" class="about-link" rel="" target="">
+     <span class="about-link-text"><iconify-icon role="img" inline="" icon="fa6-brands:linkedin" aria-label="Icon linkedin from fa6-brands Iconify.design set." title="Icon linkedin from fa6-brands Iconify.design set." height="25px"></iconify-icon> LinkedIn</span>
+  </a>
+  <a href="https://fosstodon.org/@nikdata" class="about-link" rel="" target="">
+     <span class="about-link-text"><iconify-icon role="img" inline="" icon="fa6-brands:mastodon" aria-label="Icon mastodon from fa6-brands Iconify.design set." title="Icon mastodon from fa6-brands Iconify.design set." height="25px"></iconify-icon> Mastodon</span>
+  </a>
+  <a href="https://www.reddit.com/user/cmdrmac/" class="about-link" rel="" target="">
+     <span class="about-link-text"><iconify-icon role="img" inline="" icon="fa6-brands:reddit-alien" aria-label="Icon reddit-alien from fa6-brands Iconify.design set." title="Icon reddit-alien from fa6-brands Iconify.design set." height="25px"></iconify-icon> Reddit</span>
+  </a>
+  <a href="https://bsky.app/profile/nikhilagarwal.bsky.social" class="about-link" rel="" target="">
+     <span class="about-link-text"><iconify-icon role="img" inline="" icon="fa6-brands:bluesky" aria-label="Icon bluesky from fa6-brands Iconify.design set." title="Icon bluesky from fa6-brands Iconify.design set." height="25px"></iconify-icon> BlueSky</span>
+  </a>
+  <a href="https://www.strava.com/athletes/8185543" class="about-link" rel="" target="">
+     <span class="about-link-text"><iconify-icon role="img" inline="" icon="fa6-brands:strava" aria-label="Icon strava from fa6-brands Iconify.design set." title="Icon strava from fa6-brands Iconify.design set." height="25px"></iconify-icon> Strava</span>
+  </a>
 </div>
 </div>
-<div class="metadata">
-<a href="./posts/20240618_mdtext/index.html" class="no-external">
-<div class="listing-date">
-18-Jun-2024
-</div>
-<div class="listing-author">
-Nik Agarwal
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-categories="General" data-listing-date-sort="1674000000000" data-listing-file-modified-sort="1718804734417" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1185">
-<div class="thumbnail">
-<p><a href="./posts/20230118_settingupmba/index.html" class="no-external"></a></p><a href="./posts/20230118_settingupmba/index.html" class="no-external">
-<p class="card-img-top"><img src="posts/20230118_settingupmba/img/install-rosetta2-prompt.png"  class="thumbnail-image card-img"/></p>
-</a><p><a href="./posts/20230118_settingupmba/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/20230118_settingupmba/index.html" class="no-external">How I Set Up My New MacBook Air</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/20230118_settingupmba/index.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./posts/20230118_settingupmba/index.html" class="no-external">Up and running with a new Mac</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/20230118_settingupmba/index.html" class="no-external">
-<div class="listing-date">
-18-Jan-2023
-</div>
-<div class="listing-author">
-Nik Agarwal
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-categories="programming" data-listing-date-sort="1514764800000" data-listing-file-modified-sort="1718806775724" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="818">
-<div class="thumbnail">
-<p><a href="./posts/20180101_magic8ballfunction/index.html" class="no-external"></a></p><a href="./posts/20180101_magic8ballfunction/index.html" class="no-external">
-<p><img src="./posts/20180101_magic8ballfunction/code.jpg" class="thumbnail-image"></p>
-</a><p><a href="./posts/20180101_magic8ballfunction/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/20180101_magic8ballfunction/index.html" class="no-external">Magic 8 Ball Function</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/20180101_magic8ballfunction/index.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./posts/20180101_magic8ballfunction/index.html" class="no-external">Learning to write a function in R</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/20180101_magic8ballfunction/index.html" class="no-external">
-<div class="listing-date">
-01-Jan-2018
-</div>
-<div class="listing-author">
-Nik Agarwal
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div></main> <!-- /main -->
+ <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -293,13 +183,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
   toggleBodyColorPrimary();  
-  const icon = "";
-  const anchorJS = new window.AnchorJS();
-  anchorJS.options = {
-    placement: 'right',
-    icon: icon
-  };
-  anchorJS.add('.anchored');
   const isCodeAnnotation = (el) => {
     for (const clz of el.classList) {
       if (clz.startsWith('code-annotation-')) {                     
@@ -308,18 +191,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -351,7 +223,29 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
       var filterRegex = new RegExp('/' + window.location.host + '/');
@@ -359,7 +253,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {

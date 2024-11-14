@@ -12,12 +12,16 @@ page-layout: article
 
 # Author name of all blog posts
 author: 
-  - name: 'Nik Agarwal'
+  - name: 
+      given: Nikhil
+      family: Agarwal
+      literal: Nik Agarwal
     url: https://nik.netlify.app
     orcid: 0000-0003-1470-7472
+    email: nikagarwal@niks.me
 
 # Date format
-date-format: DD-MMM-YYYY
+date-format: DD MMM YY
 
 # code view
 code-copy: true

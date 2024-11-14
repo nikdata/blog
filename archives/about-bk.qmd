@@ -1,0 +1,23 @@
+---
+title: "Nik Agarwal"
+image: profile-pic.jpg
+about:
+  template: jolla
+  links:
+    - text: "{{< iconify fa6-brands github height=25px >}}"
+      href: https://github.com/nikdata
+    - text: "{{< iconify fa6-brands linkedin height=25px >}}"
+      href: https://linkedin.com/in/nikagarwal
+    - text: "{{< iconify fa6-brands mastodon height=25px >}}"
+      href: https://fosstodon.org/@nikdata
+    - text: "{{< iconify fa6-brands reddit-alien height=25px >}}"
+      href: https://www.reddit.com/user/cmdrmac/
+    - text: "{{< iconify fa6-brands bluesky height=25px >}}"
+      href: https://bsky.app/profile/nikhilagarwal.bsky.social
+---
+
+I'm a data scientist and I enjoy writing about data science and road cycling.
+
+Thanks for visiting!
+
+<!-- Source for Iconify: https://github.com/mcanouil/quarto-iconify -->

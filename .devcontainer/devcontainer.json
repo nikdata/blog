@@ -1,18 +1,18 @@
 {
-    "name": "${localEnv:PROJECT_A_NAME:nikblog}",
+    "name": "${localEnv:PROJECT_NAME:nikblog}",
     // "image": "python:3.10",
     "build": {
         "dockerfile": "dockerfile",
         "args": {
-            "ENV_NAME": "${localEnv:PROJECT_A_NAME:nikblog}",
+            "ENV_NAME": "${localEnv:PROJECT_NAME:nikblog}",
             "PYTHON_VER": "${localEnv:PYTHON_VER:3.12}",
-            "QUARTO_VER": "${localEnv:QUARTO_VER:1.4.555}"
+            "QUARTO_VER": "${localEnv:QUARTO_VER:1.6.33}"
         }
     },
     "customizations": {
         "settings": {
-            "python.defaultInterpreterPath": "/opt/conda/envs/${localEnv:PROJECT_A_NAME:nikblog}/bin/python3",
-            "python.selectInterpreter": "/opt/conda/envs/${localEnv:PROJECT_A_NAME:nikblog}/bin/python3"
+            "python.defaultInterpreterPath": "/opt/conda/envs/${localEnv:PROJECT_NAME:nikblog}/bin/python3",
+            "python.selectInterpreter": "/opt/conda/envs/${localEnv:PROJECT_NAME:nikblog}/bin/python3"
         },
         "vscode": {
             "extensions": [
