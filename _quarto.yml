@@ -21,6 +21,7 @@ website:
         href: https://bsky.app/profile/nikhilagarwal.bsky.social
       - icon: strava
         href: https://www.strava.com/athletes/8185543
+    background: '#000000'
   page-footer: 
     center:
       - text: © 2018 - 2024 | Nik Agarwal

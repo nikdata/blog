@@ -7,8 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Nik Agarwal">
+<meta name="description" content="I love avocados so I made an R package for them">
 
-<title>index – {nik}</title>
+<title>The {avocado} R Package – {nik}</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -24,21 +25,19 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/quarto-listing/list.min.js"></script>
-<script src="../site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-html/quarto.js"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-8b864f0777c60eecff11d75b6b2e1175.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-3c095245a444fa5fdf278eeb79f54728.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
-<script src="../site_libs/quarto-contrib/iconify-2.1.0/iconify-icon.min.js"></script>
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-8b864f0777c60eecff11d75b6b2e1175.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-3c095245a444fa5fdf278eeb79f54728.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
+<script src="../../site_libs/quarto-contrib/iconify-2.1.0/iconify-icon.min.js"></script>
 <script id="quarto-search-options" type="application/json">{
   "language": {
     "search-no-results-text": "No results",
@@ -54,77 +53,19 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
 
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-description','listing-image',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="nav-fixed">
+<body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">{nik}</span>
     </a>
   </div>
@@ -134,7 +75,7 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../posts"> 
+    <a class="nav-link" href="../../posts"> 
 <span class="menu-text">blog</span></a>
   </li>  
   <li class="nav-item compact">
@@ -174,20 +115,29 @@ window.Quarto = {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content column-page" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
+<h1 class="title">The {avocado} R Package</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">R</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    I love avocados so I made an R package for them
+  </div>
 </div>
 
 
-
-<div class="quarto-title-meta column-page">
+<div class="quarto-title-meta">
 
     <div>
     <div class="quarto-title-meta-heading">Author</div>
@@ -196,6 +146,12 @@ window.Quarto = {
           </div>
   </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">18 Dec 20</p>
+    </div>
+  </div>
   
     
   </div>
@@ -205,117 +161,62 @@ window.Quarto = {
 </header>
 
 
+<p>I’m pleased to share that my second package, {avocado} - version 0.1.0 - is now on CRAN. The {avocado} package consists of three different datasets that describe the weekly Hass Avocado sales in the contiguous US.</p>
+<ul>
+<li><a href="https://nikdata.github.io/avocado/">Package Website</a></li>
+<li><a href="https://nikdata.github.io/avocado/articles/">Vignettes</a></li>
+<li><a href="https://github.com/nikdata/avocado">Package Repo</a></li>
+<li>Data Source: <a href="https://hassavocadoboard.com">Hass Avocado Board</a></li>
+</ul>
+<p>As you may have guessed, this is a dataset only package. While I do think it’s helpful to build packages that have useful functions, I also think it’s especially important to have packages that consist of interesting datasets that can easily be used for a variety of purposes. Furthermore, if dataset packages continue to be updated, they can provide meaningful value for the long run. In my opinion, however, there’s nothing wrong with having datasets hosted on websites such as <a href="https://www.kaggle.com">Kaggle</a> or <a href="http://archive.ics.uci.edu/ml/index.php">UCI Machine Learning Repository</a>. Often, those websites - for example - consist of more real-world like data (e.g., missing values, not ‘tidy’, extremely large datasets, etc.). Dataset packages in R are usually smaller (they have to be less than 5 MB total) and already ‘tidied’ for easier/faster usage.</p>
+<p>With that said, I had two motivations while constructing this package:</p>
+<ol type="1">
+<li><p>The avocado data that I’m using is commonly found and used on Kaggle. What I found lacking was the context around the different variables found within the dataset. For instance, the Hass Avocado Board (HAB) measures avocado sales in terms of weight - not units. While some users mention it, many don’t. I think having this context is important. I wanted to learn more about where the data came from and its context.</p></li>
+<li><p>In the book, <em>R Packages</em> by Hadley Wickham &amp; Jenny Bryan, there is a chapter about <a href="https://r-pkgs.org/r-cmd-check.html">Automated Checking</a> using the <a href="https://r-pkgs.org/r-cmd-check.html?q=travis#travis">Travis CI</a> service. I have seen many developers use a CI (continuous integration) service and <a href="https://travis-ci.com">Travis CI</a> seems to be quite popular. So I wanted to learn more about continuous integration and how I can use it for package development.</p></li>
+</ol>
+<section id="behind-the-avocados" class="level2">
+<h2 class="anchored" data-anchor-id="behind-the-avocados">Behind the Avocados</h2>
+<p>I first became familiar with the <a href="https://www.kaggle.com/neuromusic/avocado-prices">avocado dataset</a> on Kaggle a couple years ago. If you click on that link, you’ll see a pretty decent explanation of the dataset. At first glance, you’ll think that the sales data represents units sold. However, when you look at the preview of the data, you’ll see how there are decimal values for variables such as <code>Total Volume</code> or <code>4046</code>(see image below). How can you sell a fractional unit of an avocado at retail?</p>
+<p><img src="img/kaggle1.png" width="400"></p>
+<p>For a while, I had accepted it, but it always bothered me. And for that time, I was lazy and busy with other things to really worry about it. After I published my first R package on CRAN, I thought about revisiting the avocado data and first see if anyone had created something similar on CRAN. In my quick search, I couldn’t find anything - other than a variety of folks using the Kaggle avocado dataset. So I set about digging into the origins of the dataset and try to determine the context.</p>
+<p>First, I had to register with the Hass Avocado Board - which was free, thankfully. Surprisingly, their website is very informative and they have LOTS of data on avocados. If anyone is interested in growing or marketing avocados, this organization has done an exemplary job of avocado research and all the information is free after registering.</p>
+<p>Here’s where I learned some nuances of the data they have. The HAB has CSV data that anyone can download. However, within that dataset, there are weekly sales totals for the contiguous US, totals for specific regions within the contiguous US, and totals for specific cities/sub-regions within regions. Furthermore, the ‘volume’ or ‘units’ used in the dataset are in US pounds - aka weight. Why? This isn’t explained very well, but from my own experience in crop production, weight is a very simple way to describe how much crop is available rather than units. While retailers may purchase and sell by the unit or piece, describing how much has been sold by weight is a ‘simpler’ approach that preserves any competitive or proprietary information that grower may want to retain.</p>
+<p>While I was studying this dataset and its nuances, I came to the conclusion that there are actually three datasets within the original data provided by the Hass Avocado Board. I don’t think the original author on Kaggle mentioned this, but I thought it would be useful to have it documented and presented in a way that preserves most of what the HAB provides.</p>
+<p>I did make some changes to the data in terms of excluding variables that described totals. I felt that these could be recreated by users as part of their feature engineering exercise - should they choose.</p>
+<p>In the end, I feel pretty good about documenting the dataset and providing the context needed for further analysis.</p>
+</section>
+<section id="continuous-integration" class="level2">
+<h2 class="anchored" data-anchor-id="continuous-integration">Continuous Integration</h2>
+<p>Perhaps the biggest benefit of CI platforms is the ability to have code tests run ‘in the background’ - especially when pull requests are made. The goal here is to ensure that potential bugs are found - enabling developer(s) to fix the issue prior to merging the code into production. While Hadley &amp; Jenny’s book talks about Travis CI, there are alternatives - such as GitHub Actions. All this was new to me (and still is) and I wanted to learn more about it. So I chose to go with GitHub Actions and proceeded to find out how I can leverage it with R.</p>
+<p>I chose not to go forward with Travis CI due to a <strong>MAJOR</strong> <a href="https://blog.travis-ci.com/2020-11-02-travis-ci-new-billing">change</a> in their pricing policy. Effectively, they will only give free accounts up to 10,000 credits - which expire after one year. Once all the credits are used up (or expired), the user has to sign up for a paid account<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. As a hobbyist, I don’t want to spend more money than I have to. I was pleasantly surprised to see that GitHub offers 2,000 minutes of GitHub Actions free for private repositories and unlimited minutes for public repositories.</p>
+<p>Definitely a no brainer and time to move forward with GitHub Actions. And GitHub Actions <a href="https://ropenscilabs.github.io/actions_sandbox/">works with R</a>!</p>
+<p>The highly versatile {usethis} package has a great function, <code>use_github_action_check_standard()</code> that quickly &amp; easily implements the necessary files to initiate &amp; use GitHub Actions.</p>
+<p>What this does, in terms of R package development, is enables GitHub to fire up some virtual machines in the cloud, run R-CMD-CHECK on your package, and provide a ‘summary’ of the results. This is a great way to check if your package will work on platforms other than the one you are developing on. In my case, I develop R packages on a Mac - so if it works on my Mac, I can safely assume it’ll work on other similar Mac’s. However, I don’t have access to a Windows or a Linux machine to test my package - and that’s where GitHub Actions steps in.</p>
+<p>I’ve ran (at the time of this writing) <a href="https://github.com/nikdata/avocado/actions">17 GitHub Actions</a> instances. You can click on that link and then click on any of the links to see the reports. You’ll also notice that I used GitHub Actions for my {pkgdown} site for the package.</p>
+<p>Here’s a quick peek at the results from the Windows release:</p>
+<p><img src="img/ga-windows.png" width="800"></p>
+<p>Note how the last line in the output basically shows no errors, warnings, or notes. Checking all three (Windows &amp; both Ubuntus) is how I confirmed if my package would work on those platforms. I definitely could have instructed GitHub Actions to test on a Mac platform, but I felt that was redundant and not necessary.</p>
+<p>I know I’ve just unlocked the tip of the iceberg here. As I develop packages for my own job, I can easily see myself using GitHub Actions as a way to ensure minimal bugs in addition to using {testthat}.</p>
+</section>
+<section id="tldr" class="level2">
+<h2 class="anchored" data-anchor-id="tldr">TL;DR</h2>
+<p>To recap:</p>
+<ul>
+<li><p>I wanted to provide context on the avocado dataset used widely on Kaggle and I did that by documenting what I found and creating an R package</p></li>
+<li><p>I used GitHub Actions to do CI as a way to learn more about it and practice</p></li>
+</ul>
+<p>If you do use this package and find any bugs, or have any comments/questions, please feel free to open an issue! Thanks!</p>
 
 
+</section>
 
 
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="R2VuZXJhbA==" data-listing-date-sort="1674000000000" data-listing-file-modified-sort="1731619562227" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1185">
-<div class="thumbnail">
-<p><a href="../posts/20230118_settingupmba/index.html" class="no-external"></a></p><a href="../posts/20230118_settingupmba/index.html" class="no-external">
-<p class="card-img-top"><img src="20230118_settingupmba/img/install-rosetta2-prompt.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
-</a><p><a href="../posts/20230118_settingupmba/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../posts/20230118_settingupmba/index.html" class="no-external">How I Set Up My New MacBook Air</a>
-</h3>
-<div class="listing-subtitle">
-<a href="../posts/20230118_settingupmba/index.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="../posts/20230118_settingupmba/index.html" class="no-external">Up and running with a new Mac</a>
-</div>
-</div>
-<div class="metadata">
-<a href="../posts/20230118_settingupmba/index.html" class="no-external">
-<div class="listing-date">
-18 Jan 2023
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-categories="Ug==" data-listing-date-sort="1608249600000" data-listing-file-modified-sort="1731619562214" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1389">
-<div class="thumbnail">
-<p><a href="../posts/20201218_avocado/index.html" class="no-external"></a></p><a href="../posts/20201218_avocado/index.html" class="no-external">
-<p><img loading="lazy" src="../posts/20201218_avocado/img/avocado.png" class="thumbnail-image" style="height: 150px;"></p>
-</a><p><a href="../posts/20201218_avocado/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../posts/20201218_avocado/index.html" class="no-external">The {avocado} R Package</a>
-</h3>
-<div class="listing-subtitle">
-<a href="../posts/20201218_avocado/index.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="../posts/20201218_avocado/index.html" class="no-external">I love avocados so I made an R package for them</a>
-</div>
-</div>
-<div class="metadata">
-<a href="../posts/20201218_avocado/index.html" class="no-external">
-<div class="listing-date">
-18 Dec 2020
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-listing-date-sort="1607299200000" data-listing-file-modified-sort="1731619562208" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="857">
-<div class="thumbnail">
-<p><a href="../posts/20201207_ialiquor/index.html" class="no-external"></a></p><a href="../posts/20201207_ialiquor/index.html" class="no-external">
-<p><img loading="lazy" src="../posts/20201207_ialiquor/img/ialiquor.png" class="thumbnail-image" style="height: 150px;"></p>
-</a><p><a href="../posts/20201207_ialiquor/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../posts/20201207_ialiquor/index.html" class="no-external">The {ialiquor} R Package</a>
-</h3>
-<div class="listing-subtitle">
-<a href="../posts/20201207_ialiquor/index.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="../posts/20201207_ialiquor/index.html" class="no-external">Say hello to my first R package!</a>
-</div>
-</div>
-<div class="metadata">
-<a href="../posts/20201207_ialiquor/index.html" class="no-external">
-<div class="listing-date">
-07 Dec 2020
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="3" data-categories="cHJvZ3JhbW1pbmc=" data-listing-date-sort="1514764800000" data-listing-file-modified-sort="1731619562208" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="818">
-<div class="thumbnail">
-<p><a href="../posts/20180101_magic8ballfunction/index.html" class="no-external"></a></p><a href="../posts/20180101_magic8ballfunction/index.html" class="no-external">
-<p><img loading="lazy" src="../posts/20180101_magic8ballfunction/code.jpg" class="thumbnail-image" style="height: 150px;"></p>
-</a><p><a href="../posts/20180101_magic8ballfunction/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../posts/20180101_magic8ballfunction/index.html" class="no-external">Magic 8 Ball Function</a>
-</h3>
-<div class="listing-subtitle">
-<a href="../posts/20180101_magic8ballfunction/index.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="../posts/20180101_magic8ballfunction/index.html" class="no-external">Learning to write a function in R</a>
-</div>
-</div>
-<div class="metadata">
-<a href="../posts/20180101_magic8ballfunction/index.html" class="no-external">
-<div class="listing-date">
-01 Jan 2018
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div></main> <!-- /main -->
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>While I understand why they’re making the change, I also feel that their change is not very accommodating to hobbyists. Alas, this is a much larger discussion and I, for one, am not qualified or well-versed in discussing it.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

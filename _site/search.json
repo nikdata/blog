@@ -137,21 +137,7 @@
     "href": "index.html",
     "title": "{nik}",
     "section": "",
-    "text": "Hi! My name is Nik and this is my personal blog.\nI’m a data scientist and currently am Director of Data Science at MākuSafe where I work on developing the overall data strategy and products and an Adjunct Instructor at Southern New Hampshire University.\nI have a Master’s in Data Science from Northwestern University.\nIn my free time (which is scarce), I enjoy cycling (I’m actually serious about this), learning to cook, and playing board games with the family.\n\n\nOpinions expressed on this website are my own in my personal capacity. They do not reflect the views of my current employers, previous employers, or of any organisation, company or board I am or have been associated with."
-  },
-  {
-    "objectID": "posts/20240618_mdtext/index.html",
-    "href": "posts/20240618_mdtext/index.html",
-    "title": "Example Markdown Post",
-    "section": "",
-    "text": "This is normal text.\nThis is bold text\nThis is italic text\nUnordered List\nOrdered List"
-  },
-  {
-    "objectID": "posts/20240618_mdtext/index.html#heading-2",
-    "href": "posts/20240618_mdtext/index.html#heading-2",
-    "title": "Example Markdown Post",
-    "section": "Heading 2",
-    "text": "Heading 2\n\nHeading 3\n\nHeading 4\n\nHeading 5\n\nHeading 6"
+    "text": "Hi! My name is Nik and this is my personal blog.\nI’m a data scientist and currently am Director of Data Science at MākuSafe where I work on developing the overall data strategy and products and an Adjunct Instructor at Southern New Hampshire University.\nI have a Master’s in Data Science from Northwestern University.\nIn my free time (which is scarce), I enjoy cycling (I’m actually serious about this), learning to cook, and playing board games with the family.\n\n\nOpinions expressed on this website are my own in my personal capacity. They do not reflect the views of my current employers, previous employers, or of any organization, company or board I am or have been associated with."
   },
   {
     "objectID": "archives/about-bk.html",
@@ -159,5 +145,40 @@
     "title": "Nik Agarwal",
     "section": "",
     "text": "I’m a data scientist and I enjoy writing about data science and road cycling.\nThanks for visiting!"
+  },
+  {
+    "objectID": "posts/20201218_avocado/index.html",
+    "href": "posts/20201218_avocado/index.html",
+    "title": "The {avocado} R Package",
+    "section": "",
+    "text": "I’m pleased to share that my second package, {avocado} - version 0.1.0 - is now on CRAN. The {avocado} package consists of three different datasets that describe the weekly Hass Avocado sales in the contiguous US.\nAs you may have guessed, this is a dataset only package. While I do think it’s helpful to build packages that have useful functions, I also think it’s especially important to have packages that consist of interesting datasets that can easily be used for a variety of purposes. Furthermore, if dataset packages continue to be updated, they can provide meaningful value for the long run. In my opinion, however, there’s nothing wrong with having datasets hosted on websites such as Kaggle or UCI Machine Learning Repository. Often, those websites - for example - consist of more real-world like data (e.g., missing values, not ‘tidy’, extremely large datasets, etc.). Dataset packages in R are usually smaller (they have to be less than 5 MB total) and already ‘tidied’ for easier/faster usage.\nWith that said, I had two motivations while constructing this package:"
+  },
+  {
+    "objectID": "posts/20201218_avocado/index.html#behind-the-avocados",
+    "href": "posts/20201218_avocado/index.html#behind-the-avocados",
+    "title": "The {avocado} R Package",
+    "section": "Behind the Avocados",
+    "text": "Behind the Avocados\nI first became familiar with the avocado dataset on Kaggle a couple years ago. If you click on that link, you’ll see a pretty decent explanation of the dataset. At first glance, you’ll think that the sales data represents units sold. However, when you look at the preview of the data, you’ll see how there are decimal values for variables such as Total Volume or 4046(see image below). How can you sell a fractional unit of an avocado at retail?\n\nFor a while, I had accepted it, but it always bothered me. And for that time, I was lazy and busy with other things to really worry about it. After I published my first R package on CRAN, I thought about revisiting the avocado data and first see if anyone had created something similar on CRAN. In my quick search, I couldn’t find anything - other than a variety of folks using the Kaggle avocado dataset. So I set about digging into the origins of the dataset and try to determine the context.\nFirst, I had to register with the Hass Avocado Board - which was free, thankfully. Surprisingly, their website is very informative and they have LOTS of data on avocados. If anyone is interested in growing or marketing avocados, this organization has done an exemplary job of avocado research and all the information is free after registering.\nHere’s where I learned some nuances of the data they have. The HAB has CSV data that anyone can download. However, within that dataset, there are weekly sales totals for the contiguous US, totals for specific regions within the contiguous US, and totals for specific cities/sub-regions within regions. Furthermore, the ‘volume’ or ‘units’ used in the dataset are in US pounds - aka weight. Why? This isn’t explained very well, but from my own experience in crop production, weight is a very simple way to describe how much crop is available rather than units. While retailers may purchase and sell by the unit or piece, describing how much has been sold by weight is a ‘simpler’ approach that preserves any competitive or proprietary information that grower may want to retain.\nWhile I was studying this dataset and its nuances, I came to the conclusion that there are actually three datasets within the original data provided by the Hass Avocado Board. I don’t think the original author on Kaggle mentioned this, but I thought it would be useful to have it documented and presented in a way that preserves most of what the HAB provides.\nI did make some changes to the data in terms of excluding variables that described totals. I felt that these could be recreated by users as part of their feature engineering exercise - should they choose.\nIn the end, I feel pretty good about documenting the dataset and providing the context needed for further analysis."
+  },
+  {
+    "objectID": "posts/20201218_avocado/index.html#continuous-integration",
+    "href": "posts/20201218_avocado/index.html#continuous-integration",
+    "title": "The {avocado} R Package",
+    "section": "Continuous Integration",
+    "text": "Continuous Integration\nPerhaps the biggest benefit of CI platforms is the ability to have code tests run ‘in the background’ - especially when pull requests are made. The goal here is to ensure that potential bugs are found - enabling developer(s) to fix the issue prior to merging the code into production. While Hadley & Jenny’s book talks about Travis CI, there are alternatives - such as GitHub Actions. All this was new to me (and still is) and I wanted to learn more about it. So I chose to go with GitHub Actions and proceeded to find out how I can leverage it with R.\nI chose not to go forward with Travis CI due to a MAJOR change in their pricing policy. Effectively, they will only give free accounts up to 10,000 credits - which expire after one year. Once all the credits are used up (or expired), the user has to sign up for a paid account1. As a hobbyist, I don’t want to spend more money than I have to. I was pleasantly surprised to see that GitHub offers 2,000 minutes of GitHub Actions free for private repositories and unlimited minutes for public repositories.\nDefinitely a no brainer and time to move forward with GitHub Actions. And GitHub Actions works with R!\nThe highly versatile {usethis} package has a great function, use_github_action_check_standard() that quickly & easily implements the necessary files to initiate & use GitHub Actions.\nWhat this does, in terms of R package development, is enables GitHub to fire up some virtual machines in the cloud, run R-CMD-CHECK on your package, and provide a ‘summary’ of the results. This is a great way to check if your package will work on platforms other than the one you are developing on. In my case, I develop R packages on a Mac - so if it works on my Mac, I can safely assume it’ll work on other similar Mac’s. However, I don’t have access to a Windows or a Linux machine to test my package - and that’s where GitHub Actions steps in.\nI’ve ran (at the time of this writing) 17 GitHub Actions instances. You can click on that link and then click on any of the links to see the reports. You’ll also notice that I used GitHub Actions for my {pkgdown} site for the package.\nHere’s a quick peek at the results from the Windows release:\n\nNote how the last line in the output basically shows no errors, warnings, or notes. Checking all three (Windows & both Ubuntus) is how I confirmed if my package would work on those platforms. I definitely could have instructed GitHub Actions to test on a Mac platform, but I felt that was redundant and not necessary.\nI know I’ve just unlocked the tip of the iceberg here. As I develop packages for my own job, I can easily see myself using GitHub Actions as a way to ensure minimal bugs in addition to using {testthat}."
+  },
+  {
+    "objectID": "posts/20201218_avocado/index.html#tldr",
+    "href": "posts/20201218_avocado/index.html#tldr",
+    "title": "The {avocado} R Package",
+    "section": "TL;DR",
+    "text": "TL;DR\nTo recap:\n\nI wanted to provide context on the avocado dataset used widely on Kaggle and I did that by documenting what I found and creating an R package\nI used GitHub Actions to do CI as a way to learn more about it and practice\n\nIf you do use this package and find any bugs, or have any comments/questions, please feel free to open an issue! Thanks!"
+  },
+  {
+    "objectID": "posts/20201218_avocado/index.html#footnotes",
+    "href": "posts/20201218_avocado/index.html#footnotes",
+    "title": "The {avocado} R Package",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nWhile I understand why they’re making the change, I also feel that their change is not very accommodating to hobbyists. Alas, this is a much larger discussion and I, for one, am not qualified or well-versed in discussing it.↩︎"
   }
 ]

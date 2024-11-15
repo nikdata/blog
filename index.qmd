@@ -28,7 +28,7 @@ In my free time (which is scarce), I enjoy **cycling** (I'm actually serious abo
 
 ---
 ::: {.disclaimer}
-Opinions expressed on this website are my own in my personal capacity. They do not reflect the views of my current employers, previous employers, or of any organisation, company or board I am or have been associated with.
+Opinions expressed on this website are my own in my personal capacity. They do not reflect the views of my current employers, previous employers, or of any organization, company or board I am or have been associated with.
 :::
 
 <!-- Source for Iconify: https://github.com/mcanouil/quarto-iconify -->
