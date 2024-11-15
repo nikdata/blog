@@ -7,8 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Nik Agarwal">
+<meta name="description" content="Let’s talk about what to do after completing a PCA">
 
-<title>index – {nik}</title>
+<title>The Aftermath of PCA – {nik}</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -24,21 +25,19 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/quarto-listing/list.min.js"></script>
-<script src="../site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-html/quarto.js"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-8b864f0777c60eecff11d75b6b2e1175.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-f002440d2b7f0a5f30fa0647e7722bf6.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
-<script src="../site_libs/quarto-contrib/iconify-2.1.0/iconify-icon.min.js"></script>
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-8b864f0777c60eecff11d75b6b2e1175.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-f002440d2b7f0a5f30fa0647e7722bf6.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
+<script src="../../site_libs/quarto-contrib/iconify-2.1.0/iconify-icon.min.js"></script>
 <script id="quarto-search-options" type="application/json">{
   "language": {
     "search-no-results-text": "No results",
@@ -54,77 +53,19 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
 
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-description','listing-image',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="nav-fixed">
+<body class="floating nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">{nik}</span>
     </a>
   </div>
@@ -134,7 +75,7 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../posts"> 
+    <a class="nav-link" href="../../posts"> 
 <span class="menu-text">blog</span></a>
   </li>  
   <li class="nav-item compact">
@@ -174,20 +115,31 @@ window.Quarto = {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-<!-- margin-sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    </div>
 <!-- main -->
-<main class="content column-page" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
+<h1 class="title">The Aftermath of PCA</h1>
+</div>
+
+<div>
+  <div class="description">
+    Let’s talk about what to do after completing a PCA
+  </div>
 </div>
 
 
-
-<div class="quarto-title-meta column-page">
+<div class="quarto-title-meta">
 
     <div>
     <div class="quarto-title-meta-heading">Author</div>
@@ -196,6 +148,12 @@ window.Quarto = {
           </div>
   </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">15 Nov 24</p>
+    </div>
+  </div>
   
     
   </div>
@@ -205,142 +163,18 @@ window.Quarto = {
 </header>
 
 
+<p>Principal Components Analysis (or PCA) is a great way to help reduce the number of inputs provided to an ML algorithm. Often, you may find that you have dozens of inputs (also known as features or predictors) and keeping all of them may be a pain or not effective. Almost all ML models can benefit from having the <em>correct</em> features, but identifying which features are not useful isn’t always easy. Reducing the number of inputs into an ML model will also help improve the time to build models (maybe, maybe not; but let’s go with it).</p>
+<p>When I first learned about PCA, I thought it was a game-changer. I still do! In practice, I have found that PCA is kind of under-utilized.</p>
+<p>My goal isn’t to upsell PCA today. Rather, I want to discuss two things:</p>
+<ul>
+<li>talking about PCA with non-technical folks</li>
+<li>what to do with after PCA</li>
+</ul>
+<p>In my workplace, curiousity runs high, but not everyone is familiar with data science termninology or methods. I have often get asked, “Why did you do that? What’s the point?” These questions may sound adversarial and I did think they were at first. I quickly learned that my colleagues were genuinely interested in the thought process behind what I did. This helped them understand my role better and also my work.</p>
 
 
 
-
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-listing-date-sort="1731628800000" data-listing-file-modified-sort="1731682710203" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="217">
-<div class="thumbnail">
-<p><a href="../posts/2024-11-15-post-pca/index.html" class="no-external"></a></p><a href="../posts/2024-11-15-post-pca/index.html" class="no-external">
-<p class="card-img-top"><img src="default-image.jpg" style="height: 150px;"  class="thumbnail-image card-img"/></p>
-</a><p><a href="../posts/2024-11-15-post-pca/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../posts/2024-11-15-post-pca/index.html" class="no-external">The Aftermath of PCA</a>
-</h3>
-<div class="listing-subtitle">
-<a href="../posts/2024-11-15-post-pca/index.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="../posts/2024-11-15-post-pca/index.html" class="no-external">Let’s talk about what to do after completing a PCA</a>
-</div>
-</div>
-<div class="metadata">
-<a href="../posts/2024-11-15-post-pca/index.html" class="no-external">
-<div class="listing-date">
-15 Nov 2024
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-categories="R2VuZXJhbA==" data-listing-date-sort="1674000000000" data-listing-file-modified-sort="1731619562227" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1185">
-<div class="thumbnail">
-<p><a href="../posts/20230118_settingupmba/index.html" class="no-external"></a></p><a href="../posts/20230118_settingupmba/index.html" class="no-external">
-<p class="card-img-top"><img src="20230118_settingupmba/img/install-rosetta2-prompt.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
-</a><p><a href="../posts/20230118_settingupmba/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../posts/20230118_settingupmba/index.html" class="no-external">How I Set Up My New MacBook Air</a>
-</h3>
-<div class="listing-subtitle">
-<a href="../posts/20230118_settingupmba/index.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="../posts/20230118_settingupmba/index.html" class="no-external">Up and running with a new Mac</a>
-</div>
-</div>
-<div class="metadata">
-<a href="../posts/20230118_settingupmba/index.html" class="no-external">
-<div class="listing-date">
-18 Jan 2023
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-categories="Ug==" data-listing-date-sort="1608249600000" data-listing-file-modified-sort="1731619562214" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1389">
-<div class="thumbnail">
-<p><a href="../posts/20201218_avocado/index.html" class="no-external"></a></p><a href="../posts/20201218_avocado/index.html" class="no-external">
-<p><img loading="lazy" src="../posts/20201218_avocado/img/avocado.png" class="thumbnail-image" style="height: 150px;"></p>
-</a><p><a href="../posts/20201218_avocado/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../posts/20201218_avocado/index.html" class="no-external">The {avocado} R Package</a>
-</h3>
-<div class="listing-subtitle">
-<a href="../posts/20201218_avocado/index.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="../posts/20201218_avocado/index.html" class="no-external">I love avocados so I made an R package for them</a>
-</div>
-</div>
-<div class="metadata">
-<a href="../posts/20201218_avocado/index.html" class="no-external">
-<div class="listing-date">
-18 Dec 2020
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="3" data-listing-date-sort="1607299200000" data-listing-file-modified-sort="1731619562208" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="857">
-<div class="thumbnail">
-<p><a href="../posts/20201207_ialiquor/index.html" class="no-external"></a></p><a href="../posts/20201207_ialiquor/index.html" class="no-external">
-<p><img loading="lazy" src="../posts/20201207_ialiquor/img/ialiquor.png" class="thumbnail-image" style="height: 150px;"></p>
-</a><p><a href="../posts/20201207_ialiquor/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../posts/20201207_ialiquor/index.html" class="no-external">The {ialiquor} R Package</a>
-</h3>
-<div class="listing-subtitle">
-<a href="../posts/20201207_ialiquor/index.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="../posts/20201207_ialiquor/index.html" class="no-external">Say hello to my first R package!</a>
-</div>
-</div>
-<div class="metadata">
-<a href="../posts/20201207_ialiquor/index.html" class="no-external">
-<div class="listing-date">
-07 Dec 2020
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="4" data-categories="cHJvZ3JhbW1pbmc=" data-listing-date-sort="1514764800000" data-listing-file-modified-sort="1731619562208" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="818">
-<div class="thumbnail">
-<p><a href="../posts/20180101_magic8ballfunction/index.html" class="no-external"></a></p><a href="../posts/20180101_magic8ballfunction/index.html" class="no-external">
-<p><img loading="lazy" src="../posts/20180101_magic8ballfunction/code.jpg" class="thumbnail-image" style="height: 150px;"></p>
-</a><p><a href="../posts/20180101_magic8ballfunction/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../posts/20180101_magic8ballfunction/index.html" class="no-external">Magic 8 Ball Function</a>
-</h3>
-<div class="listing-subtitle">
-<a href="../posts/20180101_magic8ballfunction/index.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="../posts/20180101_magic8ballfunction/index.html" class="no-external">Learning to write a function in R</a>
-</div>
-</div>
-<div class="metadata">
-<a href="../posts/20180101_magic8ballfunction/index.html" class="no-external">
-<div class="listing-date">
-01 Jan 2018
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

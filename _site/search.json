@@ -88,7 +88,7 @@
     "href": "posts/index.html",
     "title": "{nik}",
     "section": "",
-    "text": "How I Set Up My New MacBook Air\n\n\n\n\n\nUp and running with a new Mac\n\n\n\n\n\n18 Jan 2023\n\n\n\n\n\n\n\n\n\n\n\n\nThe {avocado} R Package\n\n\n\n\n\nI love avocados so I made an R package for them\n\n\n\n\n\n18 Dec 2020\n\n\n\n\n\n\n\n\n\n\n\n\nThe {ialiquor} R Package\n\n\n\n\n\nSay hello to my first R package!\n\n\n\n\n\n07 Dec 2020\n\n\n\n\n\n\n\n\n\n\n\n\nMagic 8 Ball Function\n\n\n\n\n\nLearning to write a function in R\n\n\n\n\n\n01 Jan 2018\n\n\n\n\n\n\nNo matching items"
+    "text": "The Aftermath of PCA\n\n\n\n\n\nLet’s talk about what to do after completing a PCA\n\n\n\n\n\n15 Nov 2024\n\n\n\n\n\n\n\n\n\n\n\n\nHow I Set Up My New MacBook Air\n\n\n\n\n\nUp and running with a new Mac\n\n\n\n\n\n18 Jan 2023\n\n\n\n\n\n\n\n\n\n\n\n\nThe {avocado} R Package\n\n\n\n\n\nI love avocados so I made an R package for them\n\n\n\n\n\n18 Dec 2020\n\n\n\n\n\n\n\n\n\n\n\n\nThe {ialiquor} R Package\n\n\n\n\n\nSay hello to my first R package!\n\n\n\n\n\n07 Dec 2020\n\n\n\n\n\n\n\n\n\n\n\n\nMagic 8 Ball Function\n\n\n\n\n\nLearning to write a function in R\n\n\n\n\n\n01 Jan 2018\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "posts/20180101_magic8ballfunction/index.html",
@@ -180,5 +180,12 @@
     "title": "The {avocado} R Package",
     "section": "Footnotes",
     "text": "Footnotes\n\n\nWhile I understand why they’re making the change, I also feel that their change is not very accommodating to hobbyists. Alas, this is a much larger discussion and I, for one, am not qualified or well-versed in discussing it.↩︎"
+  },
+  {
+    "objectID": "posts/2024-11-15-post-pca/index.html",
+    "href": "posts/2024-11-15-post-pca/index.html",
+    "title": "The Aftermath of PCA",
+    "section": "",
+    "text": "Principal Components Analysis (or PCA) is a great way to help reduce the number of inputs provided to an ML algorithm. Often, you may find that you have dozens of inputs (also known as features or predictors) and keeping all of them may be a pain or not effective. Almost all ML models can benefit from having the correct features, but identifying which features are not useful isn’t always easy. Reducing the number of inputs into an ML model will also help improve the time to build models (maybe, maybe not; but let’s go with it).\nWhen I first learned about PCA, I thought it was a game-changer. I still do! In practice, I have found that PCA is kind of under-utilized.\nMy goal isn’t to upsell PCA today. Rather, I want to discuss two things:\n\ntalking about PCA with non-technical folks\nwhat to do with after PCA\n\nIn my workplace, curiousity runs high, but not everyone is familiar with data science termninology or methods. I have often get asked, “Why did you do that? What’s the point?” These questions may sound adversarial and I did think they were at first. I quickly learned that my colleagues were genuinely interested in the thought process behind what I did. This helped them understand my role better and also my work."
   }
 ]

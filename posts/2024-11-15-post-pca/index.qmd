@@ -1,0 +1,44 @@
+---
+title: The Aftermath of PCA
+description: "Let's talk about what to do after completing a PCA"
+date: "2024-11-15"
+draft: false
+toc: true
+toc-depth: 4
+toc-location: left
+code-line-numbers: true
+---
+
+Principal Components Analysis (or PCA)
+
+```{python}
+import polars as pl
+
+df_wine = pl.read_csv('wine-data.csv')
+
+```
+
+```{python}
+df_wine.head()
+```
+
+
+
+
+<!-- Principal Components Analysis (or PCA) is a great way to help reduce the number of inputs provided to an ML algorithm. Often, you may find that you have dozens of inputs (also known as features or predictors) and keeping all of them may be a pain or not effective. Almost all ML models can benefit from having the *correct* features, but identifying which features are not useful isn't always easy. Reducing the number of inputs into an ML model will also help improve the time to build models (maybe, maybe not; but let's go with it).
+
+When I first learned about PCA, I thought it was a game-changer. I still do! In practice, I have found that PCA is kind of under-utilized.
+
+My goal isn't to upsell PCA today. Rather, I want to discuss two things:
+
+- talking about PCA with non-technical folks
+- what to do with after PCA
+
+In my workplace, curiousity runs high, but not everyone is familiar with data science termninology or methods. I have often get asked, "Why did you do that? What's the point?" These questions may sound adversarial and I did think they were at first. I quickly learned that my colleagues were genuinely interested in the thought process behind what I did. This helped them understand my role better and also my work. 
+
+Let's take a look at tow important assumptions behind PCA:
+
+- correlation between features
+- linear relationship between features
+
+I have found explaining these two assumptions are helpful to non-stats folks in my company.  -->
