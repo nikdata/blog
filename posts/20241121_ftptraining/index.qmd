@@ -7,11 +7,19 @@ toc: true
 toc-depth: 4
 toc-location: left
 code-line-numbers: false
+img: road-cycle.jpg
 ---
+
+![Photo by <a href="https://unsplash.com/@jackdelulio?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Jack Delulio</a> on <a href="https://unsplash.com/photos/man-in-black-t-shirt-riding-bicycle-on-road-during-daytime-sHhh963Selk?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>](road-cycle.jpg){align="center" width=70% fig-align="center" fig-alt="A man riding a bicycle on the road."}
 
 ## It all started with a new bike
 
 About 2.5 years ago (summer of 2022 to be more precise), I purchased a [2022 BMC Roadmachine Two](https://us.bmc-switzerland.com/collections/bike-archive-road/products/roadmachine-two-bikes-bmc-22-10605-002?_pos=15&_fid=b81251584&_ss=c). At the time, it was a very expensive purchase and over the last 2 years, I've upgraded many of the components. Since this was the most expensive bike I ever bought in my life, I told myself that I'm going to get better at cycling. Great! Now how would I go about doing that?
+
+
+## Get the right sensors
+
+I equipped my
 
 ## Hire a Coach?
 
@@ -19,36 +27,24 @@ Like many sports, I could work with a coach. I looked up cycling coaches (online
 
 I knew I wasn't going to train for a race or a cycling event. So I scratched this off my list.
 
+## Why even worry about this?
+
+Now that I had an expensive bike, I wanted to take advantage of it. Part of it also was that I wanted to be able to keep up with some of my friends. 
+
 ## But I learned something
 
 Every coach started off with one question that really got me thinking: "what's your goal?"
 
 When I first read that question (or variations of it), I didn't really think about it. My answer would always be "I want to ride my bike fast!" But I didn't take the time to think about my own goal. What did I really want to do? What about cycling excites me? 
 
-## What did I really want?
+## What I thought I wanted
 
-When I got my bike, I would ride as much as I could. I quickly realized that I was pretty tired out after riding for just 10-15 miles. Sure, I wasn't fit - that's why I needed to get better. But I was riding my bike frequently, why wasn't I getting any better? I also learned that there is a technical term for being tired: [bonking](https://www.trainerroad.com/blog/what-is-bonking-causes-dangers-and-prevention/#:~:text=Bonking%20is%20a%20dreaded%20experience,it%20is%20to%20recover%20from.).
+Like almost everyone, I just wanted to go blazing fast on my bike. My ideal scenario would be taking a "bike lift" to the top of a big hill/mountain and just riding down at top speed. Or the next best scenario: flat road (absolutely no ups/downs) with no head wind ever and going fast! So yeah, just going fast is what I *thought* I wanted.
 
-**What I wanted was to be able to ride for 2 - 3 hours without bonking**. I wanted to have energy after my bike ride to do household work, spend time with my family, and feel good. 
+## What I really wanted
 
-And this changed how I approached my bike rides and changed how I train for my bike rides. The key word that I focused in on was **endurance**. Endurance is what I needed to work on, develop, and strengthen if I wanted to cycle for hours and having enough energy (or fuel in the tank) after my ride.
+When I got my bike, I would ride as much as I could. I quickly realized that I was pretty tired out after riding for just 10-15 miles. Sure, I wasn't fit - that's why I needed to get better. But I was riding my bike frequently, why wasn't I getting any better? I also learned that there is a technical term for being tired: [bonking](https://www.trainerroad.com/blog/what-is-bonking-causes-dangers-and-prevention/#:~:text=Bonking%20is%20a%20dreaded%20experience,it%20is%20to%20recover%20from.). But I also came to the realization that I wasn't riding correctly. It wasn't always the form. Rather, I didn't know how to pace myself.
 
-## Chase the goal
-
-Now that I knew what I wanted to achieve, I started to look for cycling workout plans. Many of them were either 4 weeks or 8 weeks long. Some of these workouts were labeled as Base or Build. And that confused me! I don't need a *base*, I need to **build** my endurance - so why would I do a Base workout?
-
-It's here that I learned about the different cycling training phases: Base, Build, Specialty.
-
-I'll try to summarize them:
-
-- Base: this phase is all about 'training' your body and mind to adjust to the goal. It's about getting your body stronger and ready for more intense work down the road.
-- Build: this phase is all about being better. It builds on the foundations and there are more "stretch" goals.
-- Specialty: this phase is honing certain areas to perfection (or as perfect as you can be).
-
-## Strong Foundations
-
-I've been training for well over a year now and I can confidently say that Base phase training is my favorite and the most important. It's in this phase where I enjoy riding my bike at any time. It's all about building the strength, the mental focus, and endurance to ride my bike. It's also the best phase to try out new forms/positions, equipment, etc. More importantly, this phase is where you can really see a difference.
-
-I've done Build phase workouts and they are intense! Build phase is what makes you better, fitter, and stronger. But if you don't have a solid Base foundation, the Build workouts are tough and not very fun. 
+What I really wanted was to be able to **ride for 2 - 3 hours without bonking**. I wanted to have energy after my bike ride to do household work, spend time with my family, and feel good. 
 
 
