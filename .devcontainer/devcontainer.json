@@ -1,21 +1,33 @@
 {
     "name": "${localEnv:PROJECT_NAME:nikblog}",
-    // "image": "python:3.10",
     "build": {
-        "dockerfile": "dockerfile",
+        "dockerfile": "dockerfile_blog",
         "args": {
-            "ENV_NAME": "${localEnv:PROJECT_NAME:nikblog}",
-            "PYTHON_VER": "${localEnv:PYTHON_VER:3.12}",
-            "QUARTO_VER": "${localEnv:QUARTO_VER:1.6.33}"
+            "PY_VER": "3.12",
+            "R_VER": "latest",
+            "PY_ENV": "nikblog",
+            "QUARTO_VER": "1.6.39",
+            "SETUP_FOLDER": "setup"
         }
     },
     "customizations": {
         "settings": {
-            "python.defaultInterpreterPath": "/opt/conda/envs/${localEnv:PROJECT_NAME:nikblog}/bin/python3",
-            "python.selectInterpreter": "/opt/conda/envs/${localEnv:PROJECT_NAME:nikblog}/bin/python3"
+            "jupyter.interactiveWindow.textEditor.executeSelection": true,
+            "python.defaultInterpreterPath": "/opt/${localEnv:ENV_NAME:nikblog}/bin/python3",
+            "python.selectInterpreter": "/opt/${localEnv:ENV_NAME:nikblog}/bin/python3",
+            // Disable A/B experiments from VSCode
+            "python.experiments.enabled": false,
+            "workbench.enableExperiments": false,
+            "jupyter.experiments.enabled": false,
+            // Enable Ruff for linting
+            "editor.formatOnSaveMode": false,
+            "editor.defaultFormatter": "charliemarsh.ruff"
         },
         "vscode": {
             "extensions": [
+                // R Support
+                "reditorsupport.r",
+                "rdebugger.r-debugger",
                 // Documentation Extensions
                 "quarto.quarto",
                 "purocean.drawio-preview",
@@ -33,20 +45,6 @@
         }
     },
     "runArgs": [
-        // "--name", "${localEnv:USER}_blogcontainer"
         "--name", "nik_blog_container"
     ]
-
-    // Optional, mount local volume:
-    // "mounts": [
-    //     "source=${localEnv:HOME},target=/home,type=bind,consistency=cache"
-    // ]
-    // "remoteEnv": {
-    //     "MY_VAR": "${localEnv:MY_VAR:test_var}"
-    // },
-    // "runArgs": [
-    //     "--env-file",
-    //     ".devcontainer/devcontainer.env"
-    // ],
-    // "postCreateCommand": "python3 tests/test1.py"
 }
