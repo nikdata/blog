@@ -1,0 +1,109 @@
+# Initialize arguments
+ARG PY_VER
+ARG R_VER
+ARG PYTHON_ENV
+ARG QUARTO_VER
+ARG SETUP_FOLDER
+
+# Pull base image for R (use this for latest version)
+# FROM rocker/r-ver:${R_VER:-latest} AS builder
+
+# Pull base image for R (use this for specific version)
+FROM rocker/r-ver:${R_VER:-4.4.2} AS builder
+
+# Set environment variables
+ENV DEBIAN_FRONTEND=noninteractive
+
+# Define environment variables
+ARG PYTHON_ENV
+ENV PYTHON_ENV=${PYTHON_ENV}
+
+ARG SETUP_FOLDER
+ENV SETUP_FOLDER=${SETUP_FOLDER}
+
+ARG QUARTO_VER
+ENV QUARTO_VER=${QUARTO_VER}
+
+# Install system dependencies
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    python3-venv \
+    python3-pip \
+    curl \
+    wget \
+    libcurl4-openssl-dev \
+    libpq-dev \
+    libssl-dev \
+    libxml2-dev \
+    git \
+    libgit2-dev \
+    gcc \
+    gfortran \
+    build-essential \
+    libedit-dev \
+    && rm -rf /var/lib/apt/lists/* /tmp/*
+
+# Create setup directory and copy necessary files
+RUN mkdir ${SETUP_FOLDER}
+COPY install_quarto.sh /${SETUP_FOLDER}/
+COPY rpkgs.txt /${SETUP_FOLDER}/
+COPY pypkgs.txt /${SETUP_FOLDER}/
+
+# Install Quarto
+RUN bash ./${SETUP_FOLDER}/install_quarto.sh $QUARTO_VER
+
+# Set up Python virtual environment and install Python packages
+RUN python3 -m venv /opt/${PYTHON_ENV} && \
+    /opt/${PYTHON_ENV}/bin/pip install --upgrade pip && \
+    /opt/${PYTHON_ENV}/bin/pip install --no-cache-dir -r /${SETUP_FOLDER}/pypkgs.txt
+
+# Install R packages using pak
+RUN Rscript -e 'install.packages("pak", repos = sprintf("https://r-lib.github.io/p/pak/stable/%s/%s/%s", .Platform$pkgType, R.Version()$os, R.Version()$arch))' && \
+    Rscript -e "pak::pkg_install(readLines('/${SETUP_FOLDER}/rpkgs.txt'))"
+
+# Final runtime stage
+# Pull base image for R (use this for latest version)
+# FROM rocker/r-ver:${R_VER:-latest} AS final
+
+# Pull base image for R (use this for specific version)
+FROM rocker/r-ver:${R_VER:-4.4.2} AS final
+
+RUN  apt-get update && apt-get install -y -qq --no-install-recommends --purge \
+    python3-launchpadlib \
+    python3-dev \
+    nano \
+    curl \
+    wget \
+    gdebi \
+    xdg-utils \
+    git \
+    libglpk40 \
+    htop \
+    jq \
+    tar \
+    bzip2 \
+    unzip \
+    libssl-dev \
+    libxml2 \
+    openssh-server \
+    && rm -rf /var/lib/apt/lists/* \
+    && apt-get clean \
+    && rm -rf /tmp/*
+
+ARG PYTHON_ENV
+ENV PYTHON_ENV=${PYTHON_ENV}
+
+# Copy runtime essentials from the builder stage
+COPY --from=builder /opt/${PYTHON_ENV} /opt/${PYTHON_ENV}
+COPY --from=builder /opt/quarto /opt/quarto
+COPY --from=builder /usr/local /usr/local
+COPY --from=builder /usr/local/lib/R/site-library /usr/local/lib/R/site-library
+
+# update path
+ENV PATH="/opt/${PYTHON_ENV}/bin:/opt/quarto/bin:/usr/local/bin:$PATH"
+
+
+# Expose necessary ports
+EXPOSE 8888
+
+# Entrypoint to ensure correct Python env activates
+ENTRYPOINT [ "/bin/sh" ]
