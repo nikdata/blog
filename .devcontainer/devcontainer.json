@@ -1,11 +1,11 @@
 {
-    "name": "${localEnv:PROJECT_NAME:nikblog}",
+    "name": "nikblog",
     "build": {
         "dockerfile": "dockerfile_blog",
         "args": {
-            "PY_VER": "3.12",
+            "PYTHON_VER": "3.12",
             "R_VER": "latest",
-            "PY_ENV": "nikblog",
+            "PYTHON_ENV": "nikblog",
             "QUARTO_VER": "1.6.39",
             "SETUP_FOLDER": "setup"
         }
@@ -13,8 +13,8 @@
     "customizations": {
         "settings": {
             "jupyter.interactiveWindow.textEditor.executeSelection": true,
-            "python.defaultInterpreterPath": "/opt/${localEnv:ENV_NAME:nikblog}/bin/python3",
-            "python.selectInterpreter": "/opt/${localEnv:ENV_NAME:nikblog}/bin/python3",
+            "python.defaultInterpreterPath": "/opt/nikblog/bin/python3",
+            "python.selectInterpreter": "/opt/nikblog/bin/python3",
             // Disable A/B experiments from VSCode
             "python.experiments.enabled": false,
             "workbench.enableExperiments": false,

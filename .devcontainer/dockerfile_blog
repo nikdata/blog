@@ -1,6 +1,6 @@
-ARG PY_VER
+ARG PYTHON_VER
 ARG R_VER
-ARG PY_ENV
+ARG PYTHON_ENV
 ARG QUARTO_VER
 ARG SETUP_FOLDER
 
@@ -55,7 +55,7 @@ COPY install_quarto.sh /${SETUP_FOLDER}/
 RUN bash ./${SETUP_FOLDER}/install_quarto.sh $QUARTO_VER
 
 # STAGE 2: Python Libraries
-FROM python:${PY_VER:-3.12}-slim-bookworm AS stg2
+FROM python:${PYTHON_VER:-3.12}-slim-bookworm AS stg2
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
     python3-launchpadlib \
