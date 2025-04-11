@@ -180,5 +180,19 @@
     "title": "The {avocado} R Package",
     "section": "Footnotes",
     "text": "Footnotes\n\n\nWhile I understand why they’re making the change, I also feel that their change is not very accommodating to hobbyists. Alas, this is a much larger discussion and I, for one, am not qualified or well-versed in discussing it.↩︎"
+  },
+  {
+    "objectID": "posts/20240618_mdtext/index.html",
+    "href": "posts/20240618_mdtext/index.html",
+    "title": "Example Markdown Post",
+    "section": "",
+    "text": "This is normal text.\nThis is bold text\nThis is italic text\nUnordered List\nOrdered List"
+  },
+  {
+    "objectID": "posts/20240618_mdtext/index.html#heading-2",
+    "href": "posts/20240618_mdtext/index.html#heading-2",
+    "title": "Example Markdown Post",
+    "section": "Heading 2",
+    "text": "Heading 2\n\nHeading 3\n\nHeading 4\n\nHeading 5\n\nHeading 6"
   }
 ]
