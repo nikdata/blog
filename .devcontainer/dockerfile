@@ -5,7 +5,7 @@ ARG QUARTO_VER
 ARG SETUP_FOLDER
 
 # STAGE 1: Base Image
-FROM rocker/r-ver:${R_VER:-latest} AS stg1
+FROM rocker/r-ver:${R_VER:-4.4.3} AS stg1
 
 # linux updates
 RUN  apt-get update && apt-get install -y -qq --no-install-recommends --purge \
@@ -118,7 +118,7 @@ RUN Rscript -e 'install.packages("pak", repos = sprintf("https://r-lib.github.io
 RUN Rscript -e "pak::pkg_install(readLines('/${SETUP_FOLDER}/rpkgs.txt'))"
 
 # STAGE 4: final build
-FROM rocker/r-ver:${R_VER:-latest}
+FROM rocker/r-ver:${R_VER:-4.4.3}
 
 RUN  apt-get update && apt-get install -y -qq --no-install-recommends --purge \
     python3-launchpadlib \

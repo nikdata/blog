@@ -1,12 +1,12 @@
 {
     "name": "nikblog",
     "build": {
-        "dockerfile": "dockerfile_blog",
+        "dockerfile": "dockerfile",
         "args": {
             "PYTHON_VER": "3.12",
-            "R_VER": "latest",
+            "R_VER": "4.4.3",
             "PYTHON_ENV": "nikblog",
-            "QUARTO_VER": "1.6.39",
+            "QUARTO_VER": "1.6.43",
             "SETUP_FOLDER": "setup"
         }
     },
