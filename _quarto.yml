@@ -13,10 +13,6 @@ website:
         href: https://github.com/nikdata
       - icon: linkedin
         href: https://linkedin.com/in/nikagarwal
-      - icon: mastodon
-        href: https://fosstodon.org/@nikdata
-      - icon: reddit
-        href: https://www.reddit.com/user/cmdrmac/
       - text: "{{< iconify fa6-brands bluesky >}}"
         href: https://bsky.app/profile/nikhilagarwal.bsky.social
       - icon: strava
@@ -24,7 +20,7 @@ website:
     background: '#000000'
   page-footer: 
     center:
-      - text: © 2018 - 2024 | Nik Agarwal
+      - text: © 2018 - 2025 | Nik Agarwal
     border: true
 format:
   html:
