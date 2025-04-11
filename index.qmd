@@ -3,28 +3,15 @@ title: "{nik}"
 image: profile-pic.jpg
 about:
   template: jolla
-  links:
-    - text: "{{< iconify fa6-brands github height=25px >}} GitHub"
-      href: https://github.com/nikdata
-    - text: "{{< iconify fa6-brands linkedin height=25px >}} LinkedIn"
-      href: https://linkedin.com/in/nikagarwal
-    - text: "{{< iconify fa6-brands mastodon height=25px >}} Mastodon"
-      href: https://fosstodon.org/@nikdata
-    - text: "{{< iconify fa6-brands reddit-alien height=25px >}} Reddit"
-      href: https://www.reddit.com/user/cmdrmac/
-    - text: "{{< iconify fa6-brands bluesky height=25px >}} BlueSky"
-      href: https://bsky.app/profile/nikhilagarwal.bsky.social
-    - text: "{{< iconify fa6-brands strava height=25px >}} Strava"
-      href: https://www.strava.com/athletes/8185543
 ---
 
 Hi! My name is Nik and this is my personal blog.
 
-I'm a data scientist and currently am Director of Data Science at [MākuSafe](https://www.makusafe.com) where I work on developing the overall data strategy and products and an Adjunct Instructor at [Southern New Hampshire University](https://www.snhu.edu).
+I am a data scientist and I also teach as an adjunct instructor. 
 
-I have a Master's in Data Science from Northwestern University.
+I have a Bachelor's in Industrial Engineering from Northern Illinois University and a Master's in Data Science from Northwestern University.
 
-In my free time (which is scarce), I enjoy **cycling** (I'm actually serious about this), learning to **cook**, and playing **board games** with the family.
+In my free time, I enjoy **cycling** (I'm actually serious about this), learning to **cook**, and playing **board games** with the family.
 
 ---
 ::: {.disclaimer}
