@@ -1,20 +1,13 @@
 {
     "name": "nikblog",
-    "build": {
-        "dockerfile": "dockerfile",
-        "args": {
-            "PYTHON_VER": "3.12",
-            "R_VER": "4.4.3",
-            "PYTHON_ENV": "nikblog",
-            "QUARTO_VER": "1.6.43",
-            "SETUP_FOLDER": "setup"
-        }
+    "image": "mcr.microsoft.com/devcontainers/python:3.12",
+    "features": {
+        "ghcr.io/devcontainers/features/common-utils:2": {},
+     "ghcr.io/devcontainers/features/git:1": {}
     },
     "customizations": {
         "settings": {
             "jupyter.interactiveWindow.textEditor.executeSelection": true,
-            "python.defaultInterpreterPath": "/opt/nikblog/bin/python3",
-            "python.selectInterpreter": "/opt/nikblog/bin/python3",
             // Disable A/B experiments from VSCode
             "python.experiments.enabled": false,
             "workbench.enableExperiments": false,
@@ -25,9 +18,6 @@
         },
         "vscode": {
             "extensions": [
-                // R Support
-                "reditorsupport.r",
-                "rdebugger.r-debugger",
                 // Documentation Extensions
                 "quarto.quarto",
                 "purocean.drawio-preview",
@@ -39,12 +29,14 @@
                 // Python Extensions
                 "ms-python.python",
                 "ms-toolsai.jupyter",
+                "charliermarsh.ruff",
                 // Github Actions
                 "github.vscode-github-actions"
             ]
         }
     },
+    "postCreateCommand": "chmod +x setup.sh && ./setup.sh",
     "runArgs": [
-        "--name", "nik_blog_container"
+        "--name", "nikblog"
     ]
 }

@@ -1,1 +1,0 @@
-This folder contains unused files or older files that I've kept for reference. These may be deleted at any time without notice.
