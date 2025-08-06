@@ -229,7 +229,7 @@ jobs:
 
     - name: Upload processing logs
       if: failure()
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: processing-logs-${{ github.run_number }}
         path: |
