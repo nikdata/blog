@@ -1,0 +1,255 @@
+name: Smart Markdown Content Processing
+
+on:
+  pull_request:
+    paths:
+      - 'ingest-external-md/**'
+      - 'posts/**'
+      - '_site/**'
+    types: [opened, synchronize, reopened]
+
+jobs:
+  smart-processing:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        ref: ${{ github.head_ref }}
+        token: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Analyze what needs processing
+      id: analyze
+      run: |
+        echo "🔍 Analyzing changes to determine processing needs..."
+        
+        # Check for processable markdown files in ingest-external-md (excluding README.md)
+        ingest_md_count=$(find ingest-external-md -name "*.md" -type f 2>/dev/null | grep -v -i readme.md | wc -l || echo "0")
+        echo "Processable markdown files in ingest-external-md: $ingest_md_count"
+        
+        # Check if posts/ directory has changes in this PR
+        posts_changed="false"
+        if git diff --name-only origin/${{ github.base_ref }}..HEAD | grep -q "^posts/"; then
+          posts_changed="true"
+        fi
+        echo "Posts directory changed: $posts_changed"
+        
+        # Check if _site/ directory has changes in this PR  
+        site_changed="false"
+        if git diff --name-only origin/${{ github.base_ref }}..HEAD | grep -q "^_site/"; then
+          site_changed="true"
+        fi
+        echo "Site directory changed: $site_changed"
+        
+        # Decision logic
+        needs_processing="false"
+        needs_rendering="false"
+        scenario="unknown"
+        
+        if [ "$ingest_md_count" -gt 0 ]; then
+          # Scenario 1: External markdown import workflow - has content to process
+          needs_processing="true"
+          needs_rendering="true"
+          scenario="external-import"
+          echo "📥 Detected: External markdown import workflow"
+        elif [ "$posts_changed" = "true" ] && [ "$site_changed" = "false" ]; then
+          # Scenario: Posts changed but no site rebuild (partial VSCode workflow)
+          needs_processing="false"
+          needs_rendering="true"
+          scenario="posts-only"
+          echo "📝 Detected: Posts modified without site rebuild"
+        elif [ "$posts_changed" = "true" ] && [ "$site_changed" = "true" ]; then
+          # Scenario: VSCode workflow - everything already done locally
+          needs_processing="false"
+          needs_rendering="false"
+          scenario="vscode-complete"
+          echo "💻 Detected: Complete VSCode workflow (posts + site already updated)"
+        else
+          # Other changes - no processing needed
+          needs_processing="false"
+          needs_rendering="false"
+          scenario="other"
+          echo "🔧 Detected: Other changes (no processing needed)"
+        fi
+        
+        echo "needs_processing=$needs_processing" >> $GITHUB_OUTPUT
+        echo "needs_rendering=$needs_rendering" >> $GITHUB_OUTPUT
+        echo "scenario=$scenario" >> $GITHUB_OUTPUT
+        echo "ingest_md_count=$ingest_md_count" >> $GITHUB_OUTPUT
+        
+        echo ""
+        echo "📋 Processing Plan:"
+        echo "  - Run processing pipeline: $needs_processing"
+        echo "  - Run quarto render: $needs_rendering"
+        echo "  - Scenario: $scenario"
+
+    - name: Set up Python
+      if: steps.analyze.outputs.needs_processing == 'true' || steps.analyze.outputs.needs_rendering == 'true'
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.12'
+
+    - name: Install Python dependencies
+      if: steps.analyze.outputs.needs_processing == 'true' || steps.analyze.outputs.needs_rendering == 'true'
+      run: |
+        python -m pip install --upgrade pip
+        pip install PyYAML python-dateutil
+
+    - name: Install Quarto
+      if: steps.analyze.outputs.needs_rendering == 'true'
+      uses: quarto-dev/quarto-actions/setup@v2
+
+    - name: Run markdown import processing pipeline
+      if: steps.analyze.outputs.needs_processing == 'true'
+      run: |
+        echo "🚀 Running markdown import processing pipeline..."
+        python scripts/00-process-markdown-import.py --promote
+        echo "✅ Processing pipeline completed"
+
+    - name: Render Quarto site
+      if: steps.analyze.outputs.needs_rendering == 'true'
+      run: |
+        echo "🔧 Rendering Quarto site..."
+        quarto render
+        echo "✅ Site rendered successfully"
+
+    - name: Configure Git
+      if: steps.analyze.outputs.needs_processing == 'true' || steps.analyze.outputs.needs_rendering == 'true'
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+
+    - name: Commit processed content
+      if: steps.analyze.outputs.needs_processing == 'true' || steps.analyze.outputs.needs_rendering == 'true'
+      run: |
+        # Add changes based on what was processed
+        if [ "${{ steps.analyze.outputs.needs_processing }}" = "true" ]; then
+          git add posts/
+          echo "📁 Staged processed posts"
+        fi
+        
+        if [ "${{ steps.analyze.outputs.needs_rendering }}" = "true" ]; then
+          git add _site/
+          echo "🌐 Staged rendered site"
+        fi
+        
+        # Only commit if there are staged changes
+        if git diff --staged --quiet; then
+          echo "ℹ️  No changes to commit"
+        else
+          # Create commit message based on scenario
+          case "${{ steps.analyze.outputs.scenario }}" in
+            "external-import")
+              commit_msg="Process external markdown imports and rebuild site
+
+- Processed ${{ steps.analyze.outputs.ingest_md_count }} markdown file(s) from ingest-external-md/
+- Updated posts/ directory with new content  
+- Rebuilt _site/ for deployment
+
+[skip ci]"
+              ;;
+            "posts-only")
+              commit_msg="Rebuild site for updated posts
+
+- Rendered Quarto site for posts/ changes
+- Updated _site/ for deployment
+
+[skip ci]"
+              ;;
+            *)
+              commit_msg="Update site content
+
+- Processed content changes
+- Updated _site/ for deployment
+
+[skip ci]"
+              ;;
+          esac
+          
+          echo "📝 Committing changes..."
+          git commit -m "$commit_msg"
+          git push origin ${{ github.head_ref }}
+          echo "✅ Changes committed and pushed"
+        fi
+
+    - name: Comment on PR
+      if: steps.analyze.outputs.needs_processing == 'true' || steps.analyze.outputs.needs_rendering == 'true'
+      uses: actions/github-script@v7
+      with:
+        script: |
+          const scenario = '${{ steps.analyze.outputs.scenario }}';
+          const needsProcessing = '${{ steps.analyze.outputs.needs_processing }}' === 'true';
+          const needsRendering = '${{ steps.analyze.outputs.needs_rendering }}' === 'true';
+          const mdCount = '${{ steps.analyze.outputs.ingest_md_count }}';
+          
+          let comment = '';
+          
+          if (scenario === 'external-import') {
+            comment = `## 🎉 Markdown Import Processing Complete!
+            
+Successfully processed **${mdCount}** markdown file(s) from external imports.
+
+### What happened:
+- ✅ Filenames sanitized and post directories created
+- ✅ YAML frontmatter standardized  
+- ✅ Content highlights converted to HTML markup
+- ✅ Image paths organized and updated
+- ✅ Content validated and promoted to \`posts/\`
+- ✅ Site rebuilt and ready for preview
+
+### Next steps:
+1. Review the Netlify preview deployment
+2. Check the processed posts in the \`posts/\` directory  
+3. Merge this PR to publish to your live site
+
+The processed content is now ready for deployment! 🚀`;
+          
+          } else if (scenario === 'posts-only') {
+            comment = `## 🔧 Site Rebuilt for Updated Posts
+            
+Detected changes to posts/ without a corresponding site rebuild.
+
+### What happened:
+- ✅ Rendered Quarto site for your post changes
+- ✅ Updated \`_site/\` directory for deployment
+
+### Next steps:
+1. Review the Netlify preview deployment
+2. Merge this PR when ready to publish
+
+Your changes are now ready for deployment! 🚀`;
+          }
+          
+          if (comment) {
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: comment
+            });
+          }
+
+    - name: Summary
+      run: |
+        echo "📊 Processing Summary"
+        echo "===================="
+        echo "Scenario: ${{ steps.analyze.outputs.scenario }}"
+        echo "Processing needed: ${{ steps.analyze.outputs.needs_processing }}"
+        echo "Rendering needed: ${{ steps.analyze.outputs.needs_rendering }}"
+        
+        if [ "${{ steps.analyze.outputs.scenario }}" = "vscode-complete" ]; then
+          echo ""
+          echo "✨ No processing needed - everything looks good!"
+          echo "Your local VSCode workflow handled everything perfectly."
+        fi
+
+    - name: Upload processing logs
+      if: failure()
+      uses: actions/upload-artifact@v3
+      with:
+        name: processing-logs-${{ github.run_number }}
+        path: |
+          ingest-external-md/
+          processed-staging/
+        retention-days: 7
