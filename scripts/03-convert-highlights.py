@@ -7,6 +7,7 @@ This script processes post directories in processed-staging/ and:
 2. Supports all Bear highlight colors (green, red, blue, yellow, purple)
 3. Removes [HASH] index references if found
 4. Provides detailed console output on changes made
+5. PRESERVES markdown indentation (fixed whitespace handling)
 
 Usage:
     python scripts/03-convert-highlights.py
@@ -81,7 +82,7 @@ def convert_highlight_to_html(color_emoji: str, text: str) -> str:
 
 def remove_hash_references(content: str) -> Tuple[str, List[str]]:
     """
-    Remove Bear's [HASH] index references while preserving whitespace.
+    Remove Bear's [HASH] index references while preserving whitespace and markdown indentation.
     
     Bear sometimes adds references like: [HASH abc123] 
     
@@ -96,15 +97,16 @@ def remove_hash_references(content: str) -> Tuple[str, List[str]]:
     # Remove hash references but preserve surrounding whitespace
     cleaned_content = re.sub(pattern, '', content)
     
-    # Only clean up multiple consecutive spaces on the same line, not across lines
-    # This preserves intentional line breaks and paragraph spacing
+    # FIXED: Only clean up multiple consecutive spaces WITHIN words, not at line beginnings
+    # This preserves markdown indentation while still cleaning up messy spacing
     lines = cleaned_content.split('\n')
     cleaned_lines = []
     
     for line in lines:
-        # Only compress multiple spaces within a line, preserve empty lines
         if line.strip():  # Non-empty line
-            cleaned_line = re.sub(r' +', ' ', line)  # Multiple spaces → single space
+            # Use positive lookbehind to only compress spaces that come after non-whitespace
+            # This preserves leading whitespace (indentation) but fixes internal spacing
+            cleaned_line = re.sub(r'(?<=\S) {2,}', ' ', line)
             cleaned_lines.append(cleaned_line)
         else:  # Empty line
             cleaned_lines.append(line)  # Keep as-is (preserves empty lines)
@@ -138,7 +140,7 @@ def process_markdown_content(content: str) -> Tuple[str, Dict[str, int], List[st
         color_name = COLOR_NAMES.get(color_emoji, 'unknown')
         conversion_stats[color_name] += 1
     
-    # Step 3: Remove hash references
+    # Step 3: Remove hash references (with fixed whitespace handling)
     processed_content, removed_refs = remove_hash_references(processed_content)
     
     return processed_content, conversion_stats, removed_refs
@@ -199,7 +201,7 @@ def process_post_directory(post_dir: Path) -> bool:
         with open(content_file, 'w', encoding='utf-8') as f:
             f.write(processed_content)
         
-        print(f"    ✅ Successfully updated {post_dir.name}")
+        print(f"    ✅ Successfully updated {post_dir.name} (indentation preserved)")
         return True
         
     except UnicodeDecodeError as e:
@@ -266,8 +268,8 @@ def main():
         print("ℹ️  No post directories found in processed-staging/")
         sys.exit(0)
     
-    print(f"🎨 Converting Bear highlights to HTML markup")
-    print("=" * 60)
+    print(f"🎨 Converting Bear highlights to HTML markup (preserving indentation)")
+    print("=" * 70)
     print(f"📂 Found {len(post_dirs)} post directory(ies) to process")
     
     success_count = 0
@@ -336,7 +338,7 @@ def main():
         sys.exit(1)
     else:
         print("\n🎉 All posts processed successfully!")
-        print("Bear highlights have been converted to HTML markup.")
+        print("Bear highlights converted to HTML markup with indentation preserved.")
 
 
 if __name__ == "__main__":
