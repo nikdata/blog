@@ -1,4 +1,4 @@
-name: Smart Markdown Content Processing
+name: Smart Content Processing
 
 on:
   pull_request:
@@ -139,36 +139,27 @@ jobs:
           echo "ℹ️  No changes to commit"
         else
           # Create commit message based on scenario
-          case "${{ steps.analyze.outputs.scenario }}" in
-            "external-import")
-              commit_msg="Process external markdown imports and rebuild site
-
-- Processed ${{ steps.analyze.outputs.ingest_md_count }} markdown file(s) from ingest-external-md/
-- Updated posts/ directory with new content  
-- Rebuilt _site/ for deployment
-
-[skip ci]"
-              ;;
-            "posts-only")
-              commit_msg="Rebuild site for updated posts
-
-- Rendered Quarto site for posts/ changes
-- Updated _site/ for deployment
-
-[skip ci]"
-              ;;
-            *)
-              commit_msg="Update site content
-
-- Processed content changes
-- Updated _site/ for deployment
-
-[skip ci]"
-              ;;
-          esac
+          if [ "${{ steps.analyze.outputs.scenario }}" = "external-import" ]; then
+            git commit -m "Process external markdown imports and rebuild site" \
+                       -m "- Processed ${{ steps.analyze.outputs.ingest_md_count }} markdown file(s) from ingest-external-md/" \
+                       -m "- Updated posts/ directory with new content" \
+                       -m "- Rebuilt _site/ for deployment" \
+                       -m "" \
+                       -m "[skip ci]"
+          elif [ "${{ steps.analyze.outputs.scenario }}" = "posts-only" ]; then
+            git commit -m "Rebuild site for updated posts" \
+                       -m "- Rendered Quarto site for posts/ changes" \
+                       -m "- Updated _site/ for deployment" \
+                       -m "" \
+                       -m "[skip ci]"
+          else
+            git commit -m "Update site content" \
+                       -m "- Processed content changes" \
+                       -m "- Updated _site/ for deployment" \
+                       -m "" \
+                       -m "[skip ci]"
+          fi
           
-          echo "📝 Committing changes..."
-          git commit -m "$commit_msg"
           git push origin ${{ github.head_ref }}
           echo "✅ Changes committed and pushed"
         fi
@@ -186,39 +177,31 @@ jobs:
           let comment = '';
           
           if (scenario === 'external-import') {
-            comment = `## 🎉 Markdown Import Processing Complete!
-            
-Successfully processed **${mdCount}** markdown file(s) from external imports.
-
-### What happened:
-- ✅ Filenames sanitized and post directories created
-- ✅ YAML frontmatter standardized  
-- ✅ Content highlights converted to HTML markup
-- ✅ Image paths organized and updated
-- ✅ Content validated and promoted to \`posts/\`
-- ✅ Site rebuilt and ready for preview
-
-### Next steps:
-1. Review the Netlify preview deployment
-2. Check the processed posts in the \`posts/\` directory  
-3. Merge this PR to publish to your live site
-
-The processed content is now ready for deployment! 🚀`;
+            comment = '## 🎉 Markdown Import Processing Complete!\n\n' +
+              'Successfully processed **' + mdCount + '** markdown file(s) from external imports.\n\n' +
+              '### What happened:\n' +
+              '- ✅ Filenames sanitized and post directories created\n' +
+              '- ✅ YAML frontmatter standardized\n' +
+              '- ✅ Content highlights converted to HTML markup\n' +
+              '- ✅ Image paths organized and updated\n' +
+              '- ✅ Content validated and promoted to `posts/`\n' +
+              '- ✅ Site rebuilt and ready for preview\n\n' +
+              '### Next steps:\n' +
+              '1. Review the Netlify preview deployment\n' +
+              '2. Check the processed posts in the `posts/` directory\n' +
+              '3. Merge this PR to publish to your live site\n\n' +
+              'The processed content is now ready for deployment! 🚀';
           
           } else if (scenario === 'posts-only') {
-            comment = `## 🔧 Site Rebuilt for Updated Posts
-            
-Detected changes to posts/ without a corresponding site rebuild.
-
-### What happened:
-- ✅ Rendered Quarto site for your post changes
-- ✅ Updated \`_site/\` directory for deployment
-
-### Next steps:
-1. Review the Netlify preview deployment
-2. Merge this PR when ready to publish
-
-Your changes are now ready for deployment! 🚀`;
+            comment = '## 🔧 Site Rebuilt for Updated Posts\n\n' +
+              'Detected changes to posts/ without a corresponding site rebuild.\n\n' +
+              '### What happened:\n' +
+              '- ✅ Rendered Quarto site for your post changes\n' +
+              '- ✅ Updated `_site/` directory for deployment\n\n' +
+              '### Next steps:\n' +
+              '1. Review the Netlify preview deployment\n' +
+              '2. Merge this PR when ready to publish\n\n' +
+              'Your changes are now ready for deployment! 🚀';
           }
           
           if (comment) {
