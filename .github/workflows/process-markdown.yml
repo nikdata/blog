@@ -107,12 +107,12 @@ jobs:
         python scripts/00-process-markdown-import.py --promote
         echo "✅ Processing pipeline completed"
 
-    - name: Render Quarto site
+    - name: Render Quarto site with clean flag
       if: steps.analyze.outputs.needs_rendering == 'true'
       run: |
-        echo "🔧 Rendering Quarto site..."
-        quarto render
-        echo "✅ Site rendered successfully"
+        echo "🔧 Rendering Quarto site with clean flag to remove deleted posts..."
+        quarto render --clean
+        echo "✅ Site rendered successfully with clean rebuild"
 
     - name: Configure Git
       if: steps.analyze.outputs.needs_processing == 'true' || steps.analyze.outputs.needs_rendering == 'true'
@@ -140,22 +140,23 @@ jobs:
         else
           # Create commit message based on scenario
           if [ "${{ steps.analyze.outputs.scenario }}" = "external-import" ]; then
-            git commit -m "Process external markdown imports and rebuild site" \
+            git commit -m "Process external markdown imports and rebuild site with clean" \
                        -m "- Processed ${{ steps.analyze.outputs.ingest_md_count }} markdown file(s) from ingest-external-md/" \
                        -m "- Updated posts/ directory with new content" \
-                       -m "- Rebuilt _site/ for deployment" \
+                       -m "- Rebuilt _site/ with --clean flag (removes deleted posts)" \
                        -m "" \
                        -m "[skip ci]"
           elif [ "${{ steps.analyze.outputs.scenario }}" = "posts-only" ]; then
-            git commit -m "Rebuild site for updated posts" \
+            git commit -m "Rebuild site for updated posts with clean flag" \
                        -m "- Rendered Quarto site for posts/ changes" \
+                       -m "- Used --clean flag to remove deleted posts" \
                        -m "- Updated _site/ for deployment" \
                        -m "" \
                        -m "[skip ci]"
           else
-            git commit -m "Update site content" \
+            git commit -m "Update site content with clean rebuild" \
                        -m "- Processed content changes" \
-                       -m "- Updated _site/ for deployment" \
+                       -m "- Rebuilt _site/ with --clean flag" \
                        -m "" \
                        -m "[skip ci]"
           fi
@@ -185,7 +186,7 @@ jobs:
               '- ✅ Content highlights converted to HTML markup\n' +
               '- ✅ Image paths organized and updated\n' +
               '- ✅ Content validated and promoted to `posts/`\n' +
-              '- ✅ Site rebuilt and ready for preview\n\n' +
+              '- ✅ Site rebuilt with `--clean` flag (removes deleted posts)\n\n' +
               '### Next steps:\n' +
               '1. Review the Netlify preview deployment\n' +
               '2. Check the processed posts in the `posts/` directory\n' +
@@ -197,6 +198,7 @@ jobs:
               'Detected changes to posts/ without a corresponding site rebuild.\n\n' +
               '### What happened:\n' +
               '- ✅ Rendered Quarto site for your post changes\n' +
+              '- ✅ Used `--clean` flag to ensure deleted posts are removed\n' +
               '- ✅ Updated `_site/` directory for deployment\n\n' +
               '### Next steps:\n' +
               '1. Review the Netlify preview deployment\n' +
