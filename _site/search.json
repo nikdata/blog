@@ -46,7 +46,21 @@
     "href": "posts/index.html",
     "title": "{nik}",
     "section": "",
-    "text": "How I Set Up My New MacBook Air\n\n\nUp and running with a new Mac\n\n\n\n\n\n18 Jan 2023\n\n\n\n\n\n\n\n\n\n\n\n\nThe {avocado} R Package\n\n\nI love avocados so I made an R package for them\n\n\n\n\n\n18 Dec 2020\n\n\n\n\n\n\n\n\n\n\n\n\nThe {ialiquor} R Package\n\n\nSay hello to my first R package!\n\n\n\n\n\n07 Dec 2020\n\n\n\n\n\n\n\n\n\n\n\n\nMagic 8 Ball Function\n\n\nLearning to write a function in R\n\n\n\n\n\n01 Jan 2018\n\n\n\n\n\nNo matching items"
+    "text": "Markdown with Image\n\n\n\n\n\n\n\n\n06 Aug 2025\n\n\n\n\n\n\n\n\n\n\n\n\nHow I Set Up My New MacBook Air\n\n\nUp and running with a new Mac\n\n\n\n\n\n18 Jan 2023\n\n\n\n\n\n\n\n\n\n\n\n\nThe {avocado} R Package\n\n\nI love avocados so I made an R package for them\n\n\n\n\n\n18 Dec 2020\n\n\n\n\n\n\n\n\n\n\n\n\nThe {ialiquor} R Package\n\n\nSay hello to my first R package!\n\n\n\n\n\n07 Dec 2020\n\n\n\n\n\n\n\n\n\n\n\n\nMagic 8 Ball Function\n\n\nLearning to write a function in R\n\n\n\n\n\n01 Jan 2018\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "posts/20250806_post-with-image/index.html",
+    "href": "posts/20250806_post-with-image/index.html",
+    "title": "Markdown with Image",
+    "section": "",
+    "text": "This post will contain an image below:\n\nThe goal of this document is to also create some text that can illustrate some of the nuances found in Bear (using the Markdown features).\n\n\n\n\n\n\nThis is bold text\nThis is italics\nThis is green highlighted text\nThis is red highlighted text\nThis is blue highlighted text\nThis is yellow highlighted text\nThis is purple highlighted text\nOrdered List\n\nItem 1\nItem 2\nItem 3\n\n\nsub-item 1\n\nUnordered List\n\nItem 1\nItem 2\nItem 2a\nItem 3"
+  },
+  {
+    "objectID": "posts/20250806_post-with-image/index.html#this-is-heading-2",
+    "href": "posts/20250806_post-with-image/index.html#this-is-heading-2",
+    "title": "Markdown with Image",
+    "section": "",
+    "text": "This is bold text\nThis is italics\nThis is green highlighted text\nThis is red highlighted text\nThis is blue highlighted text\nThis is yellow highlighted text\nThis is purple highlighted text\nOrdered List\n\nItem 1\nItem 2\nItem 3\n\n\nsub-item 1\n\nUnordered List\n\nItem 1\nItem 2\nItem 2a\nItem 3"
   },
   {
     "objectID": "archives/about-bk.html",
