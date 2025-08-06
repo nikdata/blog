@@ -1,96 +1,5 @@
 [
   {
-    "objectID": "about-bk.html",
-    "href": "about-bk.html",
-    "title": "Nik Agarwal",
-    "section": "",
-    "text": "I’m a data scientist and I enjoy writing about data science and road cycling.\nThanks for visiting!"
-  },
-  {
-    "objectID": "posts/20230118_settingupmba/index.html",
-    "href": "posts/20230118_settingupmba/index.html",
-    "title": "How I Set Up My New MacBook Air",
-    "section": "",
-    "text": "I recently bought a new MacBook Air1 and I was ecstatic to set it up from scratch. My previous computer (or current since I still use it) was last setup back in 2018 and I kept installing/updating software to it that I forgot all the cool things. In fact, in the last 4 years, macOS had switch from Bash to ZSH as its default shell and I can’t even remember using Bash anymore.\nIn this post, I wanted to share with you how I went about setting up my new MacBook Air2.\nSo here’s the kicker. My new MacBook Air runs on the M2 processor (aka Apple Silicon), which is based on the ARM architecture. I found this website that summarizes the difference between the x86/amd64 architecture versus ARM.\nTo put it succinctly, ARM requires different software builds than the previous Intel Macs. In many cases, developers have released “Universal” builds of their software that can work on both Intel Macs and Apple Silicon Macs. Some software, however, has not been updated and you’ll be prompted to install Rosetta2:\nThe really cool thing about Rosetta 2 is its ability to run x86/amd64 software on Apple Silicon and the performance is very good. However, I don’t want to run any software that’s not optimized for Apple Silicon, so I have only installed software that is optimized for Apple Silicon.\nAs you can tell from the image above, I haven’t installed Quarto. Quarto is - in my view - the better replacement for RMarkdown since it works with Python and Julia in addition to R. I’m betting that the Quarto dev team is working on an ARM optimized version (hopefully it’ll be in version 1.3).\nSteps:"
-  },
-  {
-    "objectID": "posts/20230118_settingupmba/index.html#making-the-terminal-work-for-me",
-    "href": "posts/20230118_settingupmba/index.html#making-the-terminal-work-for-me",
-    "title": "How I Set Up My New MacBook Air",
-    "section": "Making the Terminal Work For Me",
-    "text": "Making the Terminal Work For Me\nI use the Terminal quite a bit. It’s the easiest and most efficient way to work with git. The stock Terminal app on the Mac is good, like really good. And it does the job. BUT, it can be better.\n\n\n\n\n\n\nPackage Manager - Brew\nFirst off, I highly recommend the use of Brew. Brew is a package manager and is one of the easiest ways to install free and open-source (FOSS) software. And they’re super easy to uninstall!\nTo install Brew, simple copy, paste, and execute the following command the stock Terminal app:\n/bin/bash -c \"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)\"\nWithin moments, Brew will begin the installation:\n\n\n\n\n\nAfter a few moments, Brew will have completed and will let you know that you should run 3 extra lines (by copying and pasting them at the Terminal prompt):\n\n\n\n\n\nLine 1:\necho '# Set PATH, MANPATH, etc., for Homebrew.' &gt;&gt; /Users/nikhil/.zprofile\nLine 2:\necho 'eval \"$(/opt/homebrew/bin/brew shellenv)\" ' &gt; /Users /nikhil/.zprofile\nLine 3:\neval \"$(/opt/homebrew/bin/brew shellenv)\"\n\n\nA better terminal - iTerm2\nRemember how I said there’s a better Terminal? It’s called iTerm2. A totally optional software, but I think it offers far more flexibility than the stock Terminal app.\nLet’s install it with Brew. Open up the stock Terminal app and run the following command:\nbrew install --cask iterm2\n\n\n\n\n\nFrom now on, we’ll assume that the default Terminal app is iTerm2.\n\n\nUpdate git & ZSH\nLet’s kick things off and try to check the version of git that comes with macOS.\nType the following into iTerm:\ngit --version\nA prompt like this may show up:\n\n\n\n\n\nSo apparently git is not installed. Clicking on INSTALL and then going through the various prompts, you should have git installed. However, the git version that gets installed may not be the latest; Apple typically updates git with every macOS update.\nSo we’re going to supplant the ‘default’ git with git from Brew!\nbrew install git\nA few years ago, macOS transitioned away from Bash to ZSH. ZSH is more modern and also fun to work with - just like Bash (but better, I guess).\nJust like git, we should update ZSH using Brew and have the latest/greatest version.\nbrew install zsh\nAnd now we have a much better Terminal app (iTerm2) and with awesome git & ZSH versions.\n\n\nMaking ZSH even more powerful - OhMyZSH\nOhMyZSH) is a framework that can really make the Terminal app (and iTerm2) extremely powerful and flexible. For instance, you can theme the heck out of the Terminal app and make it look very snazzy\nInstalling OhMyZSH is super simple. Open up iTerm2 and run the following command:\nsh -c \"$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)\"\n\n\n\n\n\nLet’s make OhMyZSH snazzy by adding a feature that allows for syntax highlighting:\nbrew install zsh-syntax-highlighting\nSyntax highlighting can be especially when working with git or other commands in the Terminal (i.e., iTerm):\n\n\n\n\n\n\n\nAnd let’s make ZSH pretty\n** I recommend this step only if you’re using iTerm**\nOhMyZSH also enables themes so the Terminal (iTerm) can look stunning. My favorite theme is Powerlevel10k.\nTheme installation can be a bit tricky, but straight-forward.\n\nGo to your home directory (using iTerm, not Finder)\n\ncd ~/\n\nClone the repo\n\ngit clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k\n\nAdd the theme to your ZSH configuration file (.zshrc)\n\necho 'source ~/powerlevel10k/powerlevel10k.zsh-theme' &gt;&gt;~/.zshrc\n\nCompletely exit out of iTerm (⌘+q)\nRelaunch iTerm and the configuration for Powerlevel10k should initiate\n\n\n\n\n\n\nIf it does not show up, you can type the following:\np10k configure\nPowerlevel10k has quite a few setup steps that it will walk you through. On one of the steps, it will ask you if you want to use Unicode or ASCII. Choose Unicode so that the iconography in iTerm will render correctly.\nAnd that should have our beautiful Terminal setup for success!"
-  },
-  {
-    "objectID": "posts/20230118_settingupmba/index.html#now-we-need-python",
-    "href": "posts/20230118_settingupmba/index.html#now-we-need-python",
-    "title": "How I Set Up My New MacBook Air",
-    "section": "Now we need Python",
-    "text": "Now we need Python\nBy default, Python is available in macOS. However, I highly recommend installing a framework that enables a way to manage environments, packages, and even versions of Python.\nOne of the most popular frameworks that is used is Anaconda. I don’t use it.\nAnaconda is great, but in my opinion it’s bloatware. It comes with an enormous amount of software that it can easily eat up 10 GB or more. One alternative is miniconda and it is very good since it is quite lean and only has the bare minimum. I don’t use that one either. Think of it as personal preference.\nI recently discovered mamba and by extension mambaforge. Mamba is fast and works quite well.\nInstalling mambaforge is easy. Download the script and open up iTerm. Navigate to the folder where the shell script was downloaded and execute the following (assuming the shell script was downloaded to the Downloads folder):\nsh ~/Downloads/Mambaforge-MacOSX-arm64.sh\nAnd now Python with Mambaforge is installed!"
-  },
-  {
-    "objectID": "posts/20230118_settingupmba/index.html#the-usual-apps",
-    "href": "posts/20230118_settingupmba/index.html#the-usual-apps",
-    "title": "How I Set Up My New MacBook Air",
-    "section": "The Usual Apps",
-    "text": "The Usual Apps\nI use three main applications for my data science work (both professionally and personal use):\n\nRStudio\nVisual Studio Code (VSCode)\nDocker\n\nAll three of these apps I download from their respective websites and not from Brew. This is more of a personal preference."
-  },
-  {
-    "objectID": "posts/20230118_settingupmba/index.html#footnotes",
-    "href": "posts/20230118_settingupmba/index.html#footnotes",
-    "title": "How I Set Up My New MacBook Air",
-    "section": "Footnotes",
-    "text": "Footnotes\n\n\nM2 8 core CPU with 8 core GPU, 16 GB RAM, and 512 GB SSD for those who want to know the specs↩︎\nAnd I’ll explain why I chose a MacBook Air over a MacBook Pro in a later post.↩︎"
-  },
-  {
-    "objectID": "posts/20201207_ialiquor/index.html",
-    "href": "posts/20201207_ialiquor/index.html",
-    "title": "The {ialiquor} R Package",
-    "section": "",
-    "text": "I’m pleased to say that I have my first R package, {ialiquor}, published on CRAN (version 0.1.0 as of this writing). Here are a few links to the package repo & vignettes:\nI’ve tried to document as much as I could on the repo and the package website - so I’ll try not to repeat myself in this post."
-  },
-  {
-    "objectID": "posts/20201207_ialiquor/index.html#about-ialiquor",
-    "href": "posts/20201207_ialiquor/index.html#about-ialiquor",
-    "title": "The {ialiquor} R Package",
-    "section": "About {ialiquor}",
-    "text": "About {ialiquor}\nThe {ialiquor} package conveniently summarizes by month the Class E liquor sales in the state of Iowa. Class E liquor, as defined by the state, is:\n\nFor grocery, liquor and convenience stores, etc. Allows for the sale of alcoholic liquor for off-premises consumption in original unopened containers. No sales by the drink. Sunday sales are included. Also allows wholesale sales to on-premises Class A, B, C and D liquor licensees but must have a TTB Federal Wholesale Basic Permit.\n\nIn plain English, this means that Class E is talking about hard liquor (excluding wine and beer)."
-  },
-  {
-    "objectID": "posts/20201207_ialiquor/index.html#purpose",
-    "href": "posts/20201207_ialiquor/index.html#purpose",
-    "title": "The {ialiquor} R Package",
-    "section": "Purpose",
-    "text": "Purpose\nI really had two goals with this package:\n\nlearn how to create a dataset only package\ntry to publish on CRAN\n\nNeedless to say, as I was developing this package, I was able to learn more about the different nuances to be aware of if the goal is to publish a package on CRAN."
-  },
-  {
-    "objectID": "posts/20201207_ialiquor/index.html#dataset-only",
-    "href": "posts/20201207_ialiquor/index.html#dataset-only",
-    "title": "The {ialiquor} R Package",
-    "section": "Dataset only?",
-    "text": "Dataset only?\nIt will help to know that the dataset (found here) is actually a daily snapshot of the sales of Class E liquor (updated monthly). What’s really peculiar is how the State of Iowa manages the sales. For instance, retailers cannot buy Class E liquor directly from vendors/manufacturers. Rather, the state purchases the product and then allows the retailers within the state (that have the appropriate purchasing license - known as Class E) to purchase the product. Loosely put, the State of Iowa has a monopoly and can easily generate profit from the sales (but I digress).\nOverall, the data are over several gigabytes and date back to January 1, 2012. This is an extremely large dataset and CRAN would never approve a package with such a large dataset. Keep in mind that CRAN only allows packages up to 5 MB (larger ones could be approved, but highly unlikely)1. For the purposes I set out to achieve, it made sense to aggregate to a monthly level. However, the dataset was still too large and that’s where I decided to trim it to no earlier than 2015.\nIn order to create the dataset, I simply had to create a query using SODA. This format essentially allows you to construct a query onto the URL of the dataset. Although the {RSocrata} package exists, I found it to be pretty poor2 in helping construct a query (unlike the sodapy library for Python).\nWith all that said, it did not make sense to me to add any functions per se for further analysis. Part of my intention was to make the liquor data from the State of Iowa a bit more manageable. And I think the {ialiquor} package does just that."
-  },
-  {
-    "objectID": "posts/20201207_ialiquor/index.html#publishing-on-cran",
-    "href": "posts/20201207_ialiquor/index.html#publishing-on-cran",
-    "title": "The {ialiquor} R Package",
-    "section": "Publishing on CRAN",
-    "text": "Publishing on CRAN\nI’ve attended several RStudio conferences over years and one common theme I’ve heard from many folks is the daunting process of getting a package approved by CRAN. In my experience, the ‘daunting’ part was the wait time from when I submitted the package to when I received an email saying it “was on its way to CRAN”. Two things really helped me become a bit more comfortable with the process:\n\nHadley Wickham’s (and Jenny Bryan’s) book “R Packages”\nRami Krispin offering a quick step-by-step approach\n\nTo summarize my approach, here’s what I did:\n\nUse the ‘check’ function in RStudio IDE (under the Build tab) frequently\nMake sure there are 0 errors, 0 warnings/caution, 0 notes\nComplete all vignettes, documentation, build pkgdown site, comments as needed, updated Readme on git repo\nuse the check_win_devel() and check_win_release() functions from {devtools}\nMake sure the log outputs from both of those function calls also has 0 errors, warnings, notes\nIf notes do come up and cannot be resolved or are not important, document it under file called cran-comments.md\nuse devtools::submit_cran() to submit\n\nMany of those steps are in Hadley’s book. Step 4 was something that Rami had mentioned to me (and super useful). Since I’m on a Mac, I knew that my package worked without issue. However, the functions in Step 4 ensured that my package could work on Windows. Furthermore, after I did submit, CRAN’s auto-checks showed a note about a problematic URL address. I didn’t update my comments, but it was pretty clear that it was a valid URL - just not a URL that CRAN’s auto check could access. I don’t know for certain, but I am of the belief that my documentation probably helped the CRAN reviewer.\nOne last note I’d like to make is that documentation took 80% of my time. Is this any surprise to a data scientist?\nIf you do use the {ialiquor} package, I’d love to hear more about it. If you find issues, please open an issue on the repo."
-  },
-  {
-    "objectID": "posts/20201207_ialiquor/index.html#footnotes",
-    "href": "posts/20201207_ialiquor/index.html#footnotes",
-    "title": "The {ialiquor} R Package",
-    "section": "Footnotes",
-    "text": "Footnotes\n\n\nthe first nuance I learned↩︎\nI’m not really ‘bashing’ on this package, but I feel it’s not very ‘friendly’ to users who are not as familiar with SODA SQL↩︎"
-  },
-  {
-    "objectID": "posts/index.html",
-    "href": "posts/index.html",
-    "title": "{nik}",
-    "section": "",
-    "text": "How I Set Up My New MacBook Air\n\n\n\n\n\nUp and running with a new Mac\n\n\n\n\n\n18 Jan 2023\n\n\n\n\n\n\n\n\n\n\n\n\nThe {avocado} R Package\n\n\n\n\n\nI love avocados so I made an R package for them\n\n\n\n\n\n18 Dec 2020\n\n\n\n\n\n\n\n\n\n\n\n\nThe {ialiquor} R Package\n\n\n\n\n\nSay hello to my first R package!\n\n\n\n\n\n07 Dec 2020\n\n\n\n\n\n\n\n\n\n\n\n\nMagic 8 Ball Function\n\n\n\n\n\nLearning to write a function in R\n\n\n\n\n\n01 Jan 2018\n\n\n\n\n\n\nNo matching items"
-  },
-  {
     "objectID": "posts/20180101_magic8ballfunction/index.html",
     "href": "posts/20180101_magic8ballfunction/index.html",
     "title": "Magic 8 Ball Function",
@@ -133,11 +42,11 @@
     "text": "Footnotes\n\n\nUnlike Python, R is not 0 indexed. This means that initial spots or values start at position 1 not 0.↩︎"
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
+    "objectID": "posts/index.html",
+    "href": "posts/index.html",
     "title": "{nik}",
     "section": "",
-    "text": "Hi! My name is Nik and this is my personal blog.\nI am a data scientist and I also teach as an adjunct instructor.\nI have a Bachelor’s in Industrial Engineering from Northern Illinois University and a Master’s in Data Science from Northwestern University.\nIn my free time, I enjoy cycling (I’m actually serious about this), learning to cook, and playing board games with the family.\n\n\nOpinions expressed on this website are my own in my personal capacity. They do not reflect the views of my current employers, previous employers, or of any organization, company or board I am or have been associated with."
+    "text": "How I Set Up My New MacBook Air\n\n\nUp and running with a new Mac\n\n\n\n\n\n18 Jan 2023\n\n\n\n\n\n\n\n\n\n\n\n\nThe {avocado} R Package\n\n\nI love avocados so I made an R package for them\n\n\n\n\n\n18 Dec 2020\n\n\n\n\n\n\n\n\n\n\n\n\nThe {ialiquor} R Package\n\n\nSay hello to my first R package!\n\n\n\n\n\n07 Dec 2020\n\n\n\n\n\n\n\n\n\n\n\n\nMagic 8 Ball Function\n\n\nLearning to write a function in R\n\n\n\n\n\n01 Jan 2018\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "archives/about-bk.html",
@@ -145,6 +54,48 @@
     "title": "Nik Agarwal",
     "section": "",
     "text": "I’m a data scientist and I enjoy writing about data science and road cycling.\nThanks for visiting!"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "{nik}",
+    "section": "",
+    "text": "Hi! My name is Nik and this is my personal blog.\nI am a data scientist and I also teach as an adjunct instructor.\nI have a Bachelor’s in Industrial Engineering from Northern Illinois University and a Master’s in Data Science from Northwestern University.\nIn my free time, I enjoy cycling (I’m actually serious about this), learning to cook, and playing board games with the family.\n\n\nOpinions expressed on this website are my own in my personal capacity. They do not reflect the views of my current employers, previous employers, or of any organization, company or board I am or have been associated with."
+  },
+  {
+    "objectID": "posts/20230118_settingupmba/index.html",
+    "href": "posts/20230118_settingupmba/index.html",
+    "title": "How I Set Up My New MacBook Air",
+    "section": "",
+    "text": "I recently bought a new MacBook Air1 and I was ecstatic to set it up from scratch. My previous computer (or current since I still use it) was last setup back in 2018 and I kept installing/updating software to it that I forgot all the cool things. In fact, in the last 4 years, macOS had switch from Bash to ZSH as its default shell and I can’t even remember using Bash anymore.\nIn this post, I wanted to share with you how I went about setting up my new MacBook Air2.\nSo here’s the kicker. My new MacBook Air runs on the M2 processor (aka Apple Silicon), which is based on the ARM architecture. I found this website that summarizes the difference between the x86/amd64 architecture versus ARM.\nTo put it succinctly, ARM requires different software builds than the previous Intel Macs. In many cases, developers have released “Universal” builds of their software that can work on both Intel Macs and Apple Silicon Macs. Some software, however, has not been updated and you’ll be prompted to install Rosetta2:\nThe really cool thing about Rosetta 2 is its ability to run x86/amd64 software on Apple Silicon and the performance is very good. However, I don’t want to run any software that’s not optimized for Apple Silicon, so I have only installed software that is optimized for Apple Silicon.\nAs you can tell from the image above, I haven’t installed Quarto. Quarto is - in my view - the better replacement for RMarkdown since it works with Python and Julia in addition to R. I’m betting that the Quarto dev team is working on an ARM optimized version (hopefully it’ll be in version 1.3).\nSteps:"
+  },
+  {
+    "objectID": "posts/20230118_settingupmba/index.html#making-the-terminal-work-for-me",
+    "href": "posts/20230118_settingupmba/index.html#making-the-terminal-work-for-me",
+    "title": "How I Set Up My New MacBook Air",
+    "section": "Making the Terminal Work For Me",
+    "text": "Making the Terminal Work For Me\nI use the Terminal quite a bit. It’s the easiest and most efficient way to work with git. The stock Terminal app on the Mac is good, like really good. And it does the job. BUT, it can be better.\n\n\n\n\n\n\nPackage Manager - Brew\nFirst off, I highly recommend the use of Brew. Brew is a package manager and is one of the easiest ways to install free and open-source (FOSS) software. And they’re super easy to uninstall!\nTo install Brew, simple copy, paste, and execute the following command the stock Terminal app:\n/bin/bash -c \"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)\"\nWithin moments, Brew will begin the installation:\n\n\n\n\n\nAfter a few moments, Brew will have completed and will let you know that you should run 3 extra lines (by copying and pasting them at the Terminal prompt):\n\n\n\n\n\nLine 1:\necho '# Set PATH, MANPATH, etc., for Homebrew.' &gt;&gt; /Users/nikhil/.zprofile\nLine 2:\necho 'eval \"$(/opt/homebrew/bin/brew shellenv)\" ' &gt; /Users /nikhil/.zprofile\nLine 3:\neval \"$(/opt/homebrew/bin/brew shellenv)\"\n\n\nA better terminal - iTerm2\nRemember how I said there’s a better Terminal? It’s called iTerm2. A totally optional software, but I think it offers far more flexibility than the stock Terminal app.\nLet’s install it with Brew. Open up the stock Terminal app and run the following command:\nbrew install --cask iterm2\n\n\n\n\n\nFrom now on, we’ll assume that the default Terminal app is iTerm2.\n\n\nUpdate git & ZSH\nLet’s kick things off and try to check the version of git that comes with macOS.\nType the following into iTerm:\ngit --version\nA prompt like this may show up:\n\n\n\n\n\nSo apparently git is not installed. Clicking on INSTALL and then going through the various prompts, you should have git installed. However, the git version that gets installed may not be the latest; Apple typically updates git with every macOS update.\nSo we’re going to supplant the ‘default’ git with git from Brew!\nbrew install git\nA few years ago, macOS transitioned away from Bash to ZSH. ZSH is more modern and also fun to work with - just like Bash (but better, I guess).\nJust like git, we should update ZSH using Brew and have the latest/greatest version.\nbrew install zsh\nAnd now we have a much better Terminal app (iTerm2) and with awesome git & ZSH versions.\n\n\nMaking ZSH even more powerful - OhMyZSH\nOhMyZSH) is a framework that can really make the Terminal app (and iTerm2) extremely powerful and flexible. For instance, you can theme the heck out of the Terminal app and make it look very snazzy\nInstalling OhMyZSH is super simple. Open up iTerm2 and run the following command:\nsh -c \"$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)\"\n\n\n\n\n\nLet’s make OhMyZSH snazzy by adding a feature that allows for syntax highlighting:\nbrew install zsh-syntax-highlighting\nSyntax highlighting can be especially when working with git or other commands in the Terminal (i.e., iTerm):\n\n\n\n\n\n\n\nAnd let’s make ZSH pretty\n** I recommend this step only if you’re using iTerm**\nOhMyZSH also enables themes so the Terminal (iTerm) can look stunning. My favorite theme is Powerlevel10k.\nTheme installation can be a bit tricky, but straight-forward.\n\nGo to your home directory (using iTerm, not Finder)\n\ncd ~/\n\nClone the repo\n\ngit clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k\n\nAdd the theme to your ZSH configuration file (.zshrc)\n\necho 'source ~/powerlevel10k/powerlevel10k.zsh-theme' &gt;&gt;~/.zshrc\n\nCompletely exit out of iTerm (⌘+q)\nRelaunch iTerm and the configuration for Powerlevel10k should initiate\n\n\n\n\n\n\nIf it does not show up, you can type the following:\np10k configure\nPowerlevel10k has quite a few setup steps that it will walk you through. On one of the steps, it will ask you if you want to use Unicode or ASCII. Choose Unicode so that the iconography in iTerm will render correctly.\nAnd that should have our beautiful Terminal setup for success!"
+  },
+  {
+    "objectID": "posts/20230118_settingupmba/index.html#now-we-need-python",
+    "href": "posts/20230118_settingupmba/index.html#now-we-need-python",
+    "title": "How I Set Up My New MacBook Air",
+    "section": "Now we need Python",
+    "text": "Now we need Python\nBy default, Python is available in macOS. However, I highly recommend installing a framework that enables a way to manage environments, packages, and even versions of Python.\nOne of the most popular frameworks that is used is Anaconda. I don’t use it.\nAnaconda is great, but in my opinion it’s bloatware. It comes with an enormous amount of software that it can easily eat up 10 GB or more. One alternative is miniconda and it is very good since it is quite lean and only has the bare minimum. I don’t use that one either. Think of it as personal preference.\nI recently discovered mamba and by extension mambaforge. Mamba is fast and works quite well.\nInstalling mambaforge is easy. Download the script and open up iTerm. Navigate to the folder where the shell script was downloaded and execute the following (assuming the shell script was downloaded to the Downloads folder):\nsh ~/Downloads/Mambaforge-MacOSX-arm64.sh\nAnd now Python with Mambaforge is installed!"
+  },
+  {
+    "objectID": "posts/20230118_settingupmba/index.html#the-usual-apps",
+    "href": "posts/20230118_settingupmba/index.html#the-usual-apps",
+    "title": "How I Set Up My New MacBook Air",
+    "section": "The Usual Apps",
+    "text": "The Usual Apps\nI use three main applications for my data science work (both professionally and personal use):\n\nRStudio\nVisual Studio Code (VSCode)\nDocker\n\nAll three of these apps I download from their respective websites and not from Brew. This is more of a personal preference."
+  },
+  {
+    "objectID": "posts/20230118_settingupmba/index.html#footnotes",
+    "href": "posts/20230118_settingupmba/index.html#footnotes",
+    "title": "How I Set Up My New MacBook Air",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nM2 8 core CPU with 8 core GPU, 16 GB RAM, and 512 GB SSD for those who want to know the specs↩︎\nAnd I’ll explain why I chose a MacBook Air over a MacBook Pro in a later post.↩︎"
   },
   {
     "objectID": "posts/20201218_avocado/index.html",
@@ -182,31 +133,45 @@
     "text": "Footnotes\n\n\nWhile I understand why they’re making the change, I also feel that their change is not very accommodating to hobbyists. Alas, this is a much larger discussion and I, for one, am not qualified or well-versed in discussing it.↩︎"
   },
   {
-    "objectID": "posts/20240618_mdtext/index.html",
-    "href": "posts/20240618_mdtext/index.html",
-    "title": "Example Markdown Post",
+    "objectID": "posts/20201207_ialiquor/index.html",
+    "href": "posts/20201207_ialiquor/index.html",
+    "title": "The {ialiquor} R Package",
     "section": "",
-    "text": "This is normal text.\nThis is bold text\nThis is italic text\nUnordered List\nOrdered List"
+    "text": "I’m pleased to say that I have my first R package, {ialiquor}, published on CRAN (version 0.1.0 as of this writing). Here are a few links to the package repo & vignettes:\nI’ve tried to document as much as I could on the repo and the package website - so I’ll try not to repeat myself in this post."
   },
   {
-    "objectID": "posts/20240618_mdtext/index.html#heading-2",
-    "href": "posts/20240618_mdtext/index.html#heading-2",
-    "title": "Example Markdown Post",
-    "section": "Heading 2",
-    "text": "Heading 2\n\nHeading 3\n\nHeading 4\n\nHeading 5\n\nHeading 6"
+    "objectID": "posts/20201207_ialiquor/index.html#about-ialiquor",
+    "href": "posts/20201207_ialiquor/index.html#about-ialiquor",
+    "title": "The {ialiquor} R Package",
+    "section": "About {ialiquor}",
+    "text": "About {ialiquor}\nThe {ialiquor} package conveniently summarizes by month the Class E liquor sales in the state of Iowa. Class E liquor, as defined by the state, is:\n\nFor grocery, liquor and convenience stores, etc. Allows for the sale of alcoholic liquor for off-premises consumption in original unopened containers. No sales by the drink. Sunday sales are included. Also allows wholesale sales to on-premises Class A, B, C and D liquor licensees but must have a TTB Federal Wholesale Basic Permit.\n\nIn plain English, this means that Class E is talking about hard liquor (excluding wine and beer)."
   },
   {
-    "objectID": "posts/20250805_post-with-image/index.html",
-    "href": "posts/20250805_post-with-image/index.html",
-    "title": "Markdown with Image",
-    "section": "",
-    "text": "This post will contain an image below:\n\nThe goal of this document is to also create some text that can illustrate some of the nuances found in Bear (using the Markdown features).\n\n\n\n\n\n\nThis is bold text\nThis is italics\nThis is green highlighted text\nThis is red highlighted text\nThis is blue highlighted text\nThis is yellow highlighted text\nThis is purple highlighted text\nOrdered List\n\nItem 1\nItem 2\nItem 3\n\n\nsub-item 1\n\nUnordered List\n\nItem 1\nItem 2\nItem 2a\nItem 3"
+    "objectID": "posts/20201207_ialiquor/index.html#purpose",
+    "href": "posts/20201207_ialiquor/index.html#purpose",
+    "title": "The {ialiquor} R Package",
+    "section": "Purpose",
+    "text": "Purpose\nI really had two goals with this package:\n\nlearn how to create a dataset only package\ntry to publish on CRAN\n\nNeedless to say, as I was developing this package, I was able to learn more about the different nuances to be aware of if the goal is to publish a package on CRAN."
   },
   {
-    "objectID": "posts/20250805_post-with-image/index.html#this-is-heading-2",
-    "href": "posts/20250805_post-with-image/index.html#this-is-heading-2",
-    "title": "Markdown with Image",
-    "section": "",
-    "text": "This is bold text\nThis is italics\nThis is green highlighted text\nThis is red highlighted text\nThis is blue highlighted text\nThis is yellow highlighted text\nThis is purple highlighted text\nOrdered List\n\nItem 1\nItem 2\nItem 3\n\n\nsub-item 1\n\nUnordered List\n\nItem 1\nItem 2\nItem 2a\nItem 3"
+    "objectID": "posts/20201207_ialiquor/index.html#dataset-only",
+    "href": "posts/20201207_ialiquor/index.html#dataset-only",
+    "title": "The {ialiquor} R Package",
+    "section": "Dataset only?",
+    "text": "Dataset only?\nIt will help to know that the dataset (found here) is actually a daily snapshot of the sales of Class E liquor (updated monthly). What’s really peculiar is how the State of Iowa manages the sales. For instance, retailers cannot buy Class E liquor directly from vendors/manufacturers. Rather, the state purchases the product and then allows the retailers within the state (that have the appropriate purchasing license - known as Class E) to purchase the product. Loosely put, the State of Iowa has a monopoly and can easily generate profit from the sales (but I digress).\nOverall, the data are over several gigabytes and date back to January 1, 2012. This is an extremely large dataset and CRAN would never approve a package with such a large dataset. Keep in mind that CRAN only allows packages up to 5 MB (larger ones could be approved, but highly unlikely)1. For the purposes I set out to achieve, it made sense to aggregate to a monthly level. However, the dataset was still too large and that’s where I decided to trim it to no earlier than 2015.\nIn order to create the dataset, I simply had to create a query using SODA. This format essentially allows you to construct a query onto the URL of the dataset. Although the {RSocrata} package exists, I found it to be pretty poor2 in helping construct a query (unlike the sodapy library for Python).\nWith all that said, it did not make sense to me to add any functions per se for further analysis. Part of my intention was to make the liquor data from the State of Iowa a bit more manageable. And I think the {ialiquor} package does just that."
+  },
+  {
+    "objectID": "posts/20201207_ialiquor/index.html#publishing-on-cran",
+    "href": "posts/20201207_ialiquor/index.html#publishing-on-cran",
+    "title": "The {ialiquor} R Package",
+    "section": "Publishing on CRAN",
+    "text": "Publishing on CRAN\nI’ve attended several RStudio conferences over years and one common theme I’ve heard from many folks is the daunting process of getting a package approved by CRAN. In my experience, the ‘daunting’ part was the wait time from when I submitted the package to when I received an email saying it “was on its way to CRAN”. Two things really helped me become a bit more comfortable with the process:\n\nHadley Wickham’s (and Jenny Bryan’s) book “R Packages”\nRami Krispin offering a quick step-by-step approach\n\nTo summarize my approach, here’s what I did:\n\nUse the ‘check’ function in RStudio IDE (under the Build tab) frequently\nMake sure there are 0 errors, 0 warnings/caution, 0 notes\nComplete all vignettes, documentation, build pkgdown site, comments as needed, updated Readme on git repo\nuse the check_win_devel() and check_win_release() functions from {devtools}\nMake sure the log outputs from both of those function calls also has 0 errors, warnings, notes\nIf notes do come up and cannot be resolved or are not important, document it under file called cran-comments.md\nuse devtools::submit_cran() to submit\n\nMany of those steps are in Hadley’s book. Step 4 was something that Rami had mentioned to me (and super useful). Since I’m on a Mac, I knew that my package worked without issue. However, the functions in Step 4 ensured that my package could work on Windows. Furthermore, after I did submit, CRAN’s auto-checks showed a note about a problematic URL address. I didn’t update my comments, but it was pretty clear that it was a valid URL - just not a URL that CRAN’s auto check could access. I don’t know for certain, but I am of the belief that my documentation probably helped the CRAN reviewer.\nOne last note I’d like to make is that documentation took 80% of my time. Is this any surprise to a data scientist?\nIf you do use the {ialiquor} package, I’d love to hear more about it. If you find issues, please open an issue on the repo."
+  },
+  {
+    "objectID": "posts/20201207_ialiquor/index.html#footnotes",
+    "href": "posts/20201207_ialiquor/index.html#footnotes",
+    "title": "The {ialiquor} R Package",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nthe first nuance I learned↩︎\nI’m not really ‘bashing’ on this package, but I feel it’s not very ‘friendly’ to users who are not as familiar with SODA SQL↩︎"
   }
 ]
