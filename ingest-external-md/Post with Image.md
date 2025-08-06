@@ -2,7 +2,7 @@
 title: Markdown with Image
 author: Nikhil Agarwal
 short-path: markdown-with-image
-draft: true
+draft: false
 ---
 # # Hello World
 
