@@ -53,14 +53,14 @@
     "href": "posts/20250806_post-with-image/index.html",
     "title": "Markdown with Image",
     "section": "",
-    "text": "This post will contain an image below:\n\nThe goal of this document is to also create some text that can illustrate some of the nuances found in Bear (using the Markdown features).\n\n\n\n\n\n\nThis is bold text\nThis is italics\nThis is green highlighted text\nThis is red highlighted text\nThis is blue highlighted text\nThis is yellow highlighted text\nThis is purple highlighted text\nOrdered List\n\nItem 1\nItem 2\nItem 3\n\n\nsub-item 1\n\nUnordered List\n\nItem 1\nItem 2\nItem 2a\nItem 3"
+    "text": "This post will contain an image below:\n\nThe goal of this document is to also create some text that can illustrate some of the nuances found in Bear (using the Markdown features).\n\n\n\n\n\n\nThis is bold text\nThis is italics\nThis is green highlighted text\nThis is red highlighted text\nThis is blue highlighted text\nThis is yellow highlighted text\nThis is purple highlighted text\nOrdered List\n\nItem 1\nItem 2\nItem 3\n\nsub-item 1\n\n\nUnordered List\n\nItem 1\nItem 2\n\nItem 2a\n\nItem 3"
   },
   {
     "objectID": "posts/20250806_post-with-image/index.html#this-is-heading-2",
     "href": "posts/20250806_post-with-image/index.html#this-is-heading-2",
     "title": "Markdown with Image",
     "section": "",
-    "text": "This is bold text\nThis is italics\nThis is green highlighted text\nThis is red highlighted text\nThis is blue highlighted text\nThis is yellow highlighted text\nThis is purple highlighted text\nOrdered List\n\nItem 1\nItem 2\nItem 3\n\n\nsub-item 1\n\nUnordered List\n\nItem 1\nItem 2\nItem 2a\nItem 3"
+    "text": "This is bold text\nThis is italics\nThis is green highlighted text\nThis is red highlighted text\nThis is blue highlighted text\nThis is yellow highlighted text\nThis is purple highlighted text\nOrdered List\n\nItem 1\nItem 2\nItem 3\n\nsub-item 1\n\n\nUnordered List\n\nItem 1\nItem 2\n\nItem 2a\n\nItem 3"
   },
   {
     "objectID": "archives/about-bk.html",
