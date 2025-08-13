@@ -5,9 +5,10 @@ Convert Bear highlight syntax to HTML markup for Quarto blog posts.
 This script processes post directories in processed-staging/ and:
 1. Converts Bear highlight syntax: ==🟢text== → <mark style="background-color: #90EE90">text</mark>
 2. Supports all Bear highlight colors (green, red, blue, yellow, purple)
-3. Removes [HASH] index references if found
-4. Provides detailed console output on changes made
-5. PRESERVES markdown indentation (fixed whitespace handling)
+3. Removes Bear tags: #tag, #multi word tag#, #tag/subtag#
+4. Removes [HASH] index references if found
+5. Provides detailed console output on changes made
+6. PRESERVES markdown indentation (fixed whitespace handling)
 
 Usage:
     python scripts/03-convert-highlights.py
@@ -80,6 +81,56 @@ def convert_highlight_to_html(color_emoji: str, text: str) -> str:
     return f'<mark style="background-color: {color_code}">{text}</mark>'
 
 
+def remove_bear_tags(content: str) -> Tuple[str, List[str]]:
+    """
+    Remove Bear tag syntax from content.
+    
+    Handles:
+    - Simple tags: #tag
+    - Multi-word tags: #multi word tag#
+    - Nested tags: #tag1/subtag# or #tag/sub tag#
+    
+    Returns:
+        Tuple of (cleaned_content, list_of_removed_tags)
+    """
+    removed_tags = []
+    
+    # Pattern for multi-word tags ending with # (must have spaces or / inside)
+    # This handles: #multi word tag# and #tag/sub tag#
+    multiword_pattern = r'#([^#\n]*[\s/][^#\n]*)#'
+    multiword_matches = re.findall(multiword_pattern, content)
+    for match in multiword_matches:
+        full_tag = f"#{match}#"
+        removed_tags.append(full_tag)
+    content = re.sub(multiword_pattern, '', content)
+    
+    # Pattern for single-word tags (including nested with /)
+    # Must be at word boundary and not be a markdown heading
+    # Excludes cases where # is followed by space (markdown headers)
+    singleword_pattern = r'(?<!\w)#([a-zA-Z0-9_]+(?:/[a-zA-Z0-9_]+)*)(?=\s|$|[^\w/])'
+    singleword_matches = re.findall(singleword_pattern, content)
+    for match in singleword_matches:
+        full_tag = f"#{match}"
+        removed_tags.append(full_tag)
+    content = re.sub(singleword_pattern, '', content)
+    
+    # Clean up any multiple spaces left behind, but preserve line structure
+    lines = content.split('\n')
+    cleaned_lines = []
+    
+    for line in lines:
+        # Only clean up internal spacing, preserve leading whitespace
+        if line.strip():
+            cleaned_line = re.sub(r'(?<=\S) {2,}', ' ', line)
+            cleaned_lines.append(cleaned_line)
+        else:
+            cleaned_lines.append(line)  # Keep empty lines as-is
+    
+    content = '\n'.join(cleaned_lines)
+    
+    return content, removed_tags
+
+
 def remove_hash_references(content: str) -> Tuple[str, List[str]]:
     """
     Remove Bear's [HASH] index references while preserving whitespace and markdown indentation.
@@ -116,12 +167,12 @@ def remove_hash_references(content: str) -> Tuple[str, List[str]]:
     return cleaned_content, removed_refs
 
 
-def process_markdown_content(content: str) -> Tuple[str, Dict[str, int], List[str]]:
+def process_markdown_content(content: str) -> Tuple[str, Dict[str, int], List[str], List[str]]:
     """
-    Process markdown content to convert Bear highlights and remove references.
+    Process markdown content to convert Bear highlights, remove tags, and remove references.
     
     Returns:
-        Tuple of (processed_content, conversion_stats, removed_references)
+        Tuple of (processed_content, conversion_stats, removed_references, removed_tags)
     """
     original_content = content
     
@@ -140,15 +191,18 @@ def process_markdown_content(content: str) -> Tuple[str, Dict[str, int], List[st
         color_name = COLOR_NAMES.get(color_emoji, 'unknown')
         conversion_stats[color_name] += 1
     
-    # Step 3: Remove hash references (with fixed whitespace handling)
+    # Step 3: Remove Bear tags
+    processed_content, removed_tags = remove_bear_tags(processed_content)
+    
+    # Step 4: Remove hash references (with fixed whitespace handling)
     processed_content, removed_refs = remove_hash_references(processed_content)
     
-    return processed_content, conversion_stats, removed_refs
+    return processed_content, conversion_stats, removed_refs, removed_tags
 
 
 def process_post_directory(post_dir: Path) -> bool:
     """
-    Process a single post directory to convert Bear highlights.
+    Process a single post directory to convert Bear highlights and remove Bear syntax.
     
     Returns:
         True if post was processed successfully, False otherwise
@@ -175,11 +229,11 @@ def process_post_directory(post_dir: Path) -> bool:
             original_content = f.read()
         
         # Process content
-        processed_content, stats, removed_refs = process_markdown_content(original_content)
+        processed_content, stats, removed_refs, removed_tags = process_markdown_content(original_content)
         
         # Check if any changes were made
         if original_content == processed_content:
-            print(f"    ✅ No Bear highlights found - file unchanged")
+            print(f"    ✅ No Bear-specific content found - file unchanged")
             return True
         
         # Report changes
@@ -189,6 +243,13 @@ def process_post_directory(post_dir: Path) -> bool:
             for color, count in stats.items():
                 if count > 0:
                     print(f"      - {color}: {count} highlight(s)")
+        
+        if removed_tags:
+            print(f"    🏷️  Removed {len(removed_tags)} Bear tags:")
+            for tag in removed_tags[:5]:  # Show first 5 only
+                print(f"      - {tag}")
+            if len(removed_tags) > 5:
+                print(f"      - ... and {len(removed_tags) - 5} more")
         
         if removed_refs:
             print(f"    🧹 Removed {len(removed_refs)} hash references:")
@@ -232,6 +293,13 @@ def validate_processed_content(content: str) -> List[str]:
     if remaining_highlights:
         issues.append(f"Found {len(remaining_highlights)} unconverted Bear highlights")
     
+    # Check for remaining Bear tags
+    remaining_multiword_tags = re.findall(r'#[^#\n]*[\s/][^#\n]*#', content)
+    remaining_singleword_tags = re.findall(r'(?<!\w)#[a-zA-Z0-9_]+(?:/[a-zA-Z0-9_]+)*(?=\s|$|[^\w/])', content)
+    total_remaining_tags = len(remaining_multiword_tags) + len(remaining_singleword_tags)
+    if total_remaining_tags > 0:
+        issues.append(f"Found {total_remaining_tags} unconverted Bear tags")
+    
     # Check for malformed HTML
     mark_pattern = r'<mark[^>]*>.*?</mark>'
     mark_matches = re.findall(mark_pattern, content, re.DOTALL)
@@ -268,13 +336,14 @@ def main():
         print("ℹ️  No post directories found in processed-staging/")
         sys.exit(0)
     
-    print(f"🎨 Converting Bear highlights to HTML markup (preserving indentation)")
-    print("=" * 70)
+    print(f"🎨 Converting Bear syntax to standard markup (preserving indentation)")
+    print("=" * 75)
     print(f"📂 Found {len(post_dirs)} post directory(ies) to process")
     
     success_count = 0
     failed_posts = []
     total_highlights_converted = 0
+    total_tags_removed = 0
     color_breakdown = {color: 0 for color in COLOR_NAMES.values()}
     
     # Process each post directory
@@ -282,7 +351,7 @@ def main():
         if process_post_directory(post_dir):
             success_count += 1
             
-            # Count highlights for summary (re-read to get accurate count)
+            # Count highlights and tags for summary (re-read to get accurate count)
             try:
                 content_file = post_dir / "index.qmd"
                 if not content_file.exists():
@@ -333,12 +402,15 @@ def main():
             if count > 0:
                 print(f"    - {color}: {count}")
     
+    if total_tags_removed > 0:
+        print(f"🏷️  Total Bear tags removed: {total_tags_removed}")
+    
     if failed_posts:
         print("\n⚠️  Some posts failed processing. Check the errors above.")
         sys.exit(1)
     else:
         print("\n🎉 All posts processed successfully!")
-        print("Bear highlights converted to HTML markup with indentation preserved.")
+        print("Bear highlights, tags, and references converted/removed with indentation preserved.")
 
 
 if __name__ == "__main__":
