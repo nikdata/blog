@@ -411,7 +411,7 @@ def main():
         print(f"")
         print(f"Next steps:")
         print(f"  1. Review the processed content")
-        print(f"  2. Run: python scripts/06-process-markdown-import.py --promote")
+        print(f"  2. Run: python scripts/00-process-markdown-import.py --promote")
         print(f"  3. Or manually copy post directories to posts/")
     
     print(f"\n✅ Process completed at: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
