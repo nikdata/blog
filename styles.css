@@ -5,7 +5,7 @@ p {
 }
 
 pre {
-    background-color: rgb(50, 50, 50);
+    background-color: rgb(40, 40, 40);
     color: rgb(225,225,225);
 }
 
@@ -16,4 +16,42 @@ figcaption {
 
 .disclaimer {
     font-size: 0.6em;
+}
+
+.prompt {
+  position: relative; /* Needed for ::before positioning */
+  margin-top: 30px;   /* So the label doesn't overlap */
+}
+
+.prompt pre {
+  max-height: 60vh;         /* Set the max height to enable vertical scrolling */
+  overflow-y: auto;          /* Vertical scrolling */
+  white-space: pre-wrap;     /* Wrap long lines */
+  word-break: break-word;    /* Break long words if needed */
+  border-radius: 5px;
+  background-color: #282828; /* Keep consistent with your existing style */
+  padding: 1em;
+  color: #e1e1e1;
+  border: 1px solid #444;
+}
+
+.prompt pre code {
+  white-space: pre-wrap !important;
+  word-break: break-word;
+  display: block; /* Ensures it behaves like a block container */
+}
+
+.prompt::before {
+  content: "PROMPT";
+  font-weight: bold;
+  color: #fff;
+  background-color: #666;
+  padding: 4px 8px;
+  border-radius: 4px;
+  position: absolute;
+  top: -20px;
+  left: 16px;
+  font-size: 14px;
+  white-space: nowrap;
+  z-index: 1;
 }
