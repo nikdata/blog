@@ -1,0 +1,24 @@
+---
+title: "Example Post with Prompt Class"
+date: "2025-08-13"
+draft: false
+format:
+  html:
+    code-line-numbers: false
+    code-overflow: wrap
+---
+
+Here is an example post using a box that shows what the AI prompt is.
+
+::: {.prompt}
+```text
+
+I typically use this recipe for making French bread in a dutch oven: https://www.lifeasastrawberry.com/easy-crusty-french-bread/
+
+I want to know how to make French bread (something similar) in my Breville Custom Loaf bread maker (note that this is NOT the BBM mode). I have, on hand, bread flour, all-purpose flour, dry active yeast, sugar, and salt. Note that I am using King Arthur flour and 1 cup of all-purpose flour has a different mass than 1 cup of bread flour. You will need to reference King Arthur website to confirm.
+
+Please give me the flour amount I need in grams and everything else can be in US standard.
+
+Please double check before giving me the recipe to use in my bread maker. Please give me directions in the sequence ingredients will need to be added into my bread maker. I am happy to proof/activate the yeast first before adding to the bread machine.
+```
+:::
