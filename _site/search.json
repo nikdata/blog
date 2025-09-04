@@ -168,13 +168,6 @@
     "text": "Footnotes\n\n\nUnlike Python, R is not 0 indexed. This means that initial spots or values start at position 1 not 0.↩︎"
   },
   {
-    "objectID": "test-data/post-with-ai-prompt.html",
-    "href": "test-data/post-with-ai-prompt.html",
-    "title": "Example Post with Prompt Class",
-    "section": "",
-    "text": "Here is an example post using a box that shows what the AI prompt is.\n\n\nI typically use this recipe for making French bread in a dutch oven: https://www.lifeasastrawberry.com/easy-crusty-french-bread/\n\nI want to know how to make French bread (something similar) in my Breville Custom Loaf bread maker (note that this is NOT the BBM mode). I have, on hand, bread flour, all-purpose flour, dry active yeast, sugar, and salt. Note that I am using King Arthur flour and 1 cup of all-purpose flour has a different mass than 1 cup of bread flour. You will need to reference King Arthur website to confirm.\n\nPlease give me the flour amount I need in grams and everything else can be in US standard.\n\nPlease double check before giving me the recipe to use in my bread maker. Please give me directions in the sequence ingredients will need to be added into my bread maker. I am happy to proof/activate the yeast first before adding to the bread machine."
-  },
-  {
     "objectID": "archives/about-bk.html",
     "href": "archives/about-bk.html",
     "title": "Nik Agarwal",
