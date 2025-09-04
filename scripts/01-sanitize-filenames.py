@@ -1,15 +1,17 @@
 #!/usr/bin/env python3
 """
 Sanitize filenames in Bear exports for Quarto blog processing.
+Enhanced version that handles both Bear export format AND loose image files.
 
 This script:
 1. Copies files from ingest-external-md/ to processed-staging/
 2. Creates date-prefixed post directories (YYYYMMDD_post-name/)
 3. Renames markdown files to index.qmd
-4. Recursively copies and renames matching image directories to img/
-5. Updates image references in markdown files
-6. Handles edge cases like duplicate names and encoding issues
-7. Ignores README.md files in the input directory
+4. Handles Bear export image directories (matching folder names)
+5. Handles loose image files (creates img/ directory and moves them)
+6. Updates image references in markdown files
+7. Handles edge cases like duplicate names and encoding issues
+8. Ignores README.md files in the input directory
 
 Usage:
     python scripts/01-sanitize-filenames.py
@@ -21,8 +23,9 @@ import os
 import re
 import sys
 import shutil
+import yaml
 from pathlib import Path
-from typing import Dict, List, Tuple, Optional
+from typing import Dict, List, Tuple, Optional, Set
 from datetime import datetime
 
 
@@ -68,20 +71,122 @@ def sanitize_filename(filename: str, is_directory: bool = False) -> str:
     return name + ext
 
 
-def get_date_prefix() -> str:
-    """Get current date in YYYYMMDD format for post directory naming."""
+def extract_date_from_yaml(markdown_content: str) -> Optional[str]:
+    """
+    Extract date from YAML frontmatter if present.
+    
+    Args:
+        markdown_content: Full markdown content with potential YAML frontmatter
+        
+    Returns:
+        Date string in YYYYMMDD format, or None if not found or invalid
+    """
+    # Check if content starts with YAML frontmatter
+    if not markdown_content.strip().startswith('---'):
+        return None
+    
+    try:
+        # Find the closing ---
+        lines = markdown_content.split('\n')
+        yaml_end = None
+        
+        for i, line in enumerate(lines[1:], 1):  # Start from line 1 (skip first ---)
+            if line.strip() == '---':
+                yaml_end = i
+                break
+        
+        if yaml_end is None:
+            return None
+        
+        # Extract YAML content
+        yaml_content = '\n'.join(lines[1:yaml_end])
+        
+        # Parse YAML
+        try:
+            frontmatter = yaml.safe_load(yaml_content)
+            if not frontmatter or 'date' not in frontmatter:
+                return None
+            
+            date_value = frontmatter['date']
+            
+            # Handle different date formats
+            if isinstance(date_value, datetime):
+                return date_value.strftime('%Y%m%d')
+            
+            # Convert string dates to YYYYMMDD format
+            date_str = str(date_value).strip().strip('"').strip("'")
+            
+            # Try to parse various date formats
+            date_patterns = [
+                r'^(\d{4})-(\d{1,2})-(\d{1,2})$',  # 2025-08-13
+                r'^(\d{4})/(\d{1,2})/(\d{1,2})$',  # 2025/08/13
+                r'^(\d{1,2})/(\d{1,2})/(\d{4})$',  # 08/13/2025
+                r'^(\d{1,2})-(\d{1,2})-(\d{4})$',  # 08-13-2025
+            ]
+            
+            for pattern in date_patterns:
+                match = re.match(pattern, date_str)
+                if match:
+                    groups = match.groups()
+                    if len(groups[0]) == 4:  # Year first
+                        year, month, day = groups
+                    else:  # Year last
+                        month, day, year = groups
+                    
+                    try:
+                        # Validate and format date
+                        date_obj = datetime(int(year), int(month), int(day))
+                        return date_obj.strftime('%Y%m%d')
+                    except ValueError:
+                        continue
+            
+            # If no pattern matched, try dateutil parser as fallback
+            try:
+                from dateutil.parser import parse as date_parse
+                parsed_date = date_parse(date_str)
+                return parsed_date.strftime('%Y%m%d')
+            except:
+                pass
+                
+        except yaml.YAMLError:
+            pass
+            
+    except Exception:
+        pass
+    
+    return None
+
+
+def get_date_prefix(markdown_content: str = None) -> str:
+    """
+    Get date prefix for post directory naming.
+    
+    Args:
+        markdown_content: Optional markdown content to extract date from
+        
+    Returns:
+        Date in YYYYMMDD format
+    """
+    # Try to extract date from YAML frontmatter first
+    if markdown_content:
+        yaml_date = extract_date_from_yaml(markdown_content)
+        if yaml_date:
+            return yaml_date
+    
+    # Fallback to current date
     return datetime.now().strftime("%Y%m%d")
 
 
-def create_post_directory_name(markdown_filename: str) -> str:
+def create_post_directory_name(markdown_filename: str, markdown_content: str = None) -> str:
     """
     Create a post directory name from markdown filename.
     
     Args:
         markdown_filename: Original filename like "My Blog Post.md"
+        markdown_content: Optional markdown content to extract date from
         
     Returns:
-        Directory name like "20250804_my-blog-post"
+        Directory name like "20250813_my-blog-post" (using YAML date if available)
     """
     # Remove extension
     name_without_ext = Path(markdown_filename).stem
@@ -89,8 +194,8 @@ def create_post_directory_name(markdown_filename: str) -> str:
     # Sanitize the name
     sanitized_name = sanitize_filename(name_without_ext, is_directory=True)
     
-    # Add date prefix
-    date_prefix = get_date_prefix()
+    # Get date prefix (from YAML if available, otherwise current date)
+    date_prefix = get_date_prefix(markdown_content)
     
     return f"{date_prefix}_{sanitized_name}"
 
@@ -129,6 +234,46 @@ def find_image_directories(directory: Path, markdown_files: List[Path]) -> List[
     return image_dirs
 
 
+def find_loose_images(directory: Path, markdown_files: List[Path], image_directories: List[Path]) -> List[Path]:
+    """
+    Find loose image files that aren't in directories and aren't markdown files.
+    
+    Args:
+        directory: The input directory to scan
+        markdown_files: List of markdown files (to exclude)
+        image_directories: List of image directories (files in these will be handled separately)
+        
+    Returns:
+        List of loose image files
+    """
+    # Common image extensions
+    image_extensions = {'.jpg', '.jpeg', '.png', '.gif', '.webp', '.svg', '.bmp', '.tiff', '.ico'}
+    
+    # Get all files in the directory
+    all_files = [f for f in directory.iterdir() if f.is_file()]
+    
+    # Create sets for faster lookup
+    markdown_file_names = {f.name for f in markdown_files}
+    image_dir_names = {d.name for d in image_directories}
+    
+    loose_images = []
+    
+    for file_path in all_files:
+        # Skip if it's a markdown file
+        if file_path.name in markdown_file_names:
+            continue
+            
+        # Skip if it's README.md (case-insensitive)
+        if file_path.name.lower() == 'readme.md':
+            continue
+        
+        # Check if it's an image file
+        if file_path.suffix.lower() in image_extensions:
+            loose_images.append(file_path)
+    
+    return loose_images
+
+
 def get_image_references(markdown_content: str) -> List[str]:
     """
     Extract image references from markdown content.
@@ -144,13 +289,14 @@ def get_image_references(markdown_content: str) -> List[str]:
     return matches
 
 
-def update_image_references(content: str, old_dir_name: str) -> str:
+def update_image_references(content: str, old_dir_name: str = None, loose_image_mapping: Dict[str, str] = None) -> str:
     """
     Update image references in markdown content to use standardized img/ directory.
     
     Args:
         content: Original markdown content
-        old_dir_name: Original directory name from Bear export
+        old_dir_name: Original directory name from Bear export (optional)
+        loose_image_mapping: Mapping of original filenames to img/ paths (optional)
         
     Returns:
         Updated markdown content with img/ paths
@@ -159,13 +305,20 @@ def update_image_references(content: str, old_dir_name: str) -> str:
         full_match = match.group(0)
         old_path = match.group(1)
         
-        # If the path starts with the old directory name, replace with img/
-        if old_path.startswith(f"{old_dir_name}/"):
+        # Case 1: Bear export format - path starts with old directory name
+        if old_dir_name and old_path.startswith(f"{old_dir_name}/"):
             # Replace "old-dir-name/image.jpg" with "img/image.jpg"
             filename = old_path[len(old_dir_name) + 1:]  # Remove "old-dir-name/"
             new_path = f"img/{filename}"
             return full_match.replace(old_path, new_path)
         
+        # Case 2: Loose image - just a filename
+        elif loose_image_mapping and old_path in loose_image_mapping:
+            # Replace "image.jpg" with "img/image.jpg"
+            new_path = loose_image_mapping[old_path]
+            return full_match.replace(old_path, new_path)
+        
+        # Case 3: Already correct format or unrecognized - leave as-is
         return full_match
     
     # Replace image references
@@ -216,6 +369,7 @@ def handle_naming_conflicts(target_path: Path, is_directory: bool = False) -> Pa
 def process_directory(input_dir: Path, output_dir: Path) -> Dict[str, str]:
     """
     Process a directory by copying files to output and organizing into post directories.
+    Enhanced to handle both Bear exports and loose image files.
     
     Args:
         input_dir: Source directory (ingest-external-md)
@@ -238,29 +392,20 @@ def process_directory(input_dir: Path, output_dir: Path) -> Dict[str, str]:
     # Track all renames for logging
     path_mapping = {}
     
-    # Step 1: Find markdown files and associated image directories in input
+    # Step 1: Find markdown files, image directories, and loose images
     markdown_files = find_markdown_files(input_dir)
     image_directories = find_image_directories(input_dir, markdown_files)
+    loose_images = find_loose_images(input_dir, markdown_files, image_directories)
     
     print(f"Found {len(markdown_files)} markdown files")
-    print(f"Found {len(image_directories)} image directories")
+    print(f"Found {len(image_directories)} image directories (Bear format)")
+    print(f"Found {len(loose_images)} loose image files")
     
     # Step 2: Process each markdown file and its associated images
     for md_file in markdown_files:
         print(f"\n📝 Processing: {md_file.name}")
         
-        # Create post directory name
-        post_dir_name = create_post_directory_name(md_file.name)
-        post_dir_path = output_dir / post_dir_name
-        
-        # Handle naming conflicts for post directory
-        post_dir_path = handle_naming_conflicts(post_dir_path, is_directory=True)
-        
-        # Create the post directory
-        post_dir_path.mkdir(parents=True, exist_ok=True)
-        print(f"  📁 Created directory: {post_dir_path.name}")
-        
-        # Read markdown content
+        # Read markdown content first (needed for date extraction)
         try:
             with open(md_file, 'r', encoding='utf-8') as f:
                 content = f.read()
@@ -269,7 +414,24 @@ def process_directory(input_dir: Path, output_dir: Path) -> Dict[str, str]:
             with open(md_file, 'r', encoding='latin-1') as f:
                 content = f.read()
         
-        # Find matching image directory for this markdown file
+        # Create post directory name (using date from YAML if available)
+        post_dir_name = create_post_directory_name(md_file.name, content)
+        post_dir_path = output_dir / post_dir_name
+        
+        # Handle naming conflicts for post directory
+        post_dir_path = handle_naming_conflicts(post_dir_path, is_directory=True)
+        
+        # Create the post directory
+        post_dir_path.mkdir(parents=True, exist_ok=True)
+        
+        # Check if we used YAML date vs current date and provide feedback
+        yaml_date = extract_date_from_yaml(content)
+        if yaml_date:
+            print(f"  📁 Created directory: {post_dir_path.name} (using date from YAML: {yaml_date[:4]}-{yaml_date[4:6]}-{yaml_date[6:8]})")
+        else:
+            print(f"  📁 Created directory: {post_dir_path.name} (using current date)")
+        
+        # Find matching image directory for this markdown file (Bear export format)
         md_stem = md_file.stem
         matching_img_dir = None
         for img_dir in image_directories:
@@ -277,20 +439,92 @@ def process_directory(input_dir: Path, output_dir: Path) -> Dict[str, str]:
                 matching_img_dir = img_dir
                 break
         
-        # Process images if they exist
+        # Create img directory in post folder
+        img_dest_dir = post_dir_path / "img"
+        images_processed = False
+        
+        # Process Bear export images if they exist
         if matching_img_dir:
-            print(f"  🖼️ Processing images from: {matching_img_dir.name}")
-            
-            # Create img directory in post folder
-            img_dest_dir = post_dir_path / "img"
+            print(f"  🖼️ Processing Bear export images from: {matching_img_dir.name}")
             
             # Copy all images to img/ directory
             shutil.copytree(matching_img_dir, img_dest_dir)
             print(f"    Copied images: {matching_img_dir.name}/ → img/")
+            images_processed = True
             
             # Update image references in markdown content
-            content = update_image_references(content, md_stem)
-            print(f"    Updated image references to use img/ paths")
+            content = update_image_references(content, old_dir_name=md_stem)
+            print(f"    Updated Bear export image references to use img/ paths")
+        
+        # Process loose images (find images that might belong to this post)
+        post_loose_images = []
+        loose_image_mapping = {}
+        
+        # Extract image references from markdown to see what images this post expects
+        referenced_images = get_image_references(content)
+        
+        for image_path in referenced_images:
+            # Check if this reference matches a loose image file
+            image_filename = Path(image_path).name  # Get just the filename part
+            
+            for loose_image in loose_images:
+                if loose_image.name == image_filename:
+                    post_loose_images.append(loose_image)
+                    loose_image_mapping[image_path] = f"img/{image_filename}"
+                    break
+        
+        if post_loose_images:
+            print(f"  🖼️ Processing {len(post_loose_images)} loose image(s) for this post")
+            
+            # Create img directory if it doesn't exist
+            if not img_dest_dir.exists():
+                img_dest_dir.mkdir(parents=True, exist_ok=True)
+            
+            # Copy loose images to img/ directory
+            for loose_image in post_loose_images:
+                dest_path = img_dest_dir / loose_image.name
+                
+                # Handle filename conflicts
+                dest_path = handle_naming_conflicts(dest_path)
+                
+                shutil.copy2(loose_image, dest_path)
+                print(f"    Copied loose image: {loose_image.name} → img/{dest_path.name}")
+                
+                # Update mapping if filename changed due to conflict
+                if dest_path.name != loose_image.name:
+                    # Update the mapping to reflect the new filename
+                    for old_ref, new_ref in loose_image_mapping.items():
+                        if new_ref == f"img/{loose_image.name}":
+                            loose_image_mapping[old_ref] = f"img/{dest_path.name}"
+            
+            # Update image references for loose images
+            content = update_image_references(content, loose_image_mapping=loose_image_mapping)
+            print(f"    Updated loose image references to use img/ paths")
+            images_processed = True
+            
+            # Remove processed loose images from the list so they don't get processed again
+            for processed_image in post_loose_images:
+                if processed_image in loose_images:
+                    loose_images.remove(processed_image)
+        
+        # Handle remaining loose images that weren't referenced by any markdown file
+        if not images_processed and len(markdown_files) == 1 and loose_images:
+            # If there's only one markdown file and loose images, assume they belong together
+            print(f"  🖼️ Processing {len(loose_images)} loose image(s) (single post assumption)")
+            
+            # Create img directory
+            img_dest_dir.mkdir(parents=True, exist_ok=True)
+            
+            # Copy all remaining loose images
+            for loose_image in loose_images:
+                dest_path = img_dest_dir / loose_image.name
+                dest_path = handle_naming_conflicts(dest_path)
+                shutil.copy2(loose_image, dest_path)
+                print(f"    Copied loose image: {loose_image.name} → img/{dest_path.name}")
+            
+            # Clear the loose images list since we processed them all
+            loose_images.clear()
+            images_processed = True
         
         # Write markdown content as index.qmd
         index_file_path = post_dir_path / "index.qmd"
@@ -301,6 +535,16 @@ def process_directory(input_dir: Path, output_dir: Path) -> Dict[str, str]:
         
         # Track mapping for logging
         path_mapping[str(md_file)] = str(post_dir_path)
+    
+    # Handle any remaining loose images that weren't matched to posts
+    if loose_images:
+        print(f"\n⚠️ Warning: {len(loose_images)} loose image(s) found with no matching post:")
+        for loose_image in loose_images:
+            print(f"    - {loose_image.name}")
+        print("These images will be ignored. Consider:")
+        print("  - Adding image references to your markdown")
+        print("  - Moving images to a folder matching your post name")
+        print("  - Removing unused images")
     
     return path_mapping
 
@@ -333,8 +577,8 @@ def main():
         sys.exit(0)
     
     try:
-        print(f"🔧 Sanitizing filenames and organizing posts")
-        print("=" * 50)
+        print(f"🔧 Sanitizing filenames and organizing posts (enhanced with loose image support and YAML date extraction)")
+        print("=" * 100)
         path_mapping = process_directory(input_path, output_path)
         
         print(f"\n📊 Summary")
@@ -350,6 +594,8 @@ def main():
             
         print(f"\n✅ Processed files are now in: {output_path}")
         print(f"🗂️ Each post is in its own date-prefixed directory with index.qmd")
+        print(f"📅 Dates extracted from YAML frontmatter when available")
+        print(f"📷 Images organized in standardized img/ directories")
             
     except Exception as e:
         print(f"❌ Error: {e}")
