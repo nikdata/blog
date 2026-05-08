@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "{nik}",
     "section": "",
-    "text": "Hi! My name is Nik and this is my personal blog.\nI am a data scientist and I also teach as an adjunct instructor.\nI have a Bachelor’s in Industrial Engineering from Northern Illinois University and a Master’s in Data Science from Northwestern University.\nIn my free time, I enjoy cycling (I’m actually serious about this), learning to cook, and playing board games with the family.\n\n\nOpinions expressed on this website are my own in my personal capacity. They do not reflect the views of my current employers, previous employers, or of any organization, company or board I am or have been associated with."
+    "text": "Hi! My name is Nik and this is my personal blog.\nI am a senior manager at a tech consulting firm.\nI have a Bachelor’s in Industrial Engineering from Northern Illinois University and a Master’s in Data Science from Northwestern University.\nIn my free time, I enjoy - cycling - cooking - board games.\n\n\nOpinions expressed on this website are my own in my personal capacity. They do not reflect the views of my current employers, previous employers, or of any organization, company or board I am or have been associated with."
   },
   {
     "objectID": "posts/20230118_settingupmba/index.html",
@@ -123,7 +123,7 @@
     "href": "posts/index.html",
     "title": "{nik}",
     "section": "",
-    "text": "How I Set Up My New MacBook Air\n\n\nUp and running with a new Mac\n\n\n\n\n\n18 Jan 2023\n\n\n\n\n\n\n\n\n\n\n\n\nThe {avocado} R Package\n\n\nI love avocados so I made an R package for them\n\n\n\n\n\n18 Dec 2020\n\n\n\n\n\n\n\n\n\n\n\n\nThe {ialiquor} R Package\n\n\nSay hello to my first R package!\n\n\n\n\n\n07 Dec 2020\n\n\n\n\n\n\n\n\n\n\n\n\nMagic 8 Ball Function\n\n\nLearning to write a function in R\n\n\n\n\n\n01 Jan 2018\n\n\n\n\n\nNo matching items"
+    "text": "Defensive Coding with Pydantic or dataclass\n\n\n\n\n\n\n\n\n06 May 2026\n\n\n\n\n\n\n\n\n\n\n\n\nHow I Set Up My New MacBook Air\n\n\nUp and running with a new Mac\n\n\n\n\n\n18 Jan 2023\n\n\n\n\n\n\n\n\n\n\n\n\nThe {avocado} R Package\n\n\nI love avocados so I made an R package for them\n\n\n\n\n\n18 Dec 2020\n\n\n\n\n\n\n\n\n\n\n\n\nThe {ialiquor} R Package\n\n\nSay hello to my first R package!\n\n\n\n\n\n07 Dec 2020\n\n\n\n\n\n\n\n\n\n\n\n\nMagic 8 Ball Function\n\n\nLearning to write a function in R\n\n\n\n\n\n01 Jan 2018\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "posts/20180101_magic8ballfunction/index.html",
@@ -173,5 +173,12 @@
     "title": "Nik Agarwal",
     "section": "",
     "text": "I’m a data scientist and I enjoy writing about data science and road cycling.\nThanks for visiting!"
+  },
+  {
+    "objectID": "posts/20260506_dataclass/index.html",
+    "href": "posts/20260506_dataclass/index.html",
+    "title": "Defensive Coding with Pydantic or dataclass",
+    "section": "",
+    "text": "Since I started learning how to code, I’ve been fascinated with “defensive coding” practices. Defensive coding to me means that the code is written in a way to ensure that data types are protected. For example, if a particular variable should be number like 1.33, then there needs to be a mechanism in place to ensure that a string value cannot be entered.\nLet’s start with a simple example:\ndef print_var(x):\n  if not isinstance(x, int):\n    print(\"the variable is not an integer\")\n    print(\"variable type:\", type(x))\n  else:\n    print(\"the variable is an integer\")\n    print(\"variable type:\", type(x))\n\nif __name__ == \"__main__\":\n  print_var(\"1.33\")\nOutput:\nthe variable is not an integer\nvariable type: &lt;class 'str'&gt;\nIn this case, we are manually checking the type of the variable and printing a message if it is not an integer.\nNow let’s use a dataclass to achieve the same result:\nfrom dataclasses import dataclass\n\n@dataclass\nclass MyClass:\n  x: int\n\ndef print_var(x):\n  if not isinstance(x, int):\n    print(\"the variable is not an integer\")\n    print(\"variable type:\", type(x))\n  else:\n    print(\"the variable is an integer\")\n    print(\"variable type:\", type(x))\n\nif __name__ == \"__main__\":\n    # instantiate the dataclass\n    my_var = MyClass(x=\"1.33\")\n    print_var(my_var)\nOutput:\nthe variable is not an integer\nvariable type: &lt;class '__main__.MyClass'&gt;\nSo we didn’t get an error, but the variable value x is not an integer.\nNow let’s use Pydantic to achieve the same result:\nfrom pydantic import BaseModel\n\nclass MyClass(BaseModel):\n  x: int\n\ndef print_var(x):\n  if not isinstance(x, int):\n    print(\"the variable is not an integer\")\n    print(\"variable type:\", type(x))\n  else:\n    print(\"the variable is an integer\")\n    print(\"variable type:\", type(x))\n\nif __name__ == \"__main__\":\n  my_var = MyClass(x=\"1.33\")\n  print_var(my_var.x)\nOutput:\nTraceback (most recent call last):\n  File \"/Users/nikhilagarwal/programming/other/tutorial-dataclass/main3.py\", line 15, in &lt;module&gt;\n    my_var = MyClass(x=\"1.33\")\n  File \"/Users/nikhilagarwal/programming/other/tutorial-dataclass/.venv/lib/python3.14/site-packages/pydantic/main.py\", line 263, in __init__\n    validated_self = self.__pydantic_validator__.validate_python(data, self_instance=self)\npydantic_core._pydantic_core.ValidationError: 1 validation error for MyClass\nx\n  Input should be a valid integer, unable to parse string as an integer [type=int_parsing, input_value='1.33', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.13/v/int_parsing\nLook at the error message. It says that the input should be a valid integer, unable to parse string as an integer. This is a good example of how Pydantic can be used to ensure that the variable is an integer."
   }
 ]

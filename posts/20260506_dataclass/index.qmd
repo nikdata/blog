@@ -1,0 +1,246 @@
+---
+title: "Defensive Coding with Pydantic or dataclass"
+date: "2026-05-06"
+draft: false
+---
+
+One of the tenets of good coding is to ensure that the data types are protected. For example, if a particular variable should be number like 1.33, then there needs to be a mechanism in place to ensure that a string value cannot be entered. The same goes for other data types like lists, dictionaries, floats, etc. Yes, floats and integers are different data types, and they need to be treated differently.
+
+Let's say, we have a function that prints the type of a variable. We want to ensure that the variable is an integer. If it is not, we want to print a message and the type of the variable.
+
+```python
+def print_var(x):
+  if not isinstance(x, int):
+    print("the variable is not an integer")
+    print("variable type:", type(x))
+  else:
+    print("the variable is an integer")
+    print("variable type:", type(x))
+
+if __name__ == "__main__":
+  print_var("1.33")
+```
+Output:
+
+```
+the variable is not an integer
+variable type: <class 'str'>
+```
+We can see that the variable is not an integer and the type of the variable is a string. The original intent was to have the variable `x` be an integer, but it's actually a string. Unlike other programming langauges, like C, Python is a dynamically typed language. This means that the type of the variable is not checked at compile time, but at runtime.
+
+Since Python 3.7, dataclasses have been a part of the standard library. Dataclasses are a way to define a class with automatically generated special methods like `__init__`, `__repr__`, `__eq__`, etc.
+
+Now let's use a dataclass and see if it helps:
+
+```python
+from dataclasses import dataclass
+
+@dataclass
+class MyClass:
+  x: int
+
+def print_var(x):
+  if not isinstance(x, int):
+    print("the variable is not an integer")
+    print("variable type:", type(x))
+  else:
+    print("the variable is an integer")
+    print("variable type:", type(x))
+
+if __name__ == "__main__":
+    # instantiate the dataclass
+    my_var = MyClass(x="1.33")
+    print_var(my_var)
+```
+Output:
+
+```
+the variable is not an integer
+variable type: <class 'str'>
+```
+So we didn't get an error, but the variable value x is not an integer. In essence, dataclass didn't really protect our intended data type. Ideally, we want to get an error if the variable is not an integer. Pydantic is a library that provides a way to validate data types.
+
+Now let's use Pydantic and see what happens:
+
+```python
+from pydantic import BaseModel
+
+class MyClass(BaseModel):
+  x: int
+
+def print_var(x):
+  if not isinstance(x, int):
+    print("the variable is not an integer")
+    print("variable type:", type(x))
+  else:
+    print("the variable is an integer")
+    print("variable type:", type(x))
+
+if __name__ == "__main__":
+  my_var = MyClass(x="1.33")
+  print_var(my_var.x)
+```
+Output:
+
+```
+Traceback (most recent call last):
+  File "/Users/nikhilagarwal/programming/other/tutorial-dataclass/main3.py", line 15, in <module>
+    my_var = MyClass(x="1.33")
+  File "/Users/nikhilagarwal/programming/other/tutorial-dataclass/.venv/lib/python3.14/site-packages/pydantic/main.py", line 263, in __init__
+    validated_self = self.__pydantic_validator__.validate_python(data, self_instance=self)
+pydantic_core._pydantic_core.ValidationError: 1 validation error for MyClass
+x
+  Input should be a valid integer, unable to parse string as an integer [type=int_parsing, input_value='1.33', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.13/v/int_parsing
+```
+Look at the error message. It says that the input should be a valid integer, unable to parse string as an integer. This is a good example of how Pydantic can be used to ensure that the variable is an integer.
+
+What happens if we don't pass a string value, but a true float value:
+
+```python
+from pydantic import BaseModel
+
+class MyClass(BaseModel):
+  x: int
+
+def print_var(x):
+  if not isinstance(x, int):
+    print("the variable is not an integer")
+    print("variable type:", type(x))
+  else:
+    print("the variable is an integer")
+    print("variable type:", type(x))
+
+if __name__ == "__main__":
+  my_var = MyClass(x=1.33)
+  print_var(my_var.x)
+```
+
+Output:
+```
+Traceback (most recent call last):
+  File "/Users/nikhilagarwal/programming/other/tutorial-dataclass/main3.py", line 15, in <module>
+    my_var = MyClass(x=1.33)
+  File "/Users/nikhilagarwal/programming/other/tutorial-dataclass/.venv/lib/python3.14/site-packages/pydantic/main.py", line 263, in __init__
+    validated_self = self.__pydantic_validator__.validate_python(data, self_instance=self)
+pydantic_core._pydantic_core.ValidationError: 1 validation error for MyClass
+x
+  Input should be a valid integer, got a number with a fractional part [type=int_from_float, input_value=1.33, input_type=float]
+    For further information visit https://errors.pydantic.dev/2.13/v/int_from_float
+```
+We get another error message! It says that the input should be a valid integer, got a number with a fractional part. This is a good example of how Pydantic can be used to ensure that the variable is an integer.
+
+Let's change that 1.33 to just 1.0:
+
+```python
+from pydantic import BaseModel
+
+class MyClass(BaseModel):
+  x: int
+
+def print_var(x):
+  if not isinstance(x, int):
+    print("the variable is not an integer")
+    print("variable type:", type(x))
+  else:
+    print("the variable is an integer")
+    print("variable type:", type(x))
+
+if __name__ == "__main__":
+  my_var = MyClass(x=1.0)
+  print_var(my_var.x)
+```
+
+Output:
+```
+the variable is an integer
+variable type: <class 'int'>
+```
+So we get no error this time. The variable is an integer and the type of the variable is an integer. Pydantic is a powerful that can also *coerce* a value to the correct data type in some cases. In this case, 1.0 was coerced to an integer.
+
+### In Practice
+
+When we're writing functions, sometimes there's a need to ensure that the variable values passed into the function are contextually correct (and correct in terms of data types). While we can use if statement to validate the data types, it's actually a bit challenging to clearly capture the context of the validation rules for each variable.
+
+That's why Pydantic or dataclasses are a good fit for this. We can essentially capture the context of the validation rules for each variable in a single place; the class definition.
+
+Let's start with a function that can calculate the total cost of a product.
+
+Here we want the following:
+- quantity must be greater than 0
+- quantity must be an integer
+- price can be any non-zero positive value (integer or float)
+- discount must be a value between 0 and 1.
+
+```python
+
+def calculate_cost(quantity: int, price: float, discount: float) -> float:
+    if quantity <= 0:
+        raise ValueError("Quantity must be greater than 0")
+    if not isinstance(quantity, int):
+        raise ValueError("Quantity must be an integer")
+    if price <= 0:
+        raise ValueError("Price must be greater than 0")
+    if discount < 0 or discount > 1:
+        raise ValueError("Discount must be between 0 and 1")
+    return quantity * price * (1 - discount)
+
+if __name__ == "__main__":
+    product_name = 'widget'
+    quantity = 4
+    price = 17.95
+    discount = 0.05
+    total_cost = calculate_cost(quantity, price, discount)
+
+    print(f"The total cost of the {product_name} is {total_cost}")
+```
+
+Output
+```
+The total cost of the widget is 68.21
+```
+
+If wanted to reuse the variables quantity, price, and discount, we'd have to copy/paste the if statements for each variable. That's not a great solution and a potential opportunity for us to miss the business logic.
+
+So let's use Pydantic instead:
+
+
+```python
+from pydantic import BaseModel, Field
+from decimal import Decimal
+
+class Quantity(BaseModel):
+    # we use the Field class to add metadata to the field
+    # the description is a human-readable description of the field
+    # the gt=0 means that the value must be greater than 0
+    # the strict=True means that the model will raise an error if the value is not a valid integer
+    value: int = Field(description="The quantity of the product", gt=0, strict=True)
+
+class Price(BaseModel):
+    # the decimal_places=2 means that the price will be rounded to 2 decimal places
+    value: Decimal = Field(description="The price of the product", gt=0, decimal_places=2)
+
+class Discount(BaseModel):
+    # the ge=0 means that the value must be greater than or equal to 0
+    # the le=1 means that the value must be less than or equal to 1
+    # the strict=True means that the model will raise an error if the value is not a valid decimal number
+    value: Decimal = Field(description="The discount of the product", ge=0, le=1, decimal_places=2)
+
+def calculate_total_cost(quantity: Quantity, price: Price, discount: Discount) -> float:
+    q = quantity.value
+    p = price.value
+    d = discount.value
+    return q * p * (1 - d)
+
+if __name__ == "__main__":
+
+    tc = calculate_total_cost(
+        quantity = Quantity(value = 4),
+        price = Price(value = 17.95),
+        discount = Discount(value = 0.05)
+    )
+    print('total cost: ', tc)
+```
+
+This approach is certainly more verbose than what we had before. However, it's far more versatile because now we can resue the business logic for price, quanity, and discount in other functions. One change in the class can be propagated to all the functions that use it.
+

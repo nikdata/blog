@@ -7,11 +7,14 @@ about:
 
 Hi! My name is Nik and this is my personal blog.
 
-I am a data scientist and I also teach as an adjunct instructor. 
+I am a senior manager at a tech consulting firm.
 
 I have a Bachelor's in Industrial Engineering from Northern Illinois University and a Master's in Data Science from Northwestern University.
 
-In my free time, I enjoy **cycling** (I'm actually serious about this), learning to **cook**, and playing **board games** with the family.
+In my free time, I enjoy 
+- **cycling** 
+- **cooking**
+- **board games**.
 
 ---
 ::: {.disclaimer}

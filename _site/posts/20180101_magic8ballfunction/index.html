@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.32">
+<meta name="generator" content="quarto-1.9.37">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -11,6 +11,9 @@
 
 <title>Magic 8 Ball Function – {nik}</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -69,10 +72,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-2fef5ea3f8957b3e4ecc936fc74692ca.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-d0ae9245876894da5ac7e18953ecc5cc.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-1d84dcfef1dce2352a79b6c97fdcbbae.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-b3b98d4f651d2fc620f2fae0cded7c88.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
 <script src="../../site_libs/quarto-contrib/iconify-2.1.0/iconify-icon.min.js"></script>
 <script id="quarto-search-options" type="application/json">{
   "language": {
@@ -211,7 +214,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="approach" class="level2">
 <h2 class="anchored" data-anchor-id="approach">Approach</h2>
 <p>Let’s start with defining our messages into a vector:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># store the messages into a vector</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># store the messages into a vector</span></span>
 <span id="cb1-2"><a href="#cb1-2"></a>messages <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"I don't see that happening."</span>,</span>
 <span id="cb1-3"><a href="#cb1-3"></a>              <span class="st">'You must be dreaming.'</span>,</span>
 <span id="cb1-4"><a href="#cb1-4"></a>              <span class="st">'Chances are good.'</span>,</span>
@@ -221,13 +224,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-8"><a href="#cb1-8"></a>              <span class="st">'Take some time to think about it.'</span>,</span>
 <span id="cb1-9"><a href="#cb1-9"></a>              <span class="st">'This is not a good idea!'</span>,</span>
 <span id="cb1-10"><a href="#cb1-10"></a>              <span class="st">'This is a great idea!'</span>,</span>
-<span id="cb1-11"><a href="#cb1-11"></a>              <span class="st">'Cannot be determined at this time.  Try Again!'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-11"><a href="#cb1-11"></a>              <span class="st">'Cannot be determined at this time.  Try Again!'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Keep in mind that in R, you can call a specific ‘spot’ within a vector. For instance, if we wanted the third<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> message (“Chances are good.”), we simply have to say <code>messages[3]</code>:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">"This is a great idea!"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">"This is a great idea!"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Now let’s write a function. In R, you have to ‘store’ the function in a variable name. That variable name becomes the name of the function.</p>
 <p>If we want arguments (i.e., values that can be supplied by the user for the function to be used), we simply add a name for the value within the <code>function()</code> argument. Here, we’ll use the input value name (i.e., argument) of ‘seed_value’.</p>
 <p>I’ve commmented the code to help explain what it’s doing.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>magic<span class="fl">.8</span>ball <span class="ot">&lt;-</span> <span class="cf">function</span>(seed_value) {</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>magic<span class="fl">.8</span>ball <span class="ot">&lt;-</span> <span class="cf">function</span>(seed_value) {</span>
 <span id="cb3-2"><a href="#cb3-2"></a>  <span class="co"># check to see if seed_value argument is missing</span></span>
 <span id="cb3-3"><a href="#cb3-3"></a>  <span class="co"># if missing, output will change every time function is run</span></span>
 <span id="cb3-4"><a href="#cb3-4"></a>  <span class="cf">if</span>(<span class="fu">missing</span>(seed_value)) {</span>
@@ -243,12 +246,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-14"><a href="#cb3-14"></a>  </span>
 <span id="cb3-15"><a href="#cb3-15"></a>  <span class="co"># return the message to the console</span></span>
 <span id="cb3-16"><a href="#cb3-16"></a>  <span class="fu">return</span>(out)</span>
-<span id="cb3-17"><a href="#cb3-17"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-17"><a href="#cb3-17"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Now let’s call the function in 2 ways: without a seed and with a seed.</p>
 <p>Without a seed:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">"Take some time to think about it."</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">"Take some time to think about it."</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>With a seed:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">"Chances are good."</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">"Chances are good."</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>If no <code>seed_value</code> is provided, then a random message will be generated.</p>
 </section>
 <section id="some-takeaways" class="level2">
@@ -259,7 +262,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="tldr" class="level2">
 <h2 class="anchored" data-anchor-id="tldr">TL;DR</h2>
 <p>Here’s the final code:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>magic<span class="fl">.8</span>ball <span class="ot">&lt;-</span> <span class="cf">function</span>(seed_value) {</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>magic<span class="fl">.8</span>ball <span class="ot">&lt;-</span> <span class="cf">function</span>(seed_value) {</span>
 <span id="cb6-2"><a href="#cb6-2"></a>  <span class="co"># check to see if the argument is missing</span></span>
 <span id="cb6-3"><a href="#cb6-3"></a>  <span class="co"># if argument is missing, the output will change every time the function is run</span></span>
 <span id="cb6-4"><a href="#cb6-4"></a>  <span class="cf">if</span>(<span class="fu">missing</span>(seed_value)) {</span>
@@ -275,7 +278,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb6-14"><a href="#cb6-14"></a>  </span>
 <span id="cb6-15"><a href="#cb6-15"></a>  <span class="co"># return the message to the console</span></span>
 <span id="cb6-16"><a href="#cb6-16"></a>  <span class="fu">return</span>(out)</span>
-<span id="cb6-17"><a href="#cb6-17"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-17"><a href="#cb6-17"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 </section>
 
@@ -342,13 +345,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
