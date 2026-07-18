@@ -5,8 +5,6 @@ photo: me.jpeg
 draft: false
 ---
 
-<!-- TODO: Write a few sentences about yourself. What do you do? What are you interested in? What will people find on this blog? -->
-
 
 👋 Hi there!
 
