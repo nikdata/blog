@@ -7,8 +7,8 @@
   --accent-hover: #92400e;
   --border: #d6d3d1;
   --code-bg: #f5f5f4;
-  --link: #b45309;
-  --link-hover: #92400e;
+  --link: #0d7c66;
+  --link-hover: #0a6352;
 }
 
 [data-theme="dark"] {
@@ -20,8 +20,8 @@
   --accent-hover: #e2be6a;
   --border: #30363d;
   --code-bg: #161b22;
-  --link: #d4a84a;
-  --link-hover: #e2be6a;
+  --link: #5cbaa6;
+  --link-hover: #7ccdb9;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -34,8 +34,8 @@
     --accent-hover: #e2be6a;
     --border: #30363d;
     --code-bg: #161b22;
-    --link: #d4a84a;
-    --link-hover: #e2be6a;
+    --link: #5cbaa6;
+    --link-hover: #7ccdb9;
   }
 }
 
@@ -378,31 +378,38 @@ img {
 .post-body h2 {
   font-size: 1.4rem;
   margin: 2rem 0 0.75rem;
+  padding-bottom: 0.4rem;
   font-weight: bold;
+  color: var(--accent);
+  border-bottom: 1px solid var(--border);
 }
 
 .post-body h3 {
   font-size: 1.15rem;
   margin: 1.75rem 0 0.5rem;
   font-weight: bold;
+  color: var(--accent);
 }
 
 .post-body h4 {
     font-size: 1.10rem;
     margin: 1.5rem 0 0.4rem;
     font-weight: bold;
+    color: var(--text-secondary);
 }
 
 .post-body h5 {
     font-size: 1.0rem;
     margin: 1.35rem 0 0.4rem;
     font-weight: bold;
+    color: var(--text-secondary);
 }
 
 .post-body h6 {
     font-size: 0.90rem;
     margin: 1.2rem 0 0.4rem;
     font-weight: bold;
+    color: var(--text-secondary);
 }
 
 .post-body p {
