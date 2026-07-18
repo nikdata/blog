@@ -1,0 +1,16 @@
+{{ define "main" }}
+<article class="about">
+  <header class="about-header">
+    {{ with .Params.photo }}
+      {{ with $.Resources.GetMatch . }}
+        <img src="{{ .RelPermalink }}" alt="{{ $.Site.Params.author }}" class="about-photo">
+      {{ end }}
+    {{ else }}
+      <img src="{{ .Site.Params.profilePhoto }}" alt="{{ .Site.Params.author }}" class="about-photo">
+    {{ end }}
+  </header>
+  <div class="page-body">
+    {{ .Content }}
+  </div>
+</article>
+{{ end }}

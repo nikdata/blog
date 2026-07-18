@@ -1,0 +1,55 @@
+{{ define "main" }}
+<section class="stream">
+  {{ $posts := where .Site.RegularPages "Section" "posts" }}
+  {{ $blips := where .Site.RegularPages "Section" "blips" }}
+  {{ $allContent := union $posts $blips }}
+  {{ $allContent = sort $allContent "Date" "desc" }}
+  {{ $paginator := .Paginate $allContent }}
+
+  {{ range $paginator.Pages }}
+    <article class="stream-item stream-item--{{ .Section }}">
+      {{ if eq .Section "blips" }}
+        <div class="blip-inner">
+          <time class="stream-date" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 2, 2006" }}</time>
+          <div class="blip-content">
+            <span class="stream-label">Blip</span>
+            {{ .Content }}
+          </div>
+        </div>
+        <hr class="blip-separator">
+      {{ else }}
+        {{ $page := . }}
+        <time class="stream-date" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 2, 2006" }}</time>
+        <span class="stream-label">Post</span>
+        <div class="post-preview{{ with .Params.cover }} post-preview--has-cover{{ end }}">
+          {{ with .Params.cover }}
+            <a href="{{ $page.RelPermalink }}" class="post-cover-link">
+              <img src="{{ $page.RelPermalink }}{{ . }}" alt="" class="post-cover">
+            </a>
+          {{ end }}
+          <div class="post-content">
+            <h2 class="post-title"><a href="{{ $page.RelPermalink }}">{{ $page.Title }}</a></h2>
+            {{ with $page.Description }}
+              <p class="post-summary">{{ . }}</p>
+            {{ else }}
+              <p class="post-summary">{{ $page.Summary }}</p>
+            {{ end }}
+            <a href="{{ $page.RelPermalink }}" class="read-more">Read more &rarr;</a>
+          </div>
+        </div>
+      {{ end }}
+    </article>
+  {{ end }}
+
+  {{ if gt $paginator.TotalPages 1 }}
+  <nav class="pagination">
+    {{ if $paginator.HasPrev }}
+      <a href="{{ $paginator.Prev.URL }}" class="pagination-link">&larr; Newer</a>
+    {{ end }}
+    {{ if $paginator.HasNext }}
+      <a href="{{ $paginator.Next.URL }}" class="pagination-link">Older &rarr;</a>
+    {{ end }}
+  </nav>
+  {{ end }}
+</section>
+{{ end }}

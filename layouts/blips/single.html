@@ -1,0 +1,10 @@
+{{ define "main" }}
+<article class="blip">
+  <header class="blip-header">
+    <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 2, 2006" }}</time>
+  </header>
+  <div class="blip-body">
+    {{ .Content }}
+  </div>
+</article>
+{{ end }}
