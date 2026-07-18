@@ -1,0 +1,12 @@
+{{ define "main" }}
+<section class="landing">
+  <img src="{{ .Site.Params.profilePhoto }}" alt="{{ .Site.Params.author }}" class="landing-photo">
+  <h1 class="landing-tagline">{{ .Site.Params.tagline }}</h1>
+  <p class="landing-description">{{ .Site.Params.description }}</p>
+  <div class="landing-social">
+    {{ range sort .Site.Params.social "weight" }}
+      <a href="{{ .url }}" title="{{ .name }}" rel="me noopener" target="_blank"><i class="fa-brands fa-{{ .icon }}"></i></a>
+    {{ end }}
+  </div>
+</section>
+{{ end }}

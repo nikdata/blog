@@ -1,0 +1,64 @@
+baseURL = "https://nik.netlify.app/"
+locale = "en-us"
+disableKinds = ["taxonomy", "term"]
+title = "Niks Tavern"
+
+[pagination]
+  pagerSize = 10
+
+[permalinks]
+  [permalinks.page]
+    posts = "/blog/:slug/"
+    blips = "/blog/:slug/"
+
+[markup]
+  [markup.highlight]
+    style = "dracula"
+    lineNos = false
+    guessSyntax = true
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+
+[outputs]
+  home = ["HTML", "RSS"]
+
+[outputFormats]
+  [outputFormats.RSS]
+    mediaType = "application/rss+xml"
+    baseName = "feed"
+
+[[menus.main]]
+  name = "Blog"
+  url = "/blog/"
+  weight = 2
+
+[[menus.main]]
+  name = "About"
+  url = "/about/"
+  weight = 1
+
+[params]
+  description = "Just my thoughts on 🚴 cycling, 👨‍💻 technology, and whatever else is on my mind 🤔."
+  tagline = "Hi, I'm Nikhil!"
+  author = "Nikhil Agarwal"
+  profilePhoto = "/images/profile.jpg"
+  copyrightStartYear = 2026
+
+  [[params.social]]
+    name = "GitHub"
+    icon = "github"
+    url = "https://github.com/nikdata"
+    weight = 1
+
+  [[params.social]]
+    name = "LinkedIn"
+    icon = "linkedin"
+    url = "https://www.linkedin.com/in/nikdata/"
+    weight = 2
+
+  [[params.social]]
+    name = "Bluesky"
+    icon = "bluesky"
+    url = "https://bsky.app/profile/nikdata.bsky.social"
+    weight = 3

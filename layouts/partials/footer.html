@@ -1,0 +1,7 @@
+<footer class="site-footer">
+  <div class="container">
+    {{ $startYear := .Site.Params.copyrightStartYear | default now.Year }}
+    {{ $currentYear := now.Year }}
+    <p>&copy; {{ if eq $startYear $currentYear }}{{ $startYear }}{{ else }}{{ $startYear }} - {{ $currentYear }}{{ end }} {{ .Site.Params.author }}</p>
+  </div>
+</footer>
