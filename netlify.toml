@@ -9,4 +9,4 @@
   HUGO_ENV = "production"
 
 [context.deploy-preview]
-  command = "hugo --buildDrafts --buildFuture"
+  command = "hugo --buildFuture"
