@@ -81,16 +81,7 @@ archetypes/
 
 ## Planned but Not Yet Built
 
-These items were discussed and agreed upon but are not implemented yet:
-
-- **GitHub Actions workflow**: On push to main, check for duplicate slugs across posts and blips and fail the build if found. Simple shell commands in the workflow YAML, no Python scripts needed.
-- **Pre-commit hook for image resizing**: Investigate using a pre-commit hook (via `git config core.hooksPath`) to automatically resize oversized images before they enter Git. For now, images are resized manually before committing.
-- **Favicon**: Not yet created. Plan is something simple like initials or a single letter in the accent color.
-- **Analytics**: May add GoatCounter (free for personal sites) later. Just a script tag.
-- **Custom domain**: Currently nik.netlify.app. Considering short domains like nik.blog, nik.ink, or similar. Not a blocker.
-- **iCloud drafts workflow**: Writing on iPad/phone in an iCloud-synced folder, with a script to move drafts into the repo. Deferred. For now, writing happens directly in the repo.
-- **Projects section**: A new content type for longer-running creative projects (e.g., a 365-day photo challenge). Structure: `content/projects/<project-name>/` with each entry as a page bundle containing an image and optional caption. The project landing page (`/projects/<project-name>/`) displays a 4-column CSS Grid of thumbnails (2 columns on mobile), newest first. Hover overlay shows the entry count (e.g., "1/365"). Clicking a thumbnail goes to a detail page with the full image and caption. Thumbnails generated at build time via Hugo's built-in image processing. Images use `loading="lazy"` for performance. A top-level `/projects/` page lists all projects. Nav integration TBD.
-- **Live heartbeat widget**: A small pulsing heart icon (in the footer or on the homepage) that displays real heart rate data. Inspired by snehankekre.com/posts/hr/. Data source: Oura Ring API (most reliable since it's always worn). A GitHub Action runs on a schedule to fetch heart rate samples and export them to a static JSON file. Client-side JS replays yesterday's heart rate with interpolation. The CSS heartbeat animation pulses at the displayed BPM. No dedicated server needed.
+Ideas that were discussed but are not implemented yet live in `backlog.md` at the repo root. Add new ideas there, and remove an item once it ships.
 
 ## Local Development
 
